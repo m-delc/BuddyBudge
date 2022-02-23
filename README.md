@@ -10,24 +10,24 @@ Initial:
 
 #001
 
-added to config/application.rb:
+    added to config/application.rb:
 
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+        config.middleware.use ActionDispatch::Cookies
+        config.middleware.use ActionDispatch::Session::CookieStore
 
-added:
+    added:
 
-    User resource, with "has_secure_password" in User model
+        User resource, with "has_secure_password" in User model
 
-added to application_controller:
+    added to application_controller:
 
-    before_action
-    current_user
-    authorized_user
+        before_action
+        current_user
+        authorized_user
 
-added fallback_controller:
+    added fallback_controller:
 
-    with index method
+        with index method
 
 #002
 
