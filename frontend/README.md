@@ -11,3 +11,22 @@ Added to package.json:
     
     and under "scripts": 
         "start": "PORT=4000 react-scripts start"
+
+#101
+
+    changed favicon
+
+    added mui AppBar
+
+redux:
+
+    features/user.js
+
+    import { configureStore } from "@reduxjs/toolkit";
+    import { Provider } from "react-redux";
+    import userReducer from "./features/user";
+    import { BrowserRouter } from "react-router-dom";
+
+    generally set up index.js for redux
+
+    
