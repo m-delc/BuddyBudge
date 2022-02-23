@@ -24,12 +24,12 @@ Added to package.json:
 
     redux:
 
-    features/user.js
+        features/user.js
 
-    import { configureStore } from "@reduxjs/toolkit";
-    import { Provider } from "react-redux";
-    import userReducer from "./features/user";
-    import { BrowserRouter } from "react-router-dom";
+        import { configureStore } from "@reduxjs/toolkit";
+        import { Provider } from "react-redux";
+        import userReducer from "./features/user";
+        import { BrowserRouter } from "react-router-dom";
 
-    generally set up index.js for redux
+        generally set up index.js for redux
 
