@@ -5,6 +5,10 @@ Installed:
     npm install redux react-redux @reduxjs/toolkit
     npm install @mui/material @emotion/react @emotion/styled @material-ui/icons @mui/icons-material
 
+Added 
+
+    .prettierrc
+
 Added to package.json:
     
     "proxy": "http://localhost:3000"
@@ -18,7 +22,7 @@ Added to package.json:
 
     added mui AppBar
 
-redux:
+    redux:
 
     features/user.js
 
@@ -29,4 +33,3 @@ redux:
 
     generally set up index.js for redux
 
-    
