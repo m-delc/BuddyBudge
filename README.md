@@ -1,3 +1,5 @@
+#001
+
 added to config/application.rb:
 
     config.middleware.use ActionDispatch::Cookies
@@ -16,4 +18,6 @@ added to application_controller:
 added fallback_controller:
 
     with index method
+
+#002
 
