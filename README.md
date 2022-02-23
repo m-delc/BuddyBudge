@@ -1,25 +1,19 @@
-# README
+added to config/application.rb:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
 
-Things you may want to cover:
+added:
 
-* Ruby version
+    User resource, with "has_secure_password" in User model
 
-* System dependencies
+added to application_controller:
 
-* Configuration
+    before_action
+    current_user
+    authorized_user
 
-* Database creation
+added fallback_controller:
 
-* Database initialization
+    with index method
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# front-back-temp
