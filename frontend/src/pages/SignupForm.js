@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import PublishIcon from "@mui/icons-material/Publish";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const Signup = () => {
   // IF YOU ADD THESE BACK, remember to add the params back in user controller
@@ -85,7 +85,7 @@ const Signup = () => {
       <div>
         <Button
           variant="outlined"
-          endIcon={<PublishIcon />}
+          endIcon={<CheckCircleOutlineIcon />}
           className="btn-signup"
           type="Submit"
         >

@@ -1,11 +1,15 @@
+:root {
+  --test: rgba(37, 28, 28, 0.562);
+}
+
 .App {
   text-align: center;
-  background-color:rgba(32, 7, 7, 0.144);
+  background-color: var(--test);
   
 }
 
 body {
-  background-color: rgba(80, 78, 78, 0.562)
+  background-color: var(--test);
 }
 
 /* body { min-height: 100vh; } */
