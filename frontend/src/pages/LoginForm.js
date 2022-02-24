@@ -63,7 +63,7 @@ function LoginForm() {
     }).then((res) => {
       if (res.ok) {
         res.json().then((newUser) => {
-          setUser(newUser);
+          // setUser(newUser);
           setIsAuthenticated(true);
           setLoginUsername("");
           dispatch(login({ newUser }));
