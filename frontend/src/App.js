@@ -25,17 +25,15 @@ function App() {
   if (!isAuthenticated) return <Login error={"Please Login"} user={user} setUser={setUser} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
 
   return (
-    <div className="App">
+    <>
       <MenuAppBar user={user} setUser={setUser} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
-      <div>
         <Routes>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup user={user} setUser={setUser} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="fake1" element={<Fake1 user={user} />} />
           <Route path="fake2" element={<Fake2 />} />
         </Routes>
-      </div>
-    </div>
+    </>
   );
 }
 
