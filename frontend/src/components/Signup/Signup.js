@@ -6,14 +6,15 @@ const useStyles = makeStyles((theme) => ({
   pageContent: {
     margin: theme.spacing(5),
     padding: theme.spacing(3),
-    background: 'linear-gradient(45deg, pink 10%, lightblue 60%)'
+    background: 'linear-gradient(45deg, pink 10%, lightblue 60%)',
+    // margin-bottom: theme.spacing(5)
   },
 }));
 
 const Signup = () => {
   const classes = useStyles();
   return (
-    <Paper className={classes.pageContent} elevation={24}>
+    <Paper className={classes.pageContent} elevation={24} >
       <SignupForm />
     </Paper>
   );
