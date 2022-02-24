@@ -1,5 +1,4 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
 
 // fake routes to prove auth
 // fake routes to prove auth
@@ -7,8 +6,7 @@ import {useSelector} from 'react-redux'
 // fake routes to prove auth
 
 
-const Fake1 = () => {
-  const user = useSelector(state => state.user.value)
+const Fake1 = ({ user} ) => {
   console.log(user)
   return (
     <div>Fake1</div>

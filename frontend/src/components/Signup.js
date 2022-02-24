@@ -11,11 +11,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = () => {
+const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.pageContent} elevation={24} >
-      <SignupForm />
+      <SignupForm user={user} setUser={setUser} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
     </Paper>
   );
 };

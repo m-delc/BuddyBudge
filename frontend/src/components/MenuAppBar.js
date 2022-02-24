@@ -13,11 +13,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function MenuAppBar() {
-  const [auth, setAuth] = useState(true);
+export default function MenuAppBar({ user, setUser, isAuthenticated, setIsAuthenticated }) {
+  // const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -49,12 +49,12 @@ export default function MenuAppBar() {
         <FormControlLabel
           control={
             <Switch
-              checked={auth}
+              checked={isAuthenticated}
               onChange={handleChange}
               aria-label="login switch"
             />
           }
-          label={auth ? "Logout" : "Login"}
+          label={isAuthenticated ? "Logout" : "Login"}
         />
       </FormGroup>
       <AppBar position="static">
@@ -73,7 +73,7 @@ export default function MenuAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Photos
           </Typography>
-          {auth && (
+          {isAuthenticated && (
             <div>
               Username
               <IconButton
