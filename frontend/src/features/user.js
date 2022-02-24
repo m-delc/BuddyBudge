@@ -6,7 +6,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Reducers are for functions that will alter the values of our state
 
-const initialStateValue = { name: "", age: 0, email: "" };
+const initialStateValue = { username: "", password: "" };
 
 export const userSlice = createSlice({
   name: "user",
