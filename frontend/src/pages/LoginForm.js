@@ -17,8 +17,11 @@ import "./LoginForm.css";
 // import Login from '../components/Login/Login'
 
 function LoginForm() {
-  const [user, setUser] = useState({});
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState(null);
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginError, setLoginError] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const [values, setValues] = useState({
     password: "",
     showPassword: false,
@@ -46,37 +49,53 @@ function LoginForm() {
   //       .then(setUser);
   //   }, []);
 
-  const handleLogin = (e) => {
+  const loginOnSubmit = (e) => {
     e.preventDefault();
     const user = {
-      username: username,
+      username: loginUsername,
       password: values.password,
     };
+    fetch("/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setUser(user);
+          setIsAuthenticated(true);
+          setLoginUsername("")
+          // setValues("")
+        });
+      } else {
+        res.json().then((json) => setLoginError(json.error));
+      }
+    });
   };
   //   console.log(username, values.password);
 
+  // for nav with button
+  // for nav with button
+  // for nav with button
   const handleSignupRoute = () => {
     navigate("/signup");
   };
 
-  return (
-    // <Box
-    //   component="form"
-    //   //   sx={{
-    //   //     "& .MuiTextField-root": { m: 1, width: "31ch" },
-    //   //   }}
-    //   noValidate
-    //   autoComplete="off"
-    // >
+  console.log(user)
+  console.log(isAuthenticated)
+  console.log(loginUsername)
 
-    <form onClick={(e) => handleLogin}>
+  return (
+
+
+    <form onSubmit={loginOnSubmit}>
       <div>
         <br></br>
 
         <Input
           className="test1"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={loginUsername}
+          onChange={(e) => setLoginUsername(e.target.value)}
           type="text"
           label="Username"
           placeholder="Username"
@@ -89,6 +108,7 @@ function LoginForm() {
           id="standard-adornment-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
+          // onChange={(e) => setValues(e.target.value)}
           onChange={handleChange("password")}
           placeholder="Password"
           endAdornment={
@@ -131,7 +151,7 @@ function LoginForm() {
         </div>
       </div>
     </form>
-    // </Box>
+
   );
 }
 

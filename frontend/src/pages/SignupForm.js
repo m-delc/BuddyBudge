@@ -35,6 +35,9 @@ const Signup = () => {
         res.json().then((user) => {
           setUser(user);
           setIsAuthenticated(true);
+          setSignupUsername("")
+          setSignupPassword("");
+          setPasswordConfirmation("");
           // navigate("/home");
         });
       } else {
@@ -42,6 +45,8 @@ const Signup = () => {
       }
     });
   }
+
+
 
   return (
     <form onSubmit={signupOnSubmit}>
