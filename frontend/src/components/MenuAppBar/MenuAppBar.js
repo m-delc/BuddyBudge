@@ -11,10 +11,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { useNavigate, Link } from "react-router-dom";
+
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  // const navigate = useNavigate()
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -37,6 +40,7 @@ export default function MenuAppBar() {
               checked={auth}
               onChange={handleChange}
               aria-label="login switch"
+              // onChange={navigate()}
             />
           }
           label={auth ? "Logout" : "Login"}
@@ -53,6 +57,7 @@ export default function MenuAppBar() {
           >
             <MenuIcon />
           </IconButton>
+          <Link to='/login'>Login</Link>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Photos
           </Typography>
