@@ -1,5 +1,6 @@
 // import React from 'react'
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 // this login taken from https://mui.com/components/text-fields/ "form props"
 import FormControl from "@mui/material/FormControl";
@@ -15,11 +16,13 @@ import Stack from "@mui/material/Stack";
 import "./login.css";
 
 function Login() {
-  const [username, setUsername] = React.useState("");
-  const [values, setValues] = React.useState({
+  const [user, setUser] = useState({});
+  const [username, setUsername] = useState("");
+  const [values, setValues] = useState({
     password: "",
     showPassword: false,
   });
+  const navigate = useNavigate()
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -36,6 +39,12 @@ function Login() {
     event.preventDefault();
   };
 
+  //   useEffect(() => {
+  //     fetch("/authorize_user")
+  //       .then((res) => res.json())
+  //       .then(setUser);
+  //   }, []);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const user = {
@@ -43,7 +52,11 @@ function Login() {
       password: values.password,
     };
   };
-//   console.log(username, values.password);
+  //   console.log(username, values.password);
+
+  const handleSignupRoute = () => {
+      navigate('/signup')
+  }
 
   return (
     // <Box
@@ -103,6 +116,7 @@ function Login() {
             </Button>
 
             <Button
+            onClick={handleSignupRoute}
               variant="outlined"
               endIcon={<AddCircleOutlineIcon />}
               className="btn-signup"
