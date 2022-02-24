@@ -2,6 +2,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 // this login taken from https://mui.com/components/text-fields/ "form props"
+import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -14,6 +15,7 @@ import Stack from "@mui/material/Stack";
 import "./login.css";
 
 function Login() {
+  const [username, setUsername] = React.useState("");
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
@@ -34,20 +36,33 @@ function Login() {
     event.preventDefault();
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const user = {
+      username: username,
+      password: values.password,
+    };
+  };
+//   console.log(username, values.password);
+
   return (
-    <Box
-      component="form"
-      //   sx={{
-      //     "& .MuiTextField-root": { m: 1, width: "31ch" },
-      //   }}
-      noValidate
-      autoComplete="off"
-    >
+    // <Box
+    //   component="form"
+    //   //   sx={{
+    //   //     "& .MuiTextField-root": { m: 1, width: "31ch" },
+    //   //   }}
+    //   noValidate
+    //   autoComplete="off"
+    // >
+
+    <form onClick={(e) => handleLogin}>
       <div>
         <br></br>
 
         <Input
           className="test1"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           type="text"
           label="Username"
           placeholder="Username"
@@ -79,6 +94,7 @@ function Login() {
         <div className="test2">
           <Stack direction="row" spacing={2}>
             <Button
+              type="submit"
               variant="outlined"
               endIcon={<LoginIcon />}
               className="btn-login"
@@ -96,7 +112,8 @@ function Login() {
           </Stack>
         </div>
       </div>
-    </Box>
+    </form>
+    // </Box>
   );
 }
 
