@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,14 +13,26 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useNavigate, Link } from "react-router-dom";
 
-
 export default function MenuAppBar() {
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  // const navigate = useNavigate()
+  const [auth, setAuth] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => {
+      setUser(null);
+      setIsAuthenticated(false);
+      navigate("/login");
+    });
+  };
 
   const handleChange = (event) => {
-    setAuth(event.target.checked);
+    // setAuth(event.target.checked);
   };
 
   const handleMenu = (event) => {
@@ -40,7 +52,6 @@ export default function MenuAppBar() {
               checked={auth}
               onChange={handleChange}
               aria-label="login switch"
-              // onChange={navigate()}
             />
           }
           label={auth ? "Logout" : "Login"}
@@ -57,7 +68,8 @@ export default function MenuAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Link to='/login'>Login</Link>
+          <Link to="/login">Login</Link>
+          <button onClick={logout}>logout</button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Photos
           </Typography>

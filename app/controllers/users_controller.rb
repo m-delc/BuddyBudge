@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     def show
         if current_user
+            # byebug
             render json: current_user, status: 200
         else
             render json: {error: "No current user set"}, status: 401

@@ -1,9 +1,5 @@
-// import React from 'react'
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
-// this login taken from https://mui.com/components/text-fields/ "form props"
-import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -14,7 +10,6 @@ import LoginIcon from "@mui/icons-material/Login";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Stack from "@mui/material/Stack";
 import "./LoginForm.css";
-// import Login from '../components/Login/Login'
 
 function LoginForm() {
   const [user, setUser] = useState(null);
@@ -26,6 +21,7 @@ function LoginForm() {
     password: "",
     showPassword: false,
   });
+
   const navigate = useNavigate();
 
   const handleChange = (prop) => (event) => {
@@ -65,6 +61,7 @@ function LoginForm() {
           setUser(user);
           setIsAuthenticated(true);
           setLoginUsername("")
+          navigate('/fake1')
           // setValues("")
         });
       } else {
