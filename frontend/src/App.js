@@ -1,9 +1,9 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import MenuAppBar from "./components/MenuAppBar/MenuAppBar";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
+import MenuAppBar from "./components/MenuAppBar";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Fake1 from "./components/Fake/Fake1";
 import Fake2 from "./components/Fake/Fake2";
 

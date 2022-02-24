@@ -1,25 +1,23 @@
 import React from "react";
 import { Paper, makeStyles } from "@material-ui/core";
-import LoginForm from "../../pages/LoginForm";
-import { blue, blueGrey } from "@mui/material/colors";
+import SignupForm from "../pages/SignupForm";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
     margin: theme.spacing(5),
     padding: theme.spacing(3),
-    background: 'linear-gradient(45deg, pink 10%, lightblue 60%)'
-    
-
+    background: 'linear-gradient(45deg, pink 10%, lightblue 60%)',
+    // margin-bottom: theme.spacing(5)
   },
 }));
 
-const Login = () => {
+const Signup = () => {
   const classes = useStyles();
   return (
     <Paper className={classes.pageContent} elevation={24} >
-      <LoginForm />
+      <SignupForm />
     </Paper>
   );
 };
 
-export default Login;
+export default Signup;
