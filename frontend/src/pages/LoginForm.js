@@ -38,19 +38,12 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
     event.preventDefault();
   };
 
-  //   useEffect(() => {
-  //     fetch("/authorize_user")
-  //       .then((res) => res.json())
-  //       .then(setUser);
-  //   }, []);
-
   const loginOnSubmit = (e) => {
     e.preventDefault();
     const newUser = {
       username: loginUsername,
       password: values.password,
     };
-    // dispatch(login({username: loginUsername, password: values.password}))
 
     fetch("/login", {
       method: "POST",
@@ -69,8 +62,6 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
     });
   };
 
-  //   console.log(username, values.password);
-
   // for nav with button
   // for nav with button
   // for nav with button
@@ -78,9 +69,9 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
     navigate("/signup");
   };
 
-  console.log(user);
-  console.log(isAuthenticated);
-  console.log(loginUsername);
+  // console.log(user);
+  // console.log(isAuthenticated);
+  // console.log(loginUsername);
 
   return (
     <form onSubmit={loginOnSubmit}>
@@ -103,7 +94,6 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
           id="standard-adornment-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
-          // onChange={(e) => setValues(e.target.value)}
           onChange={handleChange("password")}
           placeholder="Password"
           endAdornment={

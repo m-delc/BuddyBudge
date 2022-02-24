@@ -14,10 +14,7 @@ import Menu from "@mui/material/Menu";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function MenuAppBar({ user, setUser, isAuthenticated, setIsAuthenticated }) {
-  // const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -32,7 +29,7 @@ export default function MenuAppBar({ user, setUser, isAuthenticated, setIsAuthen
   };
 
   const handleChange = (event) => {
-    // setAuth(event.target.checked);
+    setIsAuthenticated(event.target.checked);
   };
 
   const handleMenu = (event) => {
