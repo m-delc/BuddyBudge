@@ -1,13 +1,14 @@
 import React from "react";
 import { Paper, makeStyles } from "@material-ui/core";
 import LoginForm from "../../pages/LoginForm";
-import { blue } from "@mui/material/colors";
+import { blue, blueGrey } from "@mui/material/colors";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
     margin: theme.spacing(5),
-    padding: theme.spacing(3)
-    // elevation: theme.spacing(24)
+    padding: theme.spacing(3),
+    background: 'linear-gradient(45deg, pink 10%, lightblue 60%)'
+    
 
   },
 }));
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
   return (
-    <Paper className={classes.pageContent}>
+    <Paper className={classes.pageContent} elevation={24} >
       <LoginForm />
     </Paper>
   );

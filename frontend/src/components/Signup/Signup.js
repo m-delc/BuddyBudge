@@ -5,14 +5,15 @@ import SignupForm from "../../pages/SignupForm";
 const useStyles = makeStyles((theme) => ({
   pageContent: {
     margin: theme.spacing(5),
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
+    background: 'linear-gradient(45deg, pink 10%, lightblue 60%)'
   },
 }));
 
 const Signup = () => {
   const classes = useStyles();
   return (
-    <Paper className={classes.pageContent}>
+    <Paper className={classes.pageContent} elevation={24}>
       <SignupForm />
     </Paper>
   );
