@@ -15,25 +15,21 @@ import "../css/LoginForm.css";
 function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginError, setLoginError] = useState([]);
+  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     password: "",
     showPassword: false,
   });
-
-  const navigate = useNavigate();
-
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
-
   const handleClickShowPassword = () => {
     setValues({
       ...values,
       showPassword: !values.showPassword,
     });
   };
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -44,7 +40,6 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
       username: loginUsername,
       password: values.password,
     };
-
     fetch("/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -52,7 +47,7 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((newUser) => {
-          // setUser(newUser);
+          setUser(newUser);
           setIsAuthenticated(true);
           navigate("/home");
         });

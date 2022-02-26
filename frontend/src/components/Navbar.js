@@ -48,8 +48,8 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
       <span className="span1">
         <NavLink to="home">Home</NavLink>
         <br></br>
-        <NavLink to="signup">Signup</NavLink>
-        <NavLink to="login">Login</NavLink>
+        {/* <NavLink to="signup">Signup</NavLink>
+        <NavLink to="login">Login</NavLink> */}
       </span>
       <span className="span2">
         <Tooltip title="Account settings">
