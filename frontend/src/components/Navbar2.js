@@ -8,10 +8,9 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useNavigate, NavLink } from "react-router-dom";
+import "./Navbar.css";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,7 +38,7 @@ export default function AccountMenu() {
           borderRadius: "5px",
         }}
       >
-        <NavLink to="/home">
+        <NavLink to="/home" style={{ textDecoration: "plain" }}>
           <Typography sx={{ minWidth: 100 }}>Home</Typography>
         </NavLink>
         <NavLink to="/signup">
@@ -59,6 +58,7 @@ export default function AccountMenu() {
         </Tooltip>
       </Box>
       <Menu
+        className="test1"
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
