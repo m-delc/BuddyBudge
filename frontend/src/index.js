@@ -2,24 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import userReducer from "./features/user";
-
-// Reducer is a function that takes in the previous state value and also an Action that we want to perform on that state, then finally returns the new value of that state. Each state gets its own reducer.
-
-const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-});
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </BrowserRouter>,
   document.getElementById("root")
 );
