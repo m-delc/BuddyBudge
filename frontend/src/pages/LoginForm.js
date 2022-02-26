@@ -10,21 +10,17 @@ import LoginIcon from "@mui/icons-material/Login";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Stack from "@mui/material/Stack";
 import "./LoginForm.css";
-import { useDispatch } from "react-redux";
-import { login } from "../features/user";
 
-function LoginForm() {
-  const [user, setUser] = useState(null);
+
+function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginError, setLoginError] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [values, setValues] = useState({
     password: "",
     showPassword: false,
   });
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (prop) => (event) => {
@@ -42,19 +38,12 @@ function LoginForm() {
     event.preventDefault();
   };
 
-  //   useEffect(() => {
-  //     fetch("/authorize_user")
-  //       .then((res) => res.json())
-  //       .then(setUser);
-  //   }, []);
-
   const loginOnSubmit = (e) => {
     e.preventDefault();
     const newUser = {
       username: loginUsername,
       password: values.password,
     };
-    // dispatch(login({username: loginUsername, password: values.password}))
 
     fetch("/login", {
       method: "POST",
@@ -65,8 +54,6 @@ function LoginForm() {
         res.json().then((newUser) => {
           // setUser(newUser);
           setIsAuthenticated(true);
-          setLoginUsername("");
-          dispatch(login({ newUser }));
           navigate("/fake1");
         });
       } else {
@@ -75,8 +62,6 @@ function LoginForm() {
     });
   };
 
-  //   console.log(username, values.password);
-
   // for nav with button
   // for nav with button
   // for nav with button
@@ -84,9 +69,9 @@ function LoginForm() {
     navigate("/signup");
   };
 
-  console.log(user);
-  console.log(isAuthenticated);
-  console.log(loginUsername);
+  // console.log(user);
+  // console.log(isAuthenticated);
+  // console.log(loginUsername);
 
   return (
     <form onSubmit={loginOnSubmit}>
@@ -109,7 +94,6 @@ function LoginForm() {
           id="standard-adornment-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
-          // onChange={(e) => setValues(e.target.value)}
           onChange={handleChange("password")}
           placeholder="Password"
           endAdornment={

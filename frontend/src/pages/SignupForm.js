@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-const Signup = () => {
+const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   // IF YOU ADD THESE BACK, remember to add the params back in user controller
   //   const [signupFirstName, setSignupFirstName] = useState("");
   //   const [signupLastName, setSignupLastName] = useState("");
@@ -13,8 +13,8 @@ const Signup = () => {
   const [signupPassword, setSignupPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [user, setUser] = useState(null);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   function signupOnSubmit(e) {
     e.preventDefault();

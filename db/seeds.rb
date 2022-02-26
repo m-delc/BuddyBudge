@@ -1,2 +1,2 @@
 
-User.create(username: "bubbles", password: "234" )
+User.create!(username: "juggles", first_name: "Michael", password: "hahaha" )
