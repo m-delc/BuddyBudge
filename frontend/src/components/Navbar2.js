@@ -58,7 +58,6 @@ export default function AccountMenu() {
         </Tooltip>
       </Box>
       <Menu
-        className="test1"
         anchorEl={anchorEl}
         id="account-menu"
         open={open}

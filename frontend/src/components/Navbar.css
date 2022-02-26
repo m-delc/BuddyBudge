@@ -40,7 +40,9 @@
 
     margin-left: auto;
     text-decoration: none !important;
-    /* margin-right: 15px; */
+}
 
-
+/* for  User dropdown Menu Links */
+.span3 {
+    text-decoration: none;
 }

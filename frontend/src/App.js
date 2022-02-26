@@ -6,8 +6,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Fake1 from "./components/Fake/Fake1";
 import Fake2 from "./components/Fake/Fake2";
-import Navbar3 from "./components/Navbar3";
-// import Navbar2 from "./components/Navbar2";
+// import Navbar3 from "./components/Navbar3";
+import Navbar4 from "./components/Navbar4";
 import Home from "./components/Home";
 import MyAccount from "./components/MyAccount";
 
@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       {/* <MenuAppBar user={user} setUser={setUser} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} /> */}
-      <Navbar3
+      <Navbar4
         user={user}
         setUser={setUser}
         isAuthenticated={isAuthenticated}
