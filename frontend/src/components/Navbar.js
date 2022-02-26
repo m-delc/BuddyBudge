@@ -1,30 +1,30 @@
-import React from "react";
-import { NavLink, useNavigate, Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Box from "@mui/material/Box";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import "./Navbar.css";
 import Avatar from "@mui/material/Avatar";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-
-const useStyles = makeStyles((theme) => ({
-  navbar: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3),
-    background: "linear-gradient(45deg, pink 10%, lightblue 60%)",
-  },
-}));
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import Logout from "@mui/icons-material/Logout";
 
 const Navbar = ({ setIsAuthenticated, user, setUser }) => {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [switchLink, setSwitchLink] = React.useState(null);
-  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
   const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+ 
+  // console.log(user.username ? user.username : null)
+  // const username
 
   const logout = () => {
     fetch("/logout", {
@@ -32,80 +32,86 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
     }).then(() => {
       setUser(null);
       setIsAuthenticated(false);
-      navigate("/login");
+      navigate("/home");
     });
   };
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorElUser(null);
-    logout();
-    
-  };
-
   return (
-    <div className={classes.navbar}>
-      <Container>
-        <Toolbar>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <NavLink to="login">Login</NavLink>
-            <NavLink to="logout" onClick={logout}>
+    <header className="header">
+      <span className="span1">
+        <NavLink to="home">Home</NavLink>
+        <br></br>
+        <NavLink to="signup">Signup</NavLink>
+        <NavLink to="login">Login</NavLink>
+      </span>
+      <span className="span2">
+        <Tooltip title="Account settings">
+          <IconButton
+            onClick={handleClick}
+            size="small"
+            sx={{ ml: 2, marginRight: "15px" }}
+            aria-controls={open ? "account-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+          >
+            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+          </IconButton>
+        </Tooltip>
+        <Menu
+          className="test1"
+          anchorEl={anchorEl}
+          id="account-menu"
+          open={open}
+          onClose={handleClose}
+          onClick={handleClose}
+          PaperProps={{
+            elevation: 12,
+            sx: {
+              overflow: "visible",
+              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+              mt: 1.5,
+              "& .MuiAvatar-root": {
+                width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+              },
+              "&:before": {
+                content: '""',
+                display: "block",
+                position: "absolute",
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: "background.paper",
+                transform: "translateY(-50%) rotate(45deg)",
+                zIndex: 0,
+              },
+            },
+          }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        >
+          <NavLink to="/myaccount" className="span3">
+            <MenuItem>
+              <Avatar src="/pic1.jpg" /> {user ? user.first_name : null}
+            </MenuItem>
+          </NavLink>
+          <Divider />
+
+          <MenuItem>
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            <NavLink to="/fake1" className="span3" onClick={logout}>
               Logout
             </NavLink>
-            <NavLink to="signup">Signup</NavLink>
-            <NavLink to="fake1">Fake1</NavLink>
-            <NavLink to="fake2">Fake2</NavLink>
-
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-
-            <Box sx={{ flexGrow: 0 }}>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleClose}
-              >
-                {/* {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))} */}
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </Box>
-          </Box>
-        </Toolbar>
-      </Container>
-    </div>
+          </MenuItem>
+        </Menu>
+      </span>
+    </header>
   );
 };
-
-{
-  /* <MenuItem key={setting} onClick={handleCloseUserMenu}> */
-}
-{
-  /* <Typography textAlign="center">"{setting.toLowerCase()}"</Typography> */
-}
-{
-  /* </MenuItem> */
-}
 
 export default Navbar;

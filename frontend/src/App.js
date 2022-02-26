@@ -1,16 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import MenuAppBar from "./components/MenuAppBar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Fake1 from "./components/Fake/Fake1";
 import Fake2 from "./components/Fake/Fake2";
-// import Navbar3 from "./components/Navbar3";
-import Navbar4 from "./components/Navbar4";
+import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import MyAccount from "./components/MyAccount";
-
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,19 +26,20 @@ function App() {
 
   if (!isAuthenticated)
     return (
-      <Login
-        error={"Please Login"}
-        user={user}
-        setUser={setUser}
-        isAuthenticated={isAuthenticated}
-        setIsAuthenticated={setIsAuthenticated}
-      />
+      <>
+        <Login
+          user={user}
+          setUser={setUser}
+          isAuthenticated={isAuthenticated}
+          setIsAuthenticated={setIsAuthenticated}
+        />
+        <Signup />
+      </>
     );
 
   return (
     <>
-      {/* <MenuAppBar user={user} setUser={setUser} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} /> */}
-      <Navbar4
+      <Navbar
         user={user}
         setUser={setUser}
         isAuthenticated={isAuthenticated}
@@ -60,11 +58,10 @@ function App() {
             />
           }
         />
-        <Route path='/' element={<Home />} />
-        <Route path='home' element={<Home />} />
-        <Route path='myaccount' element={<MyAccount />} />
-        
-  
+        <Route path="/" element={<Home />} />
+        <Route path="home" element={<Home />} />
+        <Route path="myaccount" element={<MyAccount />} />
+
         <Route path="fake1" element={<Fake1 user={user} />} />
         <Route path="fake2" element={<Fake2 />} />
       </Routes>
