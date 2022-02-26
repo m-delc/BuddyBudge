@@ -69,9 +69,6 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
     navigate("/signup");
   };
 
-  // console.log(user);
-  // console.log(isAuthenticated);
-  // console.log(loginUsername);
 
   return (
     <form onSubmit={loginOnSubmit}>

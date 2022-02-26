@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import MyAccount from "./components/MyAccount";
+import RequireAuth from "./pages/RequireAuth";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,17 +24,15 @@ function App() {
     });
   }, [isAuthenticated]);
 
-  if (!isAuthenticated)
-    return (
-      <>
-        <Login
-          user={user}
-          setUser={setUser}
-          isAuthenticated={isAuthenticated}
-          setIsAuthenticated={setIsAuthenticated}
-        />
-      </>
-    );
+  // if (!isAuthenticated)
+  //   return (
+  //     <Login
+  //       user={user}
+  //       setUser={setUser}
+  //       isAuthenticated={isAuthenticated}
+  //       setIsAuthenticated={setIsAuthenticated}
+  //     />
+  //   );
 
   return (
     <>
@@ -44,7 +43,17 @@ function App() {
         setIsAuthenticated={setIsAuthenticated}
       />
       <Routes>
-        <Route path="login" element={<Login />} />
+        <Route
+          path="login"
+          element={
+            <Login
+              user={user}
+              setUser={setUser}
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          }
+        />
         <Route
           path="signup"
           element={
@@ -58,7 +67,14 @@ function App() {
         />
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
-        <Route path="myaccount" element={<MyAccount />} />
+        <Route
+          path="myaccount"
+          element={
+            <RequireAuth isAuthenticated={isAuthenticated}>
+              <MyAccount user={user} />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </>
   );

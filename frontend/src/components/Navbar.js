@@ -32,7 +32,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
     }).then(() => {
       setUser(null);
       setIsAuthenticated(false);
-      navigate("/home");
+      navigate("/login");
     });
   };
 
