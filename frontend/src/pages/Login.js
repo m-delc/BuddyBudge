@@ -1,6 +1,6 @@
 import React from "react";
 import { Paper, makeStyles } from "@material-ui/core";
-import LoginForm from "../pages/LoginForm";
+import LoginForm from "../components/LoginForm";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {

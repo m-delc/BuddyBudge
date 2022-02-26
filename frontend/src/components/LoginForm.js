@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Stack from "@mui/material/Stack";
-import "./LoginForm.css";
+import "../css/LoginForm.css";
 
 
 function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
@@ -54,7 +54,7 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
         res.json().then((newUser) => {
           // setUser(newUser);
           setIsAuthenticated(true);
-          navigate("/fake1");
+          navigate("/home");
         });
       } else {
         res.json().then((json) => setLoginError(json.error));

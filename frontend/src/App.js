@@ -1,10 +1,9 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Fake1 from "./components/Fake/Fake1";
-import Fake2 from "./components/Fake/Fake2";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import MyAccount from "./components/MyAccount";
@@ -33,7 +32,6 @@ function App() {
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated}
         />
-        <Signup />
       </>
     );
 
@@ -61,9 +59,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="myaccount" element={<MyAccount />} />
-
-        <Route path="fake1" element={<Fake1 user={user} />} />
-        <Route path="fake2" element={<Fake2 />} />
       </Routes>
     </>
   );

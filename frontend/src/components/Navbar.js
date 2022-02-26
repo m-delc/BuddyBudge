@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "./Navbar.css";
+import "../css/Navbar.css";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -22,7 +22,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
- 
+
   // console.log(user.username ? user.username : null)
   // const username
 
@@ -104,7 +104,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
-            <NavLink to="/fake1" className="span3" onClick={logout}>
+            <NavLink to="/" className="span3" onClick={logout}>
               Logout
             </NavLink>
           </MenuItem>
