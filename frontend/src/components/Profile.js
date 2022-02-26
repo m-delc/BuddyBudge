@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Profile = () => {
+const Profile = ({ user }) => {
   return (
-    <div>Profile</div>
+    <div><div> {user.first_name}'s account</div></div>
   )
 }
 

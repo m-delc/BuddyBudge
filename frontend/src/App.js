@@ -7,7 +7,7 @@ import { Paper, makeStyles } from "@material-ui/core";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import MyAccount from "./components/MyAccount";
+import Profile from "./components/Profile";
 import RequireAuth from "./pages/RequireAuth";
 
 const useStyles = makeStyles((theme) => ({
@@ -72,10 +72,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route
-          path="myaccount"
+          path="profile"
           element={
             <RequireAuth isAuthenticated={isAuthenticated}>
-              <MyAccount user={user} />
+              <Profile user={user} />
             </RequireAuth>
           }
         />

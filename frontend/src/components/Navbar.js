@@ -100,7 +100,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
         >
           {user ? (
             <div>
-              <NavLink to="/myaccount" className="span3">
+              <NavLink to="/profile" className="span3">
                 <MenuItem>
                   <Avatar src="/pic1.jpg" /> {user ? user.first_name : null}
                 </MenuItem>
