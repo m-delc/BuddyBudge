@@ -14,16 +14,15 @@ import Logout from "@mui/icons-material/Logout";
 const Navbar = ({ setIsAuthenticated, user, setUser }) => {
   // renders first initial of user
   // renders first initial of user
-  const split = user ? user.first_name.split('') : null
-  const slice = split ? split.slice(0,1) : null
-  const firstInitial = slice ? slice[0] : null
+  const split = user ? user.first_name.split("") : null;
+  const slice = split ? split.slice(0, 1) : null;
+  const firstInitial = slice ? slice[0] : null;
   // for dropdown
   // for dropdown
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const navigate = useNavigate();
-
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -41,7 +40,6 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
       navigate("/login");
     });
   };
-
 
   return (
     <header className="header">
@@ -102,7 +100,14 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
         >
           <NavLink to="/myaccount" className="span3">
             <MenuItem>
-              <Avatar src="/pic1.jpg" /> {user ? user.first_name : null}
+              <Avatar src="/pic1.jpg" />
+              {user ? (
+                user.first_name
+              ) : (
+                <NavLink to="/login" className="span3">
+                  Login
+                </NavLink>
+              )}
             </MenuItem>
           </NavLink>
           <Divider />
