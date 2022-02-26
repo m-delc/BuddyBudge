@@ -26,17 +26,17 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   // first password
   // first password
   // first password
-  const [values, setValues] = useState({
+  const [initialPassword, setInitialPassword] = useState({
     password: "",
     showPassword: false,
   });
   const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+    setInitialPassword({ ...initialPassword, [prop]: event.target.value });
   };
   const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
+    setInitialPassword({
+      ...initialPassword,
+      showPassword: !initialPassword.showPassword,
     });
   };
   const handleMouseDownPassword = (event) => {
@@ -70,7 +70,7 @@ const handleMouseDownPassword2 = (event) => {
     const user = {
       username: signupUsername,
       first_name: signupFirstName,
-      password: values.password,
+      password: initialPassword.password,
       password_confirmation: confirmPassword.password,
     };
     fetch("/users", {
@@ -128,8 +128,8 @@ const handleMouseDownPassword2 = (event) => {
       <div>
         <Input
           id="first-password"
-          type={values.showPassword ? "text" : "password"}
-          value={values.password}
+          type={initialPassword.showPassword ? "text" : "password"}
+          value={initialPassword.password}
           onChange={handleChange("password")}
           placeholder="Password"
           endAdornment={
@@ -139,7 +139,7 @@ const handleMouseDownPassword2 = (event) => {
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
               >
-                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                {initialPassword.showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
           }
