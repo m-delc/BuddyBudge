@@ -98,28 +98,39 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <NavLink to="/myaccount" className="span3">
-            <MenuItem>
-              <Avatar src="/pic1.jpg" />
-              {user ? (
-                user.first_name
-              ) : (
-                <NavLink to="/login" className="span3">
-                  Login
-                </NavLink>
-              )}
-            </MenuItem>
-          </NavLink>
-          <Divider />
+          {user ? (
+            <div>
+              <NavLink to="/myaccount" className="span3">
+                <MenuItem>
+                  <Avatar src="/pic1.jpg" /> {user ? user.first_name : null}
+                </MenuItem>
+              </NavLink>
+              <Divider />
+            </div>
+          ) : (
+            <div>
+              <NavLink to="/login" className="span3">
+                <MenuItem>
+                  <Avatar /> Login
+                </MenuItem>
+              </NavLink>
+            </div>
+          )}
 
-          <MenuItem>
-            <ListItemIcon>
-              <Logout fontSize="small" />
-            </ListItemIcon>
-            <NavLink to="/" className="span3" onClick={logout}>
-              Logout
-            </NavLink>
-          </MenuItem>
+          {user ? (
+            <div>
+              <Divider />
+
+              <MenuItem>
+                <ListItemIcon>
+                  <Logout fontSize="small" />
+                </ListItemIcon>
+                <NavLink to="/" className="span3" onClick={logout}>
+                  Logout
+                </NavLink>
+              </MenuItem>
+            </div>
+          ) : null}
         </Menu>
       </span>
     </header>
