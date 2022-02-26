@@ -3,17 +3,16 @@
     color: "red;"
 } */
 
+/* some of this is commented out so that it works with <Paper> */
 .header {
   display: flex;
-  /* text-align: center;
-    justify-content: horizontal; */
-  margin: auto;
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 5px;
   font-size: 18px;
+  /* margin: auto;
+  margin-top: 20px;
+  background-color: inherit;
+  border-radius: 5px;
   padding: 0.7em;
-  width: 90%;
+  width: 90%; */
 }
 
 .header a {
@@ -23,7 +22,7 @@
 }
 
 .header a.active {
-  background-color: #61706a;
+  background-color: #8080803b;
   color: rgb(46, 4, 4);
   border-radius: 5px;
 }
