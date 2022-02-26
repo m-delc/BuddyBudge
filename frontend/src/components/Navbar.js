@@ -12,9 +12,18 @@ import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 
 const Navbar = ({ setIsAuthenticated, user, setUser }) => {
+  // renders first initial of user
+  // renders first initial of user
+  const split = user ? user.first_name.split('') : null
+  const slice = split ? split.slice(0,1) : null
+  const firstInitial = slice ? slice[0] : null
+  // for dropdown
+  // for dropdown
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
   const navigate = useNavigate();
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,9 +31,6 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  // console.log(user.username ? user.username : null)
-  // const username
 
   const logout = () => {
     fetch("/logout", {
@@ -35,6 +41,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
       navigate("/login");
     });
   };
+
 
   return (
     <header className="header">
@@ -54,7 +61,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{firstInitial}</Avatar>
           </IconButton>
         </Tooltip>
         <Menu
