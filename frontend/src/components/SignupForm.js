@@ -43,30 +43,30 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
     event.preventDefault();
   };
 
-// confirm password
-// confirm password
-// confirm password
-// confirm password
-const [confirmPassword, setConfirmPassword] = useState({
-  password: "",
-  showPassword: false,
-});
-const handleChange2 = (prop) => (event) => {
-  setConfirmPassword({ ...confirmPassword, [prop]: event.target.value });
-};
-const handleClickShowPassword2 = () => {
-  setConfirmPassword({
-    ...confirmPassword,
-    showPassword: !confirmPassword.showPassword,
+  // confirm password
+  // confirm password
+  // confirm password
+  // confirm password
+  const [confirmPassword, setConfirmPassword] = useState({
+    password: "",
+    showPassword: false,
   });
-};
-const handleMouseDownPassword2 = (event) => {
-  event.preventDefault();
-};
+  const handleChange2 = (prop) => (event) => {
+    setConfirmPassword({ ...confirmPassword, [prop]: event.target.value });
+  };
+  const handleClickShowPassword2 = () => {
+    setConfirmPassword({
+      ...confirmPassword,
+      showPassword: !confirmPassword.showPassword,
+    });
+  };
+  const handleMouseDownPassword2 = (event) => {
+    event.preventDefault();
+  };
 
   function signupOnSubmit(e) {
     e.preventDefault();
-    setSignupErrors([])
+    setSignupErrors([]);
     const user = {
       username: signupUsername,
       first_name: signupFirstName,
@@ -139,7 +139,11 @@ const handleMouseDownPassword2 = (event) => {
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
               >
-                {initialPassword.showPassword ? <VisibilityOff /> : <Visibility />}
+                {initialPassword.showPassword ? (
+                  <VisibilityOff />
+                ) : (
+                  <Visibility />
+                )}
               </IconButton>
             </InputAdornment>
           }
@@ -161,7 +165,11 @@ const handleMouseDownPassword2 = (event) => {
                 onClick={handleClickShowPassword2}
                 onMouseDown={handleMouseDownPassword2}
               >
-                {confirmPassword.showPassword ? <VisibilityOff /> : <Visibility />}
+                {confirmPassword.showPassword ? (
+                  <VisibilityOff />
+                ) : (
+                  <Visibility />
+                )}
               </IconButton>
             </InputAdornment>
           }
@@ -169,32 +177,6 @@ const handleMouseDownPassword2 = (event) => {
       </div>
 
       <br></br>
-
-      {/* <div>
-        <TextField
-          id="standard-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="standard"
-          value={signupPassword}
-          onChange={(e) => setSignupPassword(e.target.value)}
-        />
-      </div>
-
-      <br></br>
-
-      <div>
-        <TextField
-          id="standard-password-confirm-input"
-          label="Confirm Password"
-          type="password"
-          autoComplete="current-password"
-          variant="standard"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        />
-      </div> */}
 
       <br></br>
       <br></br>

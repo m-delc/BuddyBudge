@@ -3,27 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { Paper, makeStyles } from "@material-ui/core";
-
+import { Paper } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import RequireAuth from "./pages/RequireAuth";
-
-const useStyles = makeStyles((theme) => ({
-  pageContent: {
-    margin: theme.spacing(5),
-    padding: theme.spacing(3),
-    background: "linear-gradient(45deg, pink 10%, lightblue 60%)",
-  },
-}));
+import useStyles from "./pages/useStyles";
 
 function App() {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const classes = useStyles();
-
-
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
@@ -38,14 +28,15 @@ function App() {
 
   return (
     <>
-    <Paper className={classes.pageContent} elevation={24}>
-      <Navbar
-        user={user}
-        setUser={setUser}
-        isAuthenticated={isAuthenticated}
-        setIsAuthenticated={setIsAuthenticated}
-      />
+      <Paper className={classes.pageContent} elevation={24}>
+        <Navbar
+          user={user}
+          setUser={setUser}
+          isAuthenticated={isAuthenticated}
+          setIsAuthenticated={setIsAuthenticated}
+        />
       </Paper>
+
       <Routes>
         <Route
           path="login"
@@ -75,7 +66,9 @@ function App() {
           path="profile"
           element={
             <RequireAuth isAuthenticated={isAuthenticated}>
-              <Profile user={user} />
+              <Paper className={classes.pageContent}>
+                <Profile user={user} setUser={setUser} />
+              </Paper>
             </RequireAuth>
           }
         />

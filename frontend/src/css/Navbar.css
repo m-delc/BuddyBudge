@@ -23,8 +23,12 @@
 
 .header a.active {
   background-color: #8080803b;
-  color: rgb(46, 4, 4);
+  color: rgba(0, 0, 0, 0.829);
+  font-style: italic;
   border-radius: 5px;
+}
+a:visited {
+  color: inherit;
 }
 /* for links in actual navbar */
 .span1 {
@@ -40,4 +44,6 @@
 /* for  User dropdown Menu Links */
 .span3 {
   text-decoration: none;
+  color: inherit;
+
 }
