@@ -24,15 +24,21 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.find_by(id: params[:id])
+        user = current_user
         user.update(user_params)
         # byebug
         # current_user.update(user_params)
         if user
             return render json: user, status: 201
         else
-            return render json: { errors: user.errors.full_messages }, status: 404
+            return render json: { errors: user.errors.full_messages }, status: 422
         end
+    end
+
+    def destroy
+        user = current_user
+        user.destroy
+        head :no_content
     end
 
     private

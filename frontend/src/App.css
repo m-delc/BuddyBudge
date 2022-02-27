@@ -5,7 +5,6 @@
 .App {
   text-align: center;
   background-color: var(--test);
-  
 }
 
 body {
@@ -29,5 +28,3 @@ body {
 .App-link {
   color: #61dafb;
 }
-
-

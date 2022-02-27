@@ -65,7 +65,7 @@ function App() {
         <Route
           path="profile"
           element={
-            // <RequireAuth isAuthenticated={isAuthenticated}>
+            <RequireAuth isAuthenticated={isAuthenticated}>
             <Paper className={classes.pageContent}>
               <Profile
                 user={user}
@@ -74,7 +74,7 @@ function App() {
                 setIsAuthenticated={setIsAuthenticated}
               />
             </Paper>
-            // </RequireAuth>
+            </RequireAuth>
           }
         />
       </Routes>

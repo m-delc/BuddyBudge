@@ -3,15 +3,15 @@ import "../css/Profile.css";
 
 const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [newUsername, setNewUsername] = useState("");
-  const [confirmNewUsername, setConfirmNewUsername] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
+  // const [confirmNewUsername, setConfirmNewUsername] = useState("");
+  // const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
-  const handlePasswordChange = (e) => {
-    e.preventDefault();
-  };
+  const [newFirstName, setNewFirstName] = useState("");
+  const [firstNameMessage, setFirstNameMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [usernameMessage, setUsernameMessage] = useState("");
 
   const handleUsernameChange = (e) => {
     e.preventDefault();
@@ -20,47 +20,84 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
       // confirmNewUsername: confirmNewUsername,
     };
 
+    fetch(`/users/${user.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newInfo),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((x) => {
+          setUser(x);
+          setIsAuthenticated(true);
+          setNewUsername("");
+          setUsernameMessage(`Your username had been changed to ${x.username}`);
+        });
+      } else {
+        res.json().then(setErrors(Object.entries.err.errors));
+      }
+    });
+  };
 
-    //   fetch(`/users/${user.id}`, {
-    //   method: "PATCH",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(newInfo),
-    // }).then((res) => {
-    //   if (res.ok) {
-    //     res.json().then((x) => {
-    //       setUser(x);
-    //       setIsAuthenticated(true);
-    //     });
-    //   } else {
-    //     res.json().then(setErrors(Object.entries.err.errors));
-    //   }
-    // });
+  const handlePasswordChange = (e) => {
+    e.preventDefault();
+    const newInfo = {
+      password: newPassword,
+      password_confirmation: confirmNewPassword,
+    };
 
     fetch(`/users/${user.id}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json"},
-      body: JSON.stringify(newInfo)
-    })
-    .then(res=> res.json())
-    .then(x => {
-      setUser(x)
-      setIsAuthenticated(true)
-    })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newInfo),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((x) => {
+          setUser(x);
+          setIsAuthenticated(true);
+          setNewPassword("");
+          setConfirmNewPassword("");
+          setPasswordMessage("Your password has been changed");
+        });
+      } else {
+        res.json().then(setErrors(Object.entries.err.errors));
+      }
+    });
   };
 
-  console.log(user)
+  const handleNameChange = (e) => {
+    e.preventDefault();
+    const newInfo = {
+      first_name: newFirstName,
+    };
+    fetch(`/users/${user.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newInfo),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((x) => {
+          setUser(x);
+          setIsAuthenticated(true);
+          setNewFirstName("");
+          setFirstNameMessage(
+            `Your first name has been changed to ${x.first_name}`
+          );
+        });
+      } else {
+        res.json().then(setErrors(Object.entries.err.errors));
+      }
+    });
+  };
 
   return (
     <>
-      <h2 style={{ textAlign: "center" }}>
-        {user ? user.first_name : null}'s Profile
-      </h2>
+      <h2 className="header-top">{user ? user.first_name : null}'s Profile</h2>
 
       <div className="grid">
         <br></br>
 
         <h3 className="header1">
-          Sick of your dumb username "{user ? user.username : null}"?
+          Is "{user ? user.username : null}" a dumb username?
         </h3>
 
         <form className="form1" onSubmit={handleUsernameChange}>
@@ -68,7 +105,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
             value={newUsername}
             onChange={(e) => setNewUsername(e.target.value)}
             className="input1"
-            placeholder="new username"
+            placeholder="change username"
           />
           {/* <input
             value={confirmNewUsername}
@@ -86,36 +123,53 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           <button className="button1" type="submit">
             Submit
           </button>
+          {usernameMessage ? usernameMessage : null}
           {errors}
         </form>
 
         <h3 className="header2">Tired of your password?</h3>
 
-        <form className="form2" onSubmit={(e) => handlePasswordChange}>
+        <form className="form2 grid-row-span2" onSubmit={handlePasswordChange}>
           <input
+            type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             className="input2"
             placeholder="new password"
           />
           <input
+            type="password"
             value={confirmNewPassword}
             onChange={(e) => setConfirmNewPassword(e.target.value)}
             className="input2"
             placeholder="confirm new password"
           />
-          <input
+          {/* <input
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             className="input2"
             placeholder="current password"
-          />
+          /> */}
           <br></br>
           <button className="button2" type="submit">
             Submit
           </button>
+          {passwordMessage ? passwordMessage : null}
+        </form>
+
+        <h3 className="header3">Change your first name</h3>
+        <form className="form3" onSubmit={handleNameChange}>
+          <input
+            value={newFirstName}
+            onChange={(e) => setNewFirstName(e.target.value)}
+            placeholder="change first name"
+          />
+          <br></br>
+          <button type="submit">Submit</button>
+          {firstNameMessage ? firstNameMessage : null}
         </form>
       </div>
+      <div className="div-delete-profile">delete your profile</div>
     </>
   );
 };
