@@ -1,5 +1,55 @@
 .grid {
-    display: grid;
-    gap: 1.5em;   
-    grid-template-columns: 
+  display: grid;
+  gap: 1.5em;
+  padding-block: 2rem;
+  width: min(95%, 70rem);
+  margin-inline: auto;
 }
+@media (min-width: 50em) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.header1 {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  text-align: center;
+}
+
+.form1 {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  margin: 2em;
+  margin-top: 3.3em;
+  text-align: center;
+}
+input {
+  border-color: aqua;
+  margin: 0.4em;
+  background-color: inherit;
+}
+button {
+  margin: 1em;
+  background-color: inherit;
+}
+
+.header2 {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  text-align: center;
+}
+
+.form2 {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  margin: 2em;
+  margin-top: 3.3em;
+  text-align: center;
+}
+/* .input2 {
+  border-color: aqua;
+  margin: 0.4em;
+} */
+/* .button2 {
+  margin: 1em;
+} */

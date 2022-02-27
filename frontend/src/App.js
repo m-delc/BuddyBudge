@@ -67,7 +67,12 @@ function App() {
           element={
             <RequireAuth isAuthenticated={isAuthenticated}>
               <Paper className={classes.pageContent}>
-                <Profile user={user} setUser={setUser} />
+                <Profile
+                  user={user}
+                  setUser={setUser}
+                  isAuthenticated={isAuthenticated}
+                  setIsAuthenticated={setIsAuthenticated}
+                />
               </Paper>
             </RequireAuth>
           }
