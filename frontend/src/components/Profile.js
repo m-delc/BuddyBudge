@@ -8,20 +8,6 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
-  // i thought this would solve the reload problem but it didn't
-  // i thought this would solve the reload problem but it didn't
-  // i thought this would solve the reload problem but it didn't
-  // useEffect(() => {
-  //   fetch("/authorize_user").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((user) => {
-  //         setIsAuthenticated(true);
-  //         setUser(user);
-  //       });
-  //     }
-  //   });
-  // }, [isAuthenticated]);
-
   const handlePasswordChange = (e) => {
     e.preventDefault();
   };
@@ -36,22 +22,27 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
 
       <div className="grid">
         <br></br>
+
         <h3 className="header1">
           Sick of your dumb username "{user.username}"?
         </h3>
+
         <form className="form1" onSubmit={(e) => handleUsernameChange}>
           <input
             value={newUsername}
+            onChange={(e) => setNewUsername(e.target.value)}
             className="input1"
             placeholder="new username"
           />
           <input
             value={confirmNewUsername}
+            onChange={(e) => setConfirmNewUsername(e.target.value)}
             className="input1"
             placeholder="confirm change"
           />
           <input
             value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
             className="input1"
             placeholder="current password"
           />
@@ -60,20 +51,25 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
             Submit
           </button>
         </form>
+
         <h3 className="header2">Tired of your password?</h3>
+
         <form className="form2" onSubmit={(e) => handlePasswordChange}>
           <input
             value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
             className="input2"
             placeholder="new password"
           />
           <input
             value={confirmNewPassword}
+            onChange={(e) => setConfirmNewPassword(e.target.value)}
             className="input2"
             placeholder="confirm new password"
           />
           <input
             value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
             className="input2"
             placeholder="current password"
           />
