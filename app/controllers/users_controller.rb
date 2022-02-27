@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
     def show
         if current_user
-            # byebug
             render json: current_user, status: 200
         else
             render json: {error: "No current user set"}, status: 401
@@ -21,6 +20,18 @@ class UsersController < ApplicationController
             return render json: user, status: 201
         else
             return render json: { error: user.errors.full_messages }, status: 404
+        end
+    end
+
+    def update
+        user = User.find_by(id: params[:id])
+        user.update(user_params)
+        # byebug
+        # current_user.update(user_params)
+        if user
+            return render json: user, status: 201
+        else
+            return render json: { errors: user.errors.full_messages }, status: 404
         end
     end
 

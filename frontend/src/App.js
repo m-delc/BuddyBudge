@@ -65,16 +65,16 @@ function App() {
         <Route
           path="profile"
           element={
-            <RequireAuth isAuthenticated={isAuthenticated}>
-              <Paper className={classes.pageContent}>
-                <Profile
-                  user={user}
-                  setUser={setUser}
-                  isAuthenticated={isAuthenticated}
-                  setIsAuthenticated={setIsAuthenticated}
-                />
-              </Paper>
-            </RequireAuth>
+            // <RequireAuth isAuthenticated={isAuthenticated}>
+            <Paper className={classes.pageContent}>
+              <Profile
+                user={user}
+                setUser={setUser}
+                isAuthenticated={isAuthenticated}
+                setIsAuthenticated={setIsAuthenticated}
+              />
+            </Paper>
+            // </RequireAuth>
           }
         />
       </Routes>
