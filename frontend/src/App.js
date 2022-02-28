@@ -10,7 +10,7 @@ import Profile from "./components/Profile";
 import RequireAuth from "./pages/RequireAuth";
 import useStyles from "./pages/useStyles";
 import Budget from "./components/Budget";
-
+import ProfileDelete from "./pages/ProfileDelete";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -68,18 +68,28 @@ function App() {
           path="profile"
           element={
             <RequireAuth isAuthenticated={isAuthenticated}>
-            <Paper className={classes.pageContent}>
-              <Profile
-                user={user}
-                setUser={setUser}
-                isAuthenticated={isAuthenticated}
-                setIsAuthenticated={setIsAuthenticated}
-              />
-            </Paper>
+              <Paper className={classes.pageContent}>
+                <Profile
+                  user={user}
+                  setUser={setUser}
+                  isAuthenticated={isAuthenticated}
+                  setIsAuthenticated={setIsAuthenticated}
+                />
+              </Paper>
             </RequireAuth>
           }
         />
-        <Route path='budget' element={<Budget />} />
+        <Route path="budget" element={<Budget />} />
+        <Route
+          path="profile/delete"
+          element={
+            <ProfileDelete
+              user={user}
+              setUser={setUser}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          }
+        />
       </Routes>
     </>
   );

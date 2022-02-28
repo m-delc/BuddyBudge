@@ -103,6 +103,9 @@ button {
 
 .div-delete-profile {
   text-align: center;
+  display: grid;
+  grid-column-start: span 2;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  font-size: 12px;
 }

@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from "react";
+import "../css/budget.css";
 
 const Budget = () => {
-  return (
-    <div>Budget</div>
-  )
-}
+  return <div>Budget</div>;
+};
 
-export default Budget
+export default Budget;

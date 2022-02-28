@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../css/Navbar.css";
+import "../css/navbar.css";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 
@@ -45,7 +44,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
     <header className="header">
       <span className="span1">
         <NavLink to="home">Home</NavLink>
-        <NavLink to='budget'>{user.username}'s budget</NavLink>
+        <NavLink to="budget">{user ? `${user.username}'s budget` : null}</NavLink>
         <br></br>
       </span>
       <span className="span2">

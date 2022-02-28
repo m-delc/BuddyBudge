@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import "../css/Profile.css";
+import { useNavigate } from "react-router-dom";
+import "../css/profile.css";
+import { NavLink } from "react-router-dom";
+// import ProfileDeleteMid from "../mids/ProfileDeleteMid";
 
 const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [newUsername, setNewUsername] = useState("");
@@ -89,8 +92,11 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
     });
   };
 
+
+
   return (
     <>
+
       <h2 className="header-top">{user ? user.first_name : null}'s Profile</h2>
 
       <div className="grid">
@@ -168,8 +174,10 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           <button type="submit">Submit</button>
           {firstNameMessage ? firstNameMessage : null}
         </form>
+      <div className="div-delete-profile">
+        <NavLink to="/profile/delete">delete your profile</NavLink>
       </div>
-      <div className="div-delete-profile">delete your profile</div>
+      </div>
     </>
   );
 };

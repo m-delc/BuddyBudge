@@ -10,7 +10,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
-import "../css/LoginForm.css";
+import "../css/loginform.css";
 
 const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   // IF YOU ADD THESE BACK, remember to add the params back in user controller
