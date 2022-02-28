@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/profiledelete.css";
 
-const ProfileDelete = ({ user }) => {
+const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
   const handleDeleteAccount = (e) => {
     e.preventDefault();
     fetch(`/users/${user.id}`, {
