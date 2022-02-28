@@ -94,7 +94,7 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={signupOnSubmit}>
+    <form className="div-form" onSubmit={signupOnSubmit}>
       <br></br>
 
       <div>
@@ -109,6 +109,7 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
         />
       </div>
 
+      <br></br>
       <br></br>
 
       <div>
@@ -181,7 +182,7 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
       <br></br>
       <br></br>
 
-      <div>
+      <div className="btn-div">
         <Stack className="btn" direction="row" spacing={2}>
           <Button
             variant="outlined"

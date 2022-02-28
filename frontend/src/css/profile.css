@@ -38,15 +38,18 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-input {
+.input1,
+.input2,
+.input3 {
   border-color: aqua;
+  color: black;
   margin: 0.4em;
   background-color: inherit;
   padding: 0.4em;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-button {
+.button1 {
   margin: 1em;
   background-color: inherit;
   padding: 0.5em;

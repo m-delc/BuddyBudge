@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/profile.css";
 import { NavLink } from "react-router-dom";
-// import ProfileDeleteMid from "../mids/ProfileDeleteMid";
 
 const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [newUsername, setNewUsername] = useState("");
@@ -92,11 +91,8 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
     });
   };
 
-
-
   return (
     <>
-
       <h2 className="header-top">{user ? user.first_name : null}'s Profile</h2>
 
       <div className="grid">
@@ -157,7 +153,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
             placeholder="current password"
           /> */}
           <br></br>
-          <button className="button2" type="submit">
+          <button className="button1" type="submit">
             Submit
           </button>
           {passwordMessage ? passwordMessage : null}
@@ -166,17 +162,20 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
         <h3 className="header3">Change your first name</h3>
         <form className="form3" onSubmit={handleNameChange}>
           <input
+            className="input3"
             value={newFirstName}
             onChange={(e) => setNewFirstName(e.target.value)}
             placeholder="change first name"
           />
           <br></br>
-          <button type="submit">Submit</button>
+          <button className="button1" type="submit">
+            Submit
+          </button>
           {firstNameMessage ? firstNameMessage : null}
         </form>
-      <div className="div-delete-profile">
-        <NavLink to="/profile/delete">delete your profile</NavLink>
-      </div>
+        <div className="div-delete-profile">
+          <NavLink to="/profile/delete">delete your profile</NavLink>
+        </div>
       </div>
     </>
   );

@@ -27,7 +27,7 @@ const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
   return (
     <>
       {someState ? (
-        <div>
+        <div className="div1">
           {user ? user.username : null}, are you sure you want to delete your
           account?
           <form onSubmit={x}>
@@ -35,7 +35,10 @@ const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
             <input required type="checkbox" />
             Yes, I'm sure
             <br></br>
-            <button type="submit">DELETE ACCOUNT</button>
+            <br></br>
+            <button className="btn-delete" type="submit">
+              DELETE ACCOUNT
+            </button>
           </form>
         </div>
       ) : (

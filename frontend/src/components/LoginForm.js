@@ -64,9 +64,9 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
   };
 
   return (
-    <form onSubmit={loginOnSubmit}>
-      <div style={{ height: 305 }}>
-        <br></br>
+    <form className="forms" onSubmit={loginOnSubmit}>
+      <div className="div-form" style={{ height: 179 }}>
+        {/* <br></br> */}
 
         <Input
           className="test1"
@@ -77,8 +77,8 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
           placeholder="Username"
         />
 
-        <br></br>
-        <br></br>
+        {/* <br></br>
+        <br></br> */}
 
         <Input
           id="standard-adornment-password"
@@ -98,9 +98,9 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
             </InputAdornment>
           }
         />
+        {/* <br></br>
         <br></br>
-        <br></br>
-        <br></br>
+        <br></br> */}
         <div className="test2">
           <Stack className="btn" direction="row" spacing={2}>
             <Button type="submit" variant="outlined" endIcon={<LoginIcon />}>

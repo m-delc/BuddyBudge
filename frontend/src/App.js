@@ -63,7 +63,14 @@ function App() {
           }
         />
         <Route path="/" element={<Home />} />
-        <Route path="home" element={<Home />} />
+        <Route
+          path="home"
+          element={
+            <Paper className={classes.pageContent}>
+              <Home />{" "}
+            </Paper>
+          }
+        />
         <Route
           path="profile"
           element={
@@ -79,7 +86,17 @@ function App() {
             // </RequireAuth>
           }
         />
-        <Route path="budget" element={<Budget />} />
+
+        <Route
+          path="budget"
+          element={
+            <Paper className={classes.pageContent}>
+              {" "}
+              <Budget />{" "}
+            </Paper>
+          }
+        />
+
         <Route
           path="profile/delete"
           element={
