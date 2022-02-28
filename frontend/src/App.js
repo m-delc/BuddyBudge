@@ -9,6 +9,8 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import RequireAuth from "./pages/RequireAuth";
 import useStyles from "./pages/useStyles";
+import Budget from "./components/Budget";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -77,6 +79,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path='budget' element={<Budget />} />
       </Routes>
     </>
   );
