@@ -1,19 +1,17 @@
 .test1 {
-    width: 28.5ch;
+  width: 27.5ch;
 }
 
-/* .btn-login{
+/* .btn-login {
     margin-right: 5px;
-}
-
-.btn-signup {
-    margin-left: 5px;
 } */
 
-.test2 {
-    position: center;
-    justify-content: center;
-    text-align: center;
-    display: inline-block;
+/* .test2 {
+  position: absolute;
+} */
 
+.btn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }

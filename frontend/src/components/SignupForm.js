@@ -182,11 +182,10 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
       <br></br>
 
       <div>
-        <Stack direction="row" spacing={2}>
+        <Stack className="btn" direction="row" spacing={2}>
           <Button
             variant="outlined"
             endIcon={<CheckCircleOutlineIcon />}
-            className="btn-signup"
             type="Submit"
           >
             Submit
@@ -195,7 +194,6 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           <Button
             variant="outlined"
             endIcon={<ArrowBackIcon />}
-            className="btn-signup"
             onClick={(e) => navigate("/login")}
           >
             Login

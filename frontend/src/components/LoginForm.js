@@ -65,7 +65,7 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
 
   return (
     <form onSubmit={loginOnSubmit}>
-      <div>
+      <div style={{ height: 305 }}>
         <br></br>
 
         <Input
@@ -102,13 +102,8 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
         <br></br>
         <br></br>
         <div className="test2">
-          <Stack direction="row" spacing={2}>
-            <Button
-              type="submit"
-              variant="outlined"
-              endIcon={<LoginIcon />}
-              className="btn-login"
-            >
+          <Stack className="btn" direction="row" spacing={2}>
+            <Button type="submit" variant="outlined" endIcon={<LoginIcon />}>
               Login
             </Button>
 
@@ -116,13 +111,10 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
               onClick={handleSignupRoute}
               variant="outlined"
               endIcon={<AddCircleOutlineIcon />}
-              className="btn-signup"
             >
               Signup
             </Button>
           </Stack>
-          <br></br>
-          <br></br>
         </div>
       </div>
     </form>
