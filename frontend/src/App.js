@@ -11,11 +11,13 @@ import RequireAuth from "./pages/RequireAuth";
 import useStyles from "./pages/useStyles";
 import Budget from "./components/Budget";
 import ProfileDelete from "./pages/ProfileDelete";
+import People from "./components/People";
 
 function App() {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const classes = useStyles();
+  const [people, setPeople] = useState(null);
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
@@ -26,7 +28,14 @@ function App() {
         });
       }
     });
-  }, [isAuthenticated]);
+    fetch("/people").then((res) => {
+      if (res.ok) {
+        res.json().then(setPeople);
+      }
+    });
+  }, []);
+
+  // console.log(people);
 
   return (
     <>
@@ -83,7 +92,8 @@ function App() {
                 setIsAuthenticated={setIsAuthenticated}
               />
             </Paper>
-            // </RequireAuth>
+            //{" "}
+            // </RequireAuth>s
           }
         />
 
@@ -107,6 +117,7 @@ function App() {
             />
           }
         />
+        <Route path="people" element={<People people={people} />} />
       </Routes>
     </>
   );
