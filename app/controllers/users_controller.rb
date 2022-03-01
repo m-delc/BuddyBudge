@@ -26,8 +26,6 @@ class UsersController < ApplicationController
     def update
         user = current_user
         user.update(user_params)
-        # byebug
-        # current_user.update(user_params)
         if user
             return render json: user, status: 201
         else

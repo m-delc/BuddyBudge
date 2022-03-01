@@ -10,15 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_01_043827) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_01_072723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.text "bio"
     t.integer "savings"
-    t.string "img"
+    t.text "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

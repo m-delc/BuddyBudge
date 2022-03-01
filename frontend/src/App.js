@@ -117,7 +117,17 @@ function App() {
             />
           }
         />
-        <Route path="people" element={<People people={people} />} />
+        <Route
+          path="people"
+          element={
+            <People
+              people={people}
+              user={user}
+              setUser={setUser}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          }
+        />
       </Routes>
     </>
   );
