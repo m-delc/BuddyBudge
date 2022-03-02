@@ -6,22 +6,20 @@ const People = ({ people, user, setUser, setIsAuthenticated }) => {
   //   console.log(people);
 
   const handleAddFriend = (id) => {
-    // console.log(id);
     const newFriend = {
       user_id: user.id,
       person_id: id,
     };
-    console.log(newFriend);
-    fetch(`/friends/${user.id}`, {
-      method: "PATCH",
+    fetch("/friends", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newFriend),
     }).then((res) => {
       //   console.log(res);
       if (res.ok) {
         res.json().then((json) => {
-          setUser(json);
-          setIsAuthenticated(true);
+          // setUser(json);
+          // setIsAuthenticated(true);
           //   setMessage(`${json.first_name} added !!!`);
         });
       }

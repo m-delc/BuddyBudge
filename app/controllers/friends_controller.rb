@@ -1,12 +1,23 @@
 class FriendsController < ApplicationController
 
-    def update
-        friend = current_user
-        friend.update(friend_params)
-        if friend
+    # def update
+    #     friend = current_user
+    #     friend.update(friend_params)
+    #     if friend
+    #         return render json: friend, status: 201
+    #     else
+    #         return render json: { errors: friend.errors.full_messages }, status: 422
+    #     end
+    # end
+
+    # create
+
+    def create
+        friend = Friend.create(friend_params)
+        if friend.valid?
             return render json: friend, status: 201
         else
-            return render json: { errors: friend.errors.full_messages }, status: 422
+            return render json: { error: friend.errors.full_messages }, status: 404
         end
     end
 

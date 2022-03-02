@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   
   resources :users, only: [:update, :destroy]
   resources :people, only: [:index, :update]
-  resources :friends
+  resources :friends, only: [:create]
     
   post '/users', to: "users#create"
   post '/login', to: "sessions#login"
   get '/authorize_user', to: "users#show"
   delete '/logout', to: "sessions#logout"
+  # post '/friends', to: "friends#create"
 
 
     

@@ -5,5 +5,4 @@ class PeopleController < ApplicationController
         render json: person
     end
 
-
 end
