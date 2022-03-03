@@ -12,12 +12,14 @@ import useStyles from "./pages/useStyles";
 import Budget from "./components/Budget";
 import ProfileDelete from "./pages/ProfileDelete";
 import People from "./components/People";
+import Friends from "./components/Friends";
 
 function App() {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const classes = useStyles();
   const [people, setPeople] = useState(null);
+  const [userFriends, setUserFriends] = useState([]);
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
@@ -31,6 +33,11 @@ function App() {
     fetch("/people").then((res) => {
       if (res.ok) {
         res.json().then(setPeople);
+      }
+    });
+    fetch("/friends").then((res) => {
+      if (res.ok) {
+        res.json().then(setUserFriends);
       }
     });
   }, []);
@@ -127,6 +134,10 @@ function App() {
               setIsAuthenticated={setIsAuthenticated}
             />
           }
+        />
+        <Route
+          path="/friends"
+          element={<Friends userFriends={userFriends} />}
         />
       </Routes>
     </>

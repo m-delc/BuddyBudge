@@ -41,5 +41,9 @@
 .span3 {
   text-decoration: none;
   color: inherit;
-  display: inline-flex;
+  /* display: inline-flex; */
+  display: grid;
 }
+/* a.span3 {
+  display: flex-column;
+} */

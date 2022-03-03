@@ -32,3 +32,5 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'byebug', '~> 11.1', '>= 11.1.3'
+
+gem 'active_model_serializers', '~> 0.10.2'

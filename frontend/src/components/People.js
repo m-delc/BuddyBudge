@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const People = ({ people, user, setUser, setIsAuthenticated }) => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState("");
-  //   console.log(people);
+  const [friends, setFriends] = useState([])
 
   const handleAddFriend = (id) => {
     const newFriend = {
@@ -15,16 +15,17 @@ const People = ({ people, user, setUser, setIsAuthenticated }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newFriend),
     }).then((res) => {
-      //   console.log(res);
       if (res.ok) {
         res.json().then((json) => {
-          // setUser(json);
-          // setIsAuthenticated(true);
-          //   setMessage(`${json.first_name} added !!!`);
+          console.log(json)
+          // setFriends(...json);
+            setMessage(`${json.first_name} added !!!`);
         });
       }
     });
   };
+
+  // console.log(friends)
 
   return (
     <div

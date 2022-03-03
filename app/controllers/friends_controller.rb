@@ -10,7 +10,14 @@ class FriendsController < ApplicationController
     #     end
     # end
 
-    # create
+    # render json: friends, except: [:created_at, :updated_at], status: 200
+#
+
+    def index
+        user = current_user
+        friends = user.friends
+        render json: friends, status: 200
+    end
 
     def create
         friend = Friend.create(friend_params)
