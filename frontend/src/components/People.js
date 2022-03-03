@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const People = ({ user, setUser, setIsAuthenticated }) => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState("");
-  const [friends, setFriends] = useState([])
+  const [friends, setFriends] = useState([]);
   const [people, setPeople] = useState(null);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/people").then((res) => {
@@ -13,8 +14,8 @@ const People = ({ user, setUser, setIsAuthenticated }) => {
         res.json().then(setPeople);
       }
     });
-  }, [])
-  
+  }, []);
+
   const handleAddFriend = (id) => {
     const newFriend = {
       user_id: user.id,
@@ -27,12 +28,16 @@ const People = ({ user, setUser, setIsAuthenticated }) => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((json) => {
-          console.log(json)
+          console.log(json);
           // setFriends(...json);
-            setMessage(`${json.first_name} added !!!`);
+          setMessage(`${json.first_name} added !!!`);
         });
       }
     });
+  };
+
+  const handleNavToPerson = (id) => {
+    navigate(`/people/${id}`);
   };
 
   // console.log(friends)
@@ -57,8 +62,8 @@ const People = ({ user, setUser, setIsAuthenticated }) => {
                 <p style={{ maxWidth: "25em" }}>
                   About {y.first_name}: {y.bio}
                 </p>
-                <button onClick={(e) => handleAddFriend(y.id)}>
-                  Add Friend
+                <button onClick={(e) => handleNavToPerson(y.id)}>
+                  View this person
                 </button>
                 {/* {errors ? errors : null}
                 {message ? message : null} */}

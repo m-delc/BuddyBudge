@@ -13,6 +13,7 @@ import Budget from "./components/Budget";
 import ProfileDelete from "./pages/ProfileDelete";
 import People from "./components/People";
 import Friends from "./components/Friends";
+import Person from "./components/Person";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -139,6 +140,7 @@ function App() {
           path="/friends"
           element={<Friends userFriends={userFriends} />}
         />
+        <Route path="/people/:id" element={<Person />} />
       </Routes>
     </>
   );

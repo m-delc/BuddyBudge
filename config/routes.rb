@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   # namespace :api do
   
   resources :users, only: [:update, :create, :destroy, :index]
-  resources :people, only: [:index, :update]
+  resources :people, only: [:index, :update, :show]
   resources :friends, only: [:create, :index]
     
-  # post '/users', to: "users#create"
   post '/login', to: "sessions#login"
   get '/authorize_user', to: "users#show"
   delete '/logout', to: "sessions#logout"

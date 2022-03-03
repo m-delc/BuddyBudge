@@ -5,4 +5,9 @@ class PeopleController < ApplicationController
         render json: person
     end
 
+    def show
+        person = Person.find_by(id: params[:id])
+        render json: person
+    end
+
 end
