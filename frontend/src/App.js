@@ -30,11 +30,11 @@ function App() {
         });
       }
     });
-    fetch("/people").then((res) => {
-      if (res.ok) {
-        res.json().then(setPeople);
-      }
-    });
+    // fetch("/people").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then(setPeople);
+    //   }
+    // });
     fetch("/friends").then((res) => {
       if (res.ok) {
         res.json().then(setUserFriends);

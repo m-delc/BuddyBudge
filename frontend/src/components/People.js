@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const People = ({ people, user, setUser, setIsAuthenticated }) => {
+const People = ({ user, setUser, setIsAuthenticated }) => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState("");
   const [friends, setFriends] = useState([])
+  const [people, setPeople] = useState(null);
 
+
+  useEffect(() => {
+    fetch("/people").then((res) => {
+      if (res.ok) {
+        res.json().then(setPeople);
+      }
+    });
+  }, [])
+  
   const handleAddFriend = (id) => {
     const newFriend = {
       user_id: user.id,

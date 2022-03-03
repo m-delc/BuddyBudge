@@ -19,6 +19,12 @@ class FriendsController < ApplicationController
         render json: friends, status: 200
     end
 
+    # def show
+    #     user = current_user
+    #     friends = user.friends
+    #     render json: friends, status: 200
+    # end
+
     def create
         friend = Friend.create(friend_params)
         if friend.valid?
@@ -27,6 +33,7 @@ class FriendsController < ApplicationController
             return render json: { error: friend.errors.full_messages }, status: 404
         end
     end
+
 
     private
 
