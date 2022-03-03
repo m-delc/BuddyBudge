@@ -8,42 +8,42 @@ const Person = ({ user }) => {
   const [friends, setFriends] = useState(false);
   // const [people, setPeople] = useState(null);
   const { id, first_name, bio, savings, img } = person;
-  const [usersExistingFriends, setUsersExistingFriends] = useState([]);
+  const [userExistingFriends, setUserExistingFriends] = useState([]);
   const [isFriendsYet, setIsFriendsYet] = useState(false);
 
   const params = useParams();
   const pid = params.id;
-  console.log(pid);
+  // console.log(pid);
 
   useEffect(() => {
     fetch("/friends").then((res) => {
       if (res.ok) {
-        res.json().then(setUsersExistingFriends);
+        res.json().then(setUserExistingFriends);
       }
     });
-    console.log(usersExistingFriends);
+  }, []);
 
+  console.log(userExistingFriends);
+
+  useEffect(() => {
     fetch(`/people/${params.id}`)
       .then((res) => res.json())
       .then((x) => {
-        const friendsYet = usersExistingFriends.map((uef) => {
+        const friendsYet = userExistingFriends.map((uef) => {
           // const g = uef.person.id;
-          console.log(`Friend ID: ${uef.person.id}`);
-          if (uef.id === params.id) {
+          // console.log(`Friend ID: ${uef.person.id}`);
+          // console.log(uef.id);
+          if (uef.person.id === params.id) {
             return true;
           } else {
             return false;
           }
         });
-        console.log(x);
+        // console.log(x);
         setIsFriendsYet(friendsYet);
         setPerson(x);
       });
   }, []);
-
-  // useEffect(() => {
-
-  // }, []);
 
   const handleAddFriend = (id) => {
     const newFriend = {

@@ -12,11 +12,14 @@ class FriendsController < ApplicationController
 
     # render json: friends, except: [:created_at, :updated_at], status: 200
 #
-
     def index
         user = current_user
         friends = user.friends
-        render json: friends, status: 200
+        if friends
+            render json: friends, status: 200
+        else
+            return render json: { errors: friends.errors.full_messages }, status: 404
+        end
     end
 
     # def show

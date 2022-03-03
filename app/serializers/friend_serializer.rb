@@ -1,5 +1,8 @@
 class FriendSerializer < ActiveModel::Serializer
-attributes :id
-  belongs_to :user
-  belongs_to :person
+
+    attributes :id
+
+    belongs_to :user
+    belongs_to :person
+
 end
