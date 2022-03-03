@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # namespace :api do
   
-  resources :users, only: [:update, :create, :destroy, :index]
+  resources :users, only: [:update, :create, :destroy, :index, :show]
   resources :people, only: [:index, :update, :show]
   resources :friends, only: [:create, :index]
     

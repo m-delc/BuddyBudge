@@ -140,7 +140,10 @@ function App() {
           path="/friends"
           element={<Friends userFriends={userFriends} />}
         />
-        <Route path="/people/:id" element={<Person />} />
+        <Route
+          path="/people/:id"
+          element={<Person user={user} people={people} />}
+        />
       </Routes>
     </>
   );

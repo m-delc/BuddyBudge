@@ -16,26 +16,6 @@ const People = ({ user, setUser, setIsAuthenticated }) => {
     });
   }, []);
 
-  const handleAddFriend = (id) => {
-    const newFriend = {
-      user_id: user.id,
-      person_id: id,
-    };
-    fetch("/friends", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newFriend),
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((json) => {
-          console.log(json);
-          // setFriends(...json);
-          setMessage(`${json.first_name} added !!!`);
-        });
-      }
-    });
-  };
-
   const handleNavToPerson = (id) => {
     navigate(`/people/${id}`);
   };
