@@ -31,11 +31,11 @@ function App() {
         });
       }
     });
-    // fetch("/people").then((res) => {
-    //   if (res.ok) {
-    //     res.json().then(setPeople);
-    //   }
-    // });
+    fetch("/people").then((res) => {
+      if (res.ok) {
+        res.json().then(setPeople);
+      }
+    });
     fetch("/friends").then((res) => {
       if (res.ok) {
         res.json().then(setUserFriends);
@@ -142,8 +142,16 @@ function App() {
         />
         <Route
           path="/people/:id"
-          element={<Person user={user} people={people} />}
+          element={
+            <Person
+              user={user}
+              people={people}
+              userFriends={userFriends}
+              setUserFriends={setUserFriends}
+            />
+          }
         />
+        <Route path='friend/:id' element={<Person />} />
       </Routes>
     </>
   );

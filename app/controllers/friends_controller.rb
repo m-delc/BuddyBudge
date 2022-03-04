@@ -22,11 +22,10 @@ class FriendsController < ApplicationController
         end
     end
 
-    # def show
-    #     user = current_user
-    #     friends = user.friends
-    #     render json: friends, status: 200
-    # end
+    def show
+        friend = Friend.find_by(id: params[:id])
+        render json: friend, status: 200
+    end
 
     def create
         friend = Friend.create(friend_params)
@@ -35,6 +34,18 @@ class FriendsController < ApplicationController
         else
             return render json: { error: friend.errors.full_messages }, status: 404
         end
+    end
+
+    # def destroy
+    #     friend = Friend.find_by(id: params[:id])
+    #     friend.destroy
+    #     head :no_content
+    # end
+
+    def destroy
+        friend = current_user.friends.find_by(id: params[:id])
+        friend.destroy
+        head :no_content
     end
 
 

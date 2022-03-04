@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:update, :create, :destroy, :index, :show]
   resources :people, only: [:index, :update, :show]
-  resources :friends, only: [:create, :index]
+  resources :friends, only: [:create, :index, :destroy, :show]
     
   post '/login', to: "sessions#login"
   get '/authorize_user', to: "users#show"
