@@ -1,26 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const People = ({ user, setUser, setIsAuthenticated }) => {
+const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState("");
   const [friends, setFriends] = useState([]);
-  const [people, setPeople] = useState(null);
+  // const [people, setPeople] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("/people").then((res) => {
-      if (res.ok) {
-        res.json().then(setPeople);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/people").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then(setPeople);
+  //     }
+  //   });
+  // }, []);
 
   const handleNavToPerson = (id) => {
     navigate(`/people/${id}`);
   };
 
-  // console.log(friends)
+  console.log(people)
+
+  // const isFriend = userFriends.filter(friend => {
+  //   return friend.id == people.id
+  //   }
+  // )
+
+  // const peoplemap = people.map(p => { 
+  //   p.id}
+  // )
+
+  // console.log(isFriend)
 
   return (
     <div

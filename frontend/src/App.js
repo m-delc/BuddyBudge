@@ -133,6 +133,7 @@ function App() {
               user={user}
               setUser={setUser}
               setIsAuthenticated={setIsAuthenticated}
+              userFriends={userFriends}
             />
           }
         />
@@ -151,7 +152,7 @@ function App() {
             />
           }
         />
-        <Route path='friend/:id' element={<Person />} />
+        {/* <Route path='friend/:id' element={<Person />} /> */}
       </Routes>
     </>
   );

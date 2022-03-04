@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
@@ -8,6 +8,7 @@ const Person = ({ user, userFriends, people, setUserFriends }) => {
   const [friends, setFriends] = useState(false);
   // const [people, setPeople] = useState(null);
   const { id, first_name, bio, savings, img } = person;
+  // const { id } = userFriends
   const [userExistingFriends, setUserExistingFriends] = useState([]);
   const [isFriendsYet, setIsFriendsYet] = useState(false);
   const [test1, settest1] = useState([]);
@@ -32,11 +33,22 @@ const Person = ({ user, userFriends, people, setUserFriends }) => {
   // console.log(x);
   // console.log(userFriends);
 
-  const test = userFriends.map((uf) => {
+  // this returns all of user's friend id's
+  // this returns all of user's friend id's
+  const userFriendIds = userFriends.map((uf) => {
     return uf.id
   })
 
-  console.log(test)
+  // const test2 = person.friends.map(pf => {
+  //   return pf.id
+  // })
+  // console.log(userFriends);
+
+  const personFriendID = userFriends.filter(friend => {
+    return (pid == friend.person_id)
+  })[0]
+
+  console.log()
 
   // useEffect(() => {
   //   fetch("/friends").then((res) => {
@@ -76,14 +88,15 @@ const Person = ({ user, userFriends, people, setUserFriends }) => {
     });
   };
 
+
   const handleDeleteFriend = (e) => {
-    console.log(id)
-    fetch(`/friends/${id}`, {
+    // console.log(id)
+    fetch(`/friends/${personFriendID.id}`, {
       method: "DELETE"
     })
-    .then(res => res.json())
+    .then(res => res)
     .then(() => {
-      const updatedFriendsList = userFriends.filter(uf => {return uf.id !== id})
+      const updatedFriendsList = userFriends.filter(uf => {return uf.id !== personFriendID.id})
       setUserFriends(updatedFriendsList)
     })
   }
