@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
@@ -7,31 +7,9 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
   const [friends, setFriends] = useState([]);
   // const [people, setPeople] = useState(null);
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   fetch("/people").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then(setPeople);
-  //     }
-  //   });
-  // }, []);
-
   const handleNavToPerson = (id) => {
     navigate(`/people/${id}`);
   };
-
-  console.log(people)
-
-  // const isFriend = userFriends.filter(friend => {
-  //   return friend.id == people.id
-  //   }
-  // )
-
-  // const peoplemap = people.map(p => { 
-  //   p.id}
-  // )
-
-  // console.log(isFriend)
 
   return (
     <div
@@ -49,7 +27,15 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
                 <p></p>
                 <img src={y.img} alt={y.first_name} />
                 <h3>Name: {y.first_name}</h3>
-                <h4>$$$ saved: ${y.savings1}</h4>
+                <h4>
+                  Total cash saved: $
+                  {y.savings1 +
+                    y.savings2 +
+                    y.savings3 +
+                    y.savings4 +
+                    y.savings5 +
+                    y.savings6}
+                </h4>
                 <p style={{ maxWidth: "25em" }}>
                   About {y.first_name}: {y.bio}
                 </p>

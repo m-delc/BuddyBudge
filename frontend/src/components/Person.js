@@ -5,70 +5,17 @@ import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
 } from "recharts";
 
-
-
 const Person = ({ user, userFriends, setUserFriends }) => {
-  const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-
-  const goal = 4555
-
-
   const [person, setPerson] = useState([]);
   const { id, first_name, bio, savings, img } = person;
   const params = useParams();
-  // const pid = params.id;
   const friendToggle = userFriends.filter((friend) => {
     return friend.person.id == params.id;
   });
@@ -76,15 +23,54 @@ const Person = ({ user, userFriends, setUserFriends }) => {
     return params.id == friend.person_id;
   })[0];
 
-  const data2 = [
+  const {
+    savings1,
+    savings2,
+    savings3,
+    savings4,
+    savings5,
+    savings6,
+    goal1,
+    goal2,
+    goal3,
+    goal4,
+    goal5,
+    goal6,
+  } = person;
+  const chartData = [
     {
       name: "Week 1",
-      Savings: savings,
-      Goal: goal
-    }
-  ]
-
-  // console.log(person.savings)
+      Savings: savings1,
+      Goal: goal1,
+    },
+    {
+      name: "Week 2",
+      Savings: savings2,
+      Goal: goal2,
+    },
+    {
+      name: "Week 3",
+      Savings: savings3,
+      Goal: goal3,
+    },
+    {
+      name: "Week 4",
+      Savings: savings4,
+      Goal: goal4,
+    },
+    {
+      name: "Week 5",
+      Savings: savings5,
+      Goal: goal5,
+    },
+    {
+      name: "Week 6",
+      Savings: savings6,
+      Goal: goal6,
+    },
+  ];
+  const totalSavings =
+    savings1 + savings2 + savings3 + savings4 + savings5 + savings6;
 
   useEffect(() => {
     fetch(`/people/${params.id}`)
@@ -131,9 +117,9 @@ const Person = ({ user, userFriends, setUserFriends }) => {
     <div>
       <img src={img} alt={first_name} />
       <h3>Name: {first_name}</h3>
-      <h4>$$$ saved: </h4>
       <p style={{ maxWidth: "25em" }}>
-        About {first_name}: {bio}
+        Over the past six weeks {first_name} has managed to save a total of $
+        {totalSavings} !!! {bio}
       </p>
       {/* { !friends ? <CheckBoxOutlineBlankRoundedIcon style={{ cursor: "pointer" }} onClick={(e) => handleAddFriend(id)} /> Send a friend request to {first_name} : <CheckBoxRoundedIcon /> Friends } */}
 
@@ -157,27 +143,25 @@ const Person = ({ user, userFriends, setUserFriends }) => {
 
       {/* <button onClick={(e) => handleAddFriend(id)}>Send Friend Request</button> */}
       {/* <button onClick={(e) => handleAddFriend(id)}>Add Friend</button> */}
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
-        <BarChart
-          width={500}
-          height={300}
-          data={data2}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="Goal" fill="#82ca9d" />
-          <Bar dataKey="Savings" fill="#8884d8" />
-        </BarChart>
-      {/* </ResponsiveContainer> */}
+      <BarChart
+        width={500}
+        height={300}
+        data={chartData}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="Goal" fill="#82ca9d" />
+        <Bar dataKey="Savings" fill="#8884d8" />
+      </BarChart>
     </div>
   );
 };
