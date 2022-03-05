@@ -26,7 +26,6 @@ const Person = ({ user, userFriends, setUserFriends }) => {
   // console.log(userFriends)
   // console.log(personFriendID)
 
-
   const {
     savings1,
     savings2,

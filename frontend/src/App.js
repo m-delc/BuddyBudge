@@ -44,7 +44,9 @@ function App() {
     });
   }, []);
 
-  // console.log(userFriends);
+  
+
+  console.log(userFriends);
 
   return (
     <>

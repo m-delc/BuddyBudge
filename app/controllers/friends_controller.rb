@@ -15,12 +15,17 @@ class FriendsController < ApplicationController
     def index
         user = current_user
         friends = user.friends
+        # friends = Friend.find_by(person_id: params[:person_id])
         if friends
             render json: friends, status: 200
         else
             return render json: { errors: friends.errors.full_messages }, status: 404
         end
     end
+
+    # def index
+    #     friends = Frien
+    # end
 
     def show
         friend = Friend.find_by(id: params[:id])
