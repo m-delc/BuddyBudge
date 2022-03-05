@@ -7,7 +7,7 @@ const FriendPage = ({ userFriends }) => {
     navigate(`/people/${id}`);
   };
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "space-between", justifyContent: "space-around" }}>
       {userFriends
         ? userFriends.map((friend, index) => (
             <div style={{ background: "white" }} key={index}>

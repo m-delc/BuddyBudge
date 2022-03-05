@@ -9,6 +9,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+// import { Slider, RangeSlider, Row, Col, InputNumber } from 'rsuite';
+// import Slider from 'rsuite/Slider';
 
 const savings1 = null;
 // const test = 500
@@ -20,7 +22,9 @@ const Budget = ({ user }) => {
   const [weekFourGoals, setweekFourGoals] = useState("");
   const [weekFiveGoals, setweekFiveGoals] = useState("");
   const [weekSixGoals, setweekSixGoals] = useState("");
-  const [budget, setbudget] = useState([]);
+  const [goals, setGoals] = useState([]);
+  const [toggleSubmitUpdate, setToggleSubmitUpdate] = useState(true);
+  const [toggleGraph, setToggleGraph] = useState(true)
   // console.log(weekTwoGoals);
 
   const chartData = [
@@ -56,6 +60,39 @@ const Budget = ({ user }) => {
     },
   ];
 
+  const chartData2 = [
+    {
+      name: "Week 1",
+      Savings: goals.savings1 ? goals.savings1 : null,
+      Goal: goals.weekOneGoals ? goals.weekOneGoals : null,
+    },
+    {
+      name: "Week 2",
+      Savings: savings1 ? savings1 : null,
+      Goal: goals.weekTwoGoals ? goals.weekTwoGoals : null,
+    },
+    {
+      name: "Week 3",
+      Savings: savings1 ? savings1 : null,
+      Goal: goals.weekThreeGoals ? goals.weekThreeGoals : null,
+    },
+    {
+      name: "Week 4",
+      Savings: savings1 ? savings1 : null,
+      Goal: goals.weekFourGoals ? goals.weekFourGoals : null,
+    },
+    {
+      name: "Week 5",
+      Savings: savings1 ? savings1 : null,
+      Goal: goals.weekFiveGoals ? goals.weekFiveGoals : null,
+    },
+    {
+      name: "Week 6",
+      Savings: savings1 ? savings1 : null,
+      Goal: goals.weekSixGoals ? goals.weekSixGoals : null,
+    },
+  ];
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const newObj = {
@@ -65,7 +102,7 @@ const Budget = ({ user }) => {
       weekFourGoals: weekFourGoals,
       weekFiveGoals: weekFiveGoals,
       weekSixGoals: weekSixGoals,
-      user_id: user.id
+      user_id: user.id,
     };
     fetch("/budgets", {
       method: "POST",
@@ -74,68 +111,140 @@ const Budget = ({ user }) => {
     })
       .then((res) => res.json())
       .then((x) => {
-        setbudget(x);
+        setGoals(x);
+        setToggleGraph(!toggleGraph)
+        setweekOneGoals("");
+        setweekTwoGoals("");
+        setweekThreeGoals("");
+        setweekFourGoals("");
+        setweekFiveGoals("");
+        setweekSixGoals("");
       });
   };
-  console.log(budget);
+
+  console.log(goals);
+
+  const handleToggle = () => {
+    setToggleSubmitUpdate(!toggleSubmitUpdate);
+  };
+
+  const handleFormUpdate = (e) => {
+    e.preventdefault();
+  };
 
   return (
     // <div style={{ display: "grid", justifyContent: "center" }}>
     <div className="grid">
       <div>
-        <form onSubmit={handleFormSubmit}>
-          <input
-            type="number"
-            placeholder="Week 1"
-            value={weekOneGoals}
-            onChange={(e) => setweekOneGoals(e.target.value)}
-          />
-          <br></br>
-          <br></br>
-          <input
-            type="number"
-            placeholder="Week 2"
-            value={weekTwoGoals}
-            onChange={(e) => setweekTwoGoals(e.target.value)}
-          />
-          <br></br>
-          <br></br>
-          <input
-            type="number"
-            placeholder="Week 3"
-            value={weekThreeGoals}
-            onChange={(e) => setweekThreeGoals(e.target.value)}
-          />
-          <br></br>
-          <br></br>
-          <input
-            type="number"
-            placeholder="Week 4"
-            value={weekFourGoals}
-            onChange={(e) => setweekFourGoals(e.target.value)}
-          />
-          <br></br>
-          <br></br>
-          <input
-            type="number"
-            placeholder="Week 5"
-            value={weekFiveGoals}
-            onChange={(e) => setweekFiveGoals(e.target.value)}
-          />
-          <br></br>
-          <br></br>
-          <input
-            type="number"
-            placeholder="Week 6"
-            value={weekSixGoals}
-            onChange={(e) => setweekSixGoals(e.target.value)}
-          />
-          <br></br>
-          <br></br>
-          <button type="submit">Submit</button>
-        </form>
+        {toggleSubmitUpdate ? (
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="number"
+              placeholder="Week 1"
+              value={weekOneGoals}
+              onChange={(e) => setweekOneGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Week 2"
+              value={weekTwoGoals}
+              onChange={(e) => setweekTwoGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Week 3"
+              value={weekThreeGoals}
+              onChange={(e) => setweekThreeGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Week 4"
+              value={weekFourGoals}
+              onChange={(e) => setweekFourGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Week 5"
+              value={weekFiveGoals}
+              onChange={(e) => setweekFiveGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Week 6"
+              value={weekSixGoals}
+              onChange={(e) => setweekSixGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <button type="submit">Submit</button> or
+          </form>
+        ) : (
+          <form onSubmit={handleFormUpdate}>
+            <input
+              type="number"
+              placeholder="Update Week 1"
+              value={weekOneGoals}
+              onChange={(e) => setweekOneGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Update Week 2"
+              value={weekTwoGoals}
+              onChange={(e) => setweekTwoGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Update Week 3"
+              value={weekThreeGoals}
+              onChange={(e) => setweekThreeGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Update Week 4"
+              value={weekFourGoals}
+              onChange={(e) => setweekFourGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Update Week 5"
+              value={weekFiveGoals}
+              onChange={(e) => setweekFiveGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <input
+              type="number"
+              placeholder="Update Week 6"
+              value={weekSixGoals}
+              onChange={(e) => setweekSixGoals(e.target.value)}
+            />
+            <br></br>
+            <br></br>
+            <button type="submit">Submit</button> or
+            {/* <button onClick={handleToggle}>Update</button> */}
+          </form>
+        )}
       </div>
-      <BarChart
+      {toggleGraph ? (
+        <BarChart
         width={500}
         height={300}
         data={chartData}
@@ -155,6 +264,29 @@ const Budget = ({ user }) => {
         <Bar dataKey="Goal" fill="#82ca9d" />
         {/* <Bar dataKey="Savings" fill="#8884d8" /> /> */}
       </BarChart>
+      ) : (
+        <BarChart
+        width={500}
+        height={300}
+        data={chartData2}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barSize={30}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="Goal" fill="#82ca9d" />
+        {/* <Bar dataKey="Savings" fill="#8884d8" /> /> */}
+      </BarChart>
+      )}
+      <button onClick={handleToggle}>Update</button>
     </div>
   );
 };
