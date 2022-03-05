@@ -13,13 +13,13 @@ class BudgetsController < ApplicationController
 
     def budget_params
         params.permit(
-            # :user_id, 
-            # :weekOneSavings, 
-            # :weekTwoSavings, 
-            # :weekThreeSavings, 
-            # :weekFourSavings, 
-            # :weekFiveSavings, 
-            # :weekSixSavings, 
+            :user_id, 
+            :weekOneSavings, 
+            :weekTwoSavings, 
+            :weekThreeSavings, 
+            :weekFourSavings, 
+            :weekFiveSavings, 
+            :weekSixSavings, 
             :weekOneGoals, 
             :weekTwoGoals, 
             :weekThreeGoals, 

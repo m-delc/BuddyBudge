@@ -67,7 +67,7 @@ const Budget = () => {
       weekSixGoals: weekSixGoals,
     };
     fetch("/budgets", {
-      method: "POST",
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObj),
     })
