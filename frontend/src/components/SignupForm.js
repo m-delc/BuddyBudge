@@ -80,12 +80,8 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          // console.log(user)
           setUser(user);
           setIsAuthenticated(true);
-          // setSignupUsername("");
-          // setSignupPassword("");
-          // setPasswordConfirmation("");
           navigate("/home");
         });
       } else {
