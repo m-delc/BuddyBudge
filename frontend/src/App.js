@@ -14,6 +14,7 @@ import ProfileDelete from "./pages/ProfileDelete";
 import People from "./components/People";
 import Friends from "./components/Friends";
 import Person from "./components/Person";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -144,15 +145,18 @@ function App() {
         <Route
           path="/people/:id"
           element={
-            <Person
-              user={user}
-              people={people}
-              userFriends={userFriends}
-              setUserFriends={setUserFriends}
-            />
+            <Paper className={classes.pageContent}>
+              <Person
+                user={user}
+                people={people}
+                userFriends={userFriends}
+                setUserFriends={setUserFriends}
+              />
+            </Paper>
           }
         />
         {/* <Route path='friend/:id' element={<Person />} /> */}
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );

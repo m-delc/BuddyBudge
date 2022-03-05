@@ -1,62 +1,90 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
-const Person = ({ user, userFriends, people, setUserFriends }) => {
+
+
+const Person = ({ user, userFriends, setUserFriends }) => {
+  const data = [
+    {
+      name: 'Page A',
+      uv: 4000,
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'Page B',
+      uv: 3000,
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'Page C',
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'Page D',
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'Page E',
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'Page F',
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Page G',
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
+  ];
+
+  const goal = 4555
+
+
   const [person, setPerson] = useState([]);
-  const [friends, setFriends] = useState(false);
-  // const [people, setPeople] = useState(null);
   const { id, first_name, bio, savings, img } = person;
-  // const { id } = userFriends
-  const [userExistingFriends, setUserExistingFriends] = useState([]);
-  const [isFriendsYet, setIsFriendsYet] = useState(false);
-  const [test1, settest1] = useState([]);
-  const navigate = useNavigate();
-
-  //  setUserExistingFriends(userFriends)
-
   const params = useParams();
-  const pid = params.id;
-  // console.log(pid);
-
-  const x = userFriends.filter((friend) => {
-    return friend.person.id == pid;
+  // const pid = params.id;
+  const friendToggle = userFriends.filter((friend) => {
+    return friend.person.id == params.id;
   });
+  const personFriendID = userFriends.filter((friend) => {
+    return params.id == friend.person_id;
+  })[0];
 
-  // const toggle = () => {
-  //   if (x.length == 0) {
-  //     return settrueorfalse(true)
-  //   }
-  // }
+  const data2 = [
+    {
+      name: "Week 1",
+      Savings: savings,
+      Goal: goal
+    }
+  ]
 
-  // console.log(x);
-  // console.log(userFriends);
-
-  // this returns all of user's friend id's
-  // this returns all of user's friend id's
-  const userFriendIds = userFriends.map((uf) => {
-    return uf.id
-  })
-
-  // const test2 = person.friends.map(pf => {
-  //   return pf.id
-  // })
-  // console.log(userFriends);
-
-  const personFriendID = userFriends.filter(friend => {
-    return (pid == friend.person_id)
-  })[0]
-
-  console.log()
-
-  // useEffect(() => {
-  //   fetch("/friends").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then(setUserExistingFriends);
-  //     }
-  //   });
-  // }, []);
+  // console.log(person.savings)
 
   useEffect(() => {
     fetch(`/people/${params.id}`)
@@ -78,28 +106,26 @@ const Person = ({ user, userFriends, people, setUserFriends }) => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((json) => {
-          // console.log(json);
           setUserFriends([json, ...userFriends]);
           // navigate(`/friends/${id}`)
-
           // setMessage(`${json.first_name} added !!!`);
         });
       }
     });
   };
 
-
   const handleDeleteFriend = (e) => {
-    // console.log(id)
     fetch(`/friends/${personFriendID.id}`, {
-      method: "DELETE"
+      method: "DELETE",
     })
-    .then(res => res)
-    .then(() => {
-      const updatedFriendsList = userFriends.filter(uf => {return uf.id !== personFriendID.id})
-      setUserFriends(updatedFriendsList)
-    })
-  }
+      .then((res) => res)
+      .then(() => {
+        const updatedFriendsList = userFriends.filter((uf) => {
+          return uf.id !== personFriendID.id;
+        });
+        setUserFriends(updatedFriendsList);
+      });
+  };
 
   return (
     <div>
@@ -111,7 +137,7 @@ const Person = ({ user, userFriends, people, setUserFriends }) => {
       </p>
       {/* { !friends ? <CheckBoxOutlineBlankRoundedIcon style={{ cursor: "pointer" }} onClick={(e) => handleAddFriend(id)} /> Send a friend request to {first_name} : <CheckBoxRoundedIcon /> Friends } */}
 
-      {x.length == 0 ? (
+      {friendToggle.length == 0 ? (
         <>
           <CheckBoxOutlineBlankRoundedIcon
             style={{ cursor: "pointer" }}
@@ -129,14 +155,29 @@ const Person = ({ user, userFriends, people, setUserFriends }) => {
         </>
       )}
 
-      {/* {
-        !friends ? (
-          <CheckBoxOutlineBlankRoundedIcon />Test
-        )
-      } */}
-
       {/* <button onClick={(e) => handleAddFriend(id)}>Send Friend Request</button> */}
       {/* <button onClick={(e) => handleAddFriend(id)}>Add Friend</button> */}
+      {/* <ResponsiveContainer width="100%" height="100%"> */}
+        <BarChart
+          width={500}
+          height={300}
+          data={data2}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="Goal" fill="#82ca9d" />
+          <Bar dataKey="Savings" fill="#8884d8" />
+        </BarChart>
+      {/* </ResponsiveContainer> */}
     </div>
   );
 };
