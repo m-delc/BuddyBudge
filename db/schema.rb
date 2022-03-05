@@ -24,7 +24,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_01_072723) do
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.text "bio"
-    t.integer "savings"
+    t.integer "savings1"
+    t.integer "savings2"
+    t.integer "savings3"
+    t.integer "savings4"
+    t.integer "savings5"
+    t.integer "savings6"
+    t.integer "goal1"
+    t.integer "goal2"
+    t.integer "goal3"
+    t.integer "goal4"
+    t.integer "goal5"
+    t.integer "goal6"
     t.text "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

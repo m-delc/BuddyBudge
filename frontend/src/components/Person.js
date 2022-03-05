@@ -131,7 +131,7 @@ const Person = ({ user, userFriends, setUserFriends }) => {
     <div>
       <img src={img} alt={first_name} />
       <h3>Name: {first_name}</h3>
-      <h4>$$$ saved: ${savings}</h4>
+      <h4>$$$ saved: </h4>
       <p style={{ maxWidth: "25em" }}>
         About {first_name}: {bio}
       </p>

@@ -49,7 +49,7 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
                 <p></p>
                 <img src={y.img} alt={y.first_name} />
                 <h3>Name: {y.first_name}</h3>
-                <h4>$$$ saved: ${y.savings}</h4>
+                <h4>$$$ saved: ${y.savings1}</h4>
                 <p style={{ maxWidth: "25em" }}>
                   About {y.first_name}: {y.bio}
                 </p>
