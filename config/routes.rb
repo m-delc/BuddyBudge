@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :budgets
   
   # namespace :api do
   
   resources :users, only: [:update, :create, :destroy, :index, :show]
   resources :people, only: [:index, :update, :show]
   resources :friends, only: [:create, :index, :destroy, :show]
+  resources :budgets, only: [:create]
     
   post '/login', to: "sessions#login"
   get '/authorize_user', to: "users#show"

@@ -20,6 +20,7 @@ const Budget = () => {
   const [weekFourGoals, setweekFourGoals] = useState("");
   const [weekFiveGoals, setweekFiveGoals] = useState("");
   const [weekSixGoals, setweekSixGoals] = useState("");
+  const [budget, setbudget] = useState([]);
   // console.log(weekTwoGoals);
 
   const chartData = [
@@ -65,7 +66,17 @@ const Budget = () => {
       weekFiveGoals: weekFiveGoals,
       weekSixGoals: weekSixGoals,
     };
+    fetch("/budgets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newObj),
+    })
+      .then((res) => res.json())
+      .then((x) => {
+        setbudget(x);
+      });
   };
+  console.log(budget)
   return (
     // <div style={{ display: "grid", justifyContent: "center" }}>
     <div className="grid">
