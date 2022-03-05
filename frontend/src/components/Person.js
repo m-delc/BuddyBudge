@@ -14,14 +14,18 @@ import {
 
 const Person = ({ user, userFriends, setUserFriends }) => {
   const [person, setPerson] = useState([]);
-  const { id, first_name, bio, savings, img } = person;
+  const { id, first_name, bio, img } = person;
   const params = useParams();
   const friendToggle = userFriends.filter((friend) => {
-    return friend.person.id == params.id;
+    return friend.person_id == params.id;
   });
   const personFriendID = userFriends.filter((friend) => {
     return params.id == friend.person_id;
   })[0];
+
+  // console.log(userFriends)
+  // console.log(personFriendID)
+
 
   const {
     savings1,

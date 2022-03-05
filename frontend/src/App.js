@@ -44,7 +44,7 @@ function App() {
     });
   }, []);
 
-  // console.log(people);
+  // console.log(userFriends);
 
   return (
     <>
@@ -140,7 +140,9 @@ function App() {
         />
         <Route
           path="/friends"
-          element={<Friends userFriends={userFriends} />}
+          element={
+            <Friends user={user} userFriends={userFriends} people={people} />
+          }
         />
         <Route
           path="/people/:id"
