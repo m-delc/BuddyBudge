@@ -18,6 +18,7 @@ import Dashboard from "./components/Dashboard";
 
 function App() {
   const [user, setUser] = useState(null);
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const classes = useStyles();
   const [people, setPeople] = useState(null);
@@ -44,9 +45,9 @@ function App() {
     });
   }, []);
 
-  
+  // const { id } = user
 
-  console.log(userFriends);
+  // console.log(user.id);
 
   return (
     <>
@@ -113,7 +114,7 @@ function App() {
           element={
             <Paper className={classes.pageContent}>
               {" "}
-              <Budget />{" "}
+              <Budget user={user} />{" "}
             </Paper>
           }
         />

@@ -1,8 +1,13 @@
 import React from "react";
+import FriendPage from "../pages/FriendPage";
+
 
 const Friends = ({ userFriends, people, user }) => {
-  // console.log(userFriends);
+  // console.log(userFriends.person_id);
   // console.log(people);
+
+  // const g = userFriends ? userFriends[1].id : null
+  // console.log(g)
 
   // const friends = people.filter((p) => {
   //   return p.id == userFriends.person_id;
@@ -50,21 +55,13 @@ const Friends = ({ userFriends, people, user }) => {
 // }
 
 // const filtertest = people.filter(person =>{
-//   return person.id == 45
+//   return person.id == 
 // })
-// console.log(userFriends)
+console.log(userFriends)
 
   return (
     <div>
-      <ul>
-        friend list
-        {/* {
-          userFriends.map((friend, index) => {
-            return <li key={index}>{friend.person_id}</li>
-          })
-        } */}
-
-      </ul>
+      <FriendPage userFriends={userFriends} />
     </div>
   );
 };

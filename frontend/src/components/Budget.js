@@ -13,7 +13,7 @@ import {
 const savings1 = null;
 // const test = 500
 
-const Budget = () => {
+const Budget = ({ user }) => {
   const [weekOneGoals, setweekOneGoals] = useState("");
   const [weekTwoGoals, setweekTwoGoals] = useState("");
   const [weekThreeGoals, setweekThreeGoals] = useState("");
@@ -65,9 +65,10 @@ const Budget = () => {
       weekFourGoals: weekFourGoals,
       weekFiveGoals: weekFiveGoals,
       weekSixGoals: weekSixGoals,
+      user_id: user.id
     };
     fetch("/budgets", {
-      method: "PATCH",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObj),
     })
@@ -76,7 +77,8 @@ const Budget = () => {
         setbudget(x);
       });
   };
-  console.log(budget)
+  console.log(budget);
+
   return (
     // <div style={{ display: "grid", justifyContent: "center" }}>
     <div className="grid">
