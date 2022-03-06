@@ -82,7 +82,7 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
         res.json().then((user) => {
           setUser(user);
           setIsAuthenticated(true);
-          navigate("/home");
+          navigate("/goals");
         });
       } else {
         res.json().then((json) => setSignupErrors(Object.entries(json.error)));

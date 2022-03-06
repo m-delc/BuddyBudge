@@ -15,6 +15,7 @@ import People from "./components/People";
 import Friends from "./components/Friends";
 import Person from "./components/Person";
 import Dashboard from "./components/Dashboard";
+import Goals from "./pages/Goals";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -167,6 +168,7 @@ function App() {
         />
         {/* <Route path='friend/:id' element={<Person />} /> */}
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="goals" element={<Goals user={user} />} />
       </Routes>
     </>
   );
