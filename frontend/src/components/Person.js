@@ -12,7 +12,7 @@ import {
   Legend,
 } from "recharts";
 
-const Person = ({ user, userFriends, setUserFriends }) => {
+const Person = ({ user, userFriends, setUserFriends, people }) => {
   const [person, setPerson] = useState([]);
   const { id, first_name, bio, img } = person;
   const params = useParams();
@@ -23,57 +23,70 @@ const Person = ({ user, userFriends, setUserFriends }) => {
     return params.id == friend.person_id;
   })[0];
 
-  // console.log(userFriends)
-  // console.log(personFriendID)
+  const personGoals = people.filter((person) => {
+    return person.id == params.id;
+  })[0]
 
-  const {
-    savings1,
-    savings2,
-    savings3,
-    savings4,
-    savings5,
-    savings6,
-    goal1,
-    goal2,
-    goal3,
-    goal4,
-    goal5,
-    goal6,
-  } = person;
+  // console.log(friendToggle)
+  // console.log(personGoals.person_budget)
+  // console.log(personGoals)
+  // console.log(personFriendID.person_budget.weekFiveGoals)
+
+  // const testx = people.map((person) => {
+
+  // })
+
+  // this works but only for friends
+  // this works but only for friends
+  // this works but only for friends
+  // this works but only for friends
+  const thisPersonsGoals = personFriendID ? personFriendID.person_budget :null
+
+  const ccc = personGoals ? personGoals.person_budget : null
+
+  console.log(ccc)
+
+  // console.log(thisPersonsGoals);
+
   const chartData = [
     {
       name: "Week 1",
-      Savings: savings1,
-      Goal: goal1,
+      // Savings: thisPersonsGoals.weekOneGoals,
+      Goal: thisPersonsGoals.weekOneGoals,
     },
     {
       name: "Week 2",
-      Savings: savings2,
-      Goal: goal2,
+      // Savings: thisPersonsGoals.weekTwoGoals,
+      Goal: thisPersonsGoals.weekTwoGoals,
     },
     {
       name: "Week 3",
-      Savings: savings3,
-      Goal: goal3,
+      // Savings: thisPersonsGoals.weekThreeGoals,
+      Goal: thisPersonsGoals.weekThreeGoals,
     },
     {
       name: "Week 4",
-      Savings: savings4,
-      Goal: goal4,
+      // Savings: thisPersonsGoals.weekFourGoals,
+      Goal: thisPersonsGoals.weekFourGoals,
     },
     {
       name: "Week 5",
-      Savings: savings5,
-      Goal: goal5,
+      // Savings: thisPersonsGoals.weekFiveGoals,
+      Goal: thisPersonsGoals.weekFiveGoals,
     },
     {
       name: "Week 6",
-      Savings: savings6,
-      Goal: goal6,
+      // Savings: thisPersonsGoals.weekSixGoals,
+      Goal: thisPersonsGoals.weekSixGoals,
     },
   ];
   const totalSavings =
-    savings1 + savings2 + savings3 + savings4 + savings5 + savings6;
+    thisPersonsGoals.weekOneGoals +
+    thisPersonsGoals.weekTwoGoals +
+    thisPersonsGoals.weekThreeGoals +
+    thisPersonsGoals.weekFourGoals +
+    thisPersonsGoals.weekFiveGoals +
+    thisPersonsGoals.weekSixGoals;
 
   useEffect(() => {
     fetch(`/people/${params.id}`)
@@ -163,7 +176,7 @@ const Person = ({ user, userFriends, setUserFriends }) => {
         <Tooltip />
         <Legend />
         <Bar dataKey="Goal" fill="#82ca9d" />
-        <Bar dataKey="Savings" fill="#8884d8" />
+        {/* <Bar dataKey="Savings" fill="#8884d8" /> */}
       </BarChart>
     </div>
   );

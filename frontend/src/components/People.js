@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Person from "./Person";
 
 const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
   const [message, setMessage] = useState("");
@@ -23,18 +24,18 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
       <div className="grid">
         {people
           ? people.map((y, index) => (
-              <div style={{ background: "white" }} key={index}>
+            <div style={{ background: "white" }} key={index}>
                 <p></p>
                 <img src={y.img} alt={y.first_name} />
                 <h3>Name: {y.first_name}</h3>
                 <h4>
                   Total cash saved: $
-                  {y.savings1 +
-                    y.savings2 +
-                    y.savings3 +
-                    y.savings4 +
-                    y.savings5 +
-                    y.savings6}
+                  {y.person_budget.weekOneGoals +
+                    y.person_budget.weekTwoGoals +
+                    y.person_budget.weekThreeGoals +
+                    y.person_budget.weekFourGoals +
+                    y.person_budget.weekFiveGoals +
+                    y.person_budget.weekSixGoals}
                 </h4>
                 <p style={{ maxWidth: "25em" }}>
                   About {y.first_name}: {y.bio}
@@ -47,7 +48,7 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
                 <p></p>
               </div>
             ))
-          : null}
+            : null}
       </div>
     </div>
   );

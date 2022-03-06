@@ -22,7 +22,7 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const classes = useStyles();
-  const [people, setPeople] = useState(null);
+  const [people, setPeople] = useState([]);
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
   const [personBudget, setPersonBudget] = useState([]);
@@ -57,6 +57,10 @@ function App() {
       }
     });
   }, []);
+
+  // const maptest = people.map(person => {
+
+  // })
 
   return (
     <>

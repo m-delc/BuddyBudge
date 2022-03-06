@@ -4,5 +4,6 @@ class FriendSerializer < ActiveModel::Serializer
 
     # belongs_to :user
     has_one :person
+    has_one :person_budget, through: :person
 
 end
