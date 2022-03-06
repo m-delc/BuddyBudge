@@ -24,7 +24,7 @@ function App() {
   const classes = useStyles();
   const [people, setPeople] = useState(null);
   const [userFriends, setUserFriends] = useState([]);
-  const [budget, setBudget] = useState(null);
+  const [budget, setBudget] = useState([]);
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
