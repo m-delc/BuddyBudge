@@ -13,8 +13,6 @@ import Input from "@mui/material/Input";
 import "../css/loginform.css";
 
 const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
-  // IF YOU ADD THESE BACK, remember to add the params back in user controller
-  // const [signupLastName, setSignupLastName] = useState("");
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupUsername, setSignupUsername] = useState("");
   const [signupPassword, setSignupPassword] = useState("");

@@ -11,58 +11,33 @@ import {
   Line,
 } from "recharts";
 
-const savings1 = null;
-
 const Dashboard = ({ user, budget, personBudget }) => {
-  // console.log(personBudget[0].person.first_name);
-
-  // const person1firstname = personBudget[0].person.first_name
-
-  // const {
-  //   id,
-  //   person_id,
-  //   weekOneGoals,
-  //   weekTwoGoals,
-  //   weekThreeGoals,
-  //   weekFourGoals,
-  //   weekFiveGoals,
-  //   weekSixGoals,
-  // } = personBudget;
-
-  // console.log(id)
-
   // data for Goals Chart
   // data for Goals Chart
   // data for Goals Chart
   const goalsChartData = [
     {
       name: "Week 1",
-      Savings: savings1 ? savings1 : null,
       Goal: budget[0] ? budget[0].weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Savings: savings1 ? savings1 : null,
       Goal: budget[0] ? budget[0].weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Savings: savings1 ? savings1 : null,
       Goal: budget[0] ? budget[0].weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Savings: savings1 ? savings1 : null,
       Goal: budget[0] ? budget[0].weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Savings: savings1 ? savings1 : null,
       Goal: budget[0] ? budget[0].weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Savings: savings1 ? savings1 : null,
       Goal: budget[0] ? budget[0].weekSixGoals : null,
     },
   ];
@@ -73,42 +48,36 @@ const Dashboard = ({ user, budget, personBudget }) => {
   const friendsChartData = [
     {
       name: "Week 1",
-      Savings: savings1 ? savings1 : null,
       Person1: personBudget[0] ? personBudget[0].weekOneGoals : null,
       Person2: personBudget[1] ? personBudget[1].weekOneGoals : null,
       Person3: personBudget[2] ? personBudget[2].weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Savings: savings1 ? savings1 : null,
       Person1: personBudget[0] ? personBudget[0].weekTwoGoals : null,
       Person2: personBudget[1] ? personBudget[1].weekTwoGoals : null,
       Person3: personBudget[2] ? personBudget[2].weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Savings: savings1 ? savings1 : null,
       Person1: personBudget[0] ? personBudget[0].weekThreeGoals : null,
       Person2: personBudget[1] ? personBudget[1].weekThreeGoals : null,
       Person3: personBudget[2] ? personBudget[2].weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Savings: savings1 ? savings1 : null,
       Person1: personBudget[0] ? personBudget[0].weekFourGoals : null,
       Person2: personBudget[1] ? personBudget[1].weekFourGoals : null,
       Person3: personBudget[2] ? personBudget[2].weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Savings: savings1 ? savings1 : null,
       Person1: personBudget[0] ? personBudget[0].weekFiveGoals : null,
       Person2: personBudget[1] ? personBudget[1].weekFiveGoals : null,
       Person3: personBudget[2] ? personBudget[2].weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Savings: savings1 ? savings1 : null,
       Person1: personBudget[0] ? personBudget[0].weekSixGoals : null,
       Person2: personBudget[1] ? personBudget[1].weekSixGoals : null,
       Person3: personBudget[2] ? personBudget[2].weekSixGoals : null,
@@ -142,7 +111,6 @@ const Dashboard = ({ user, budget, personBudget }) => {
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
         <Bar dataKey="Goal" fill="#8884d8" />
-        {/* <Bar dataKey="Savings" fill="#8884d8" /> /> */}
       </BarChart>
       <LineChart
         width={500}

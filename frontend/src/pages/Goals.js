@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import '../css/goals.css'
+import "../css/goals.css";
 import { useNavigate } from "react-router-dom";
-// import "../css/budget.css";
 import {
   BarChart,
   Bar,
@@ -76,71 +75,64 @@ const Goals = ({ user }) => {
       .then((res) => res.json())
       .then((x) => {
         setGoals(x);
-        // setToggleGraph(!toggleGraph)
-        // setweekOneGoals("");
-        // setweekTwoGoals("");
-        // setweekThreeGoals("");
-        // setweekFourGoals("");
-        // setweekFiveGoals("");
-        // setweekSixGoals("");
         navigate("/dashboard");
       });
   };
 
   return (
     <div className="grid">
-        <div>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="number"
-          placeholder="Week 1"
-          value={weekOneGoals}
-          onChange={(e) => setweekOneGoals(e.target.value)}
-        />
-        <br></br>
-        <br></br>
-        <input
-          type="number"
-          placeholder="Week 2"
-          value={weekTwoGoals}
-          onChange={(e) => setweekTwoGoals(e.target.value)}
-        />
-        <br></br>
-        <br></br>
-        <input
-          type="number"
-          placeholder="Week 3"
-          value={weekThreeGoals}
-          onChange={(e) => setweekThreeGoals(e.target.value)}
-        />
-        <br></br>
-        <br></br>
-        <input
-          type="number"
-          placeholder="Week 4"
-          value={weekFourGoals}
-          onChange={(e) => setweekFourGoals(e.target.value)}
-        />
-        <br></br>
-        <br></br>
-        <input
-          type="number"
-          placeholder="Week 5"
-          value={weekFiveGoals}
-          onChange={(e) => setweekFiveGoals(e.target.value)}
-        />
-        <br></br>
-        <br></br>
-        <input
-          type="number"
-          placeholder="Week 6"
-          value={weekSixGoals}
-          onChange={(e) => setweekSixGoals(e.target.value)}
-        />
-        <br></br>
-        <br></br>
-        <button type="submit">Submit</button> or
-      </form>
+      <div>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type="number"
+            placeholder="Week 1"
+            value={weekOneGoals}
+            onChange={(e) => setweekOneGoals(e.target.value)}
+          />
+          <br></br>
+          <br></br>
+          <input
+            type="number"
+            placeholder="Week 2"
+            value={weekTwoGoals}
+            onChange={(e) => setweekTwoGoals(e.target.value)}
+          />
+          <br></br>
+          <br></br>
+          <input
+            type="number"
+            placeholder="Week 3"
+            value={weekThreeGoals}
+            onChange={(e) => setweekThreeGoals(e.target.value)}
+          />
+          <br></br>
+          <br></br>
+          <input
+            type="number"
+            placeholder="Week 4"
+            value={weekFourGoals}
+            onChange={(e) => setweekFourGoals(e.target.value)}
+          />
+          <br></br>
+          <br></br>
+          <input
+            type="number"
+            placeholder="Week 5"
+            value={weekFiveGoals}
+            onChange={(e) => setweekFiveGoals(e.target.value)}
+          />
+          <br></br>
+          <br></br>
+          <input
+            type="number"
+            placeholder="Week 6"
+            value={weekSixGoals}
+            onChange={(e) => setweekSixGoals(e.target.value)}
+          />
+          <br></br>
+          <br></br>
+          <button type="submit">Submit</button> or
+        </form>
       </div>
       <BarChart
         width={500}
@@ -160,7 +152,6 @@ const Goals = ({ user }) => {
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
         <Bar dataKey="Goal" fill="#82ca9d" />
-        {/* <Bar dataKey="Savings" fill="#8884d8" /> /> */}
       </BarChart>
     </div>
   );

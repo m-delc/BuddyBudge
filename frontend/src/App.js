@@ -58,8 +58,6 @@ function App() {
     });
   }, []);
 
-  // console.log(personBudget)
-
   return (
     <>
       <Paper className={classes.pageContent} elevation={24}>
@@ -170,7 +168,6 @@ function App() {
             </Paper>
           }
         />
-        {/* <Route path='friend/:id' element={<Person />} /> */}
         <Route
           path="dashboard"
           element={

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#login"
   get '/authorize_user', to: "users#show"
   delete '/logout', to: "sessions#logout"
-  # post '/friends', to: "friends#create"
   get '/friends', to: "friends#index"
 
 

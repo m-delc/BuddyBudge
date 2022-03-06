@@ -9,11 +9,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-// import { Slider, RangeSlider, Row, Col, InputNumber } from 'rsuite';
-// import Slider from 'rsuite/Slider';
 
 const savings1 = null;
-// const test = 500
 
 const Budget = ({ user, budget }) => {
   const [weekOneGoals, setweekOneGoals] = useState("");
@@ -24,9 +21,7 @@ const Budget = ({ user, budget }) => {
   const [weekSixGoals, setweekSixGoals] = useState("");
   const [goals, setGoals] = useState([]);
   const [toggleSubmitUpdate, setToggleSubmitUpdate] = useState(true);
-  const [toggleGraph, setToggleGraph] = useState(true)
-
-  console.log(user);
+  const [toggleGraph, setToggleGraph] = useState(true);
 
   const chartData = [
     {
@@ -113,7 +108,7 @@ const Budget = ({ user, budget }) => {
       .then((res) => res.json())
       .then((x) => {
         setGoals(x);
-        setToggleGraph(!toggleGraph)
+        setToggleGraph(!toggleGraph);
         setweekOneGoals("");
         setweekTwoGoals("");
         setweekThreeGoals("");
@@ -122,8 +117,6 @@ const Budget = ({ user, budget }) => {
         setweekSixGoals("");
       });
   };
-
-  // console.log(goals);
 
   const handleToggle = () => {
     setToggleSubmitUpdate(!toggleSubmitUpdate);
@@ -240,52 +233,57 @@ const Budget = ({ user, budget }) => {
             <br></br>
             <br></br>
             <button type="submit">Submit</button> or
-            {/* <button onClick={handleToggle}>Update</button> */}
           </form>
         )}
       </div>
       {toggleGraph ? (
         <BarChart
-        width={500}
-        height={300}
-        data={chartData}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        barSize={30}
-      >
-        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="Goal" fill="#82ca9d" />
-        {/* <Bar dataKey="Savings" fill="#8884d8" /> /> */}
-      </BarChart>
+          width={500}
+          height={300}
+          data={chartData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          barSize={30}
+        >
+          <XAxis
+            dataKey="name"
+            scale="point"
+            padding={{ left: 10, right: 10 }}
+          />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Bar dataKey="Goal" fill="#82ca9d" />
+        </BarChart>
       ) : (
         <BarChart
-        width={500}
-        height={300}
-        data={chartData2}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        barSize={30}
-      >
-        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="Goal" fill="#82ca9d" />
-        {/* <Bar dataKey="Savings" fill="#8884d8" /> /> */}
-      </BarChart>
+          width={500}
+          height={300}
+          data={chartData2}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          barSize={30}
+        >
+          <XAxis
+            dataKey="name"
+            scale="point"
+            padding={{ left: 10, right: 10 }}
+          />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Bar dataKey="Goal" fill="#82ca9d" />
+        </BarChart>
       )}
       <button onClick={handleToggle}>Update</button>
     </div>
