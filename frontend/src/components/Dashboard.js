@@ -7,86 +7,71 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
 } from "recharts";
 
-const Dashboard = () => {
-  //   const data = [
-  //     { name: "Michael", value: 15 },
-  //     { name: "Sara", value: 24 },
-  //   ];
-  const data = [
+const savings1 = null;
+
+
+const Dashboard = ({ user, budget }) => {
+
+  // console.log(budget[0].weekOneGoals)
+
+  const chartData2 = [
     {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      name: "Week 1",
+      Savings: savings1 ? savings1 : null,
+      Goal: budget[0].weekOneGoals ? budget[0].weekOneGoals : null,
     },
     {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      name: "Week 2",
+      Savings: savings1 ? savings1 : null,
+      Goal: budget[0].weekTwoGoals ? budget[0].weekTwoGoals : null,
     },
     {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+      name: "Week 3",
+      Savings: savings1 ? savings1 : null,
+      Goal: budget[0].weekThreeGoals ? budget[0].weekThreeGoals : null,
     },
     {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+      name: "Week 4",
+      Savings: savings1 ? savings1 : null,
+      Goal: budget[0].weekFourGoals ? budget[0].weekFourGoals : null,
     },
     {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+      name: "Week 5",
+      Savings: savings1 ? savings1 : null,
+      Goal: budget[0].weekFiveGoals ? budget[0].weekFiveGoals : null,
     },
     {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
+      name: "Week 6",
+      Savings: savings1 ? savings1 : null,
+      Goal: budget[0].weekSixGoals ? budget[0].weekSixGoals : null,
     },
   ];
 
+
   return (
     <div>
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-          barSize={30}
-        >
-          <XAxis
-            dataKey="name"
-            scale="point"
-            padding={{ left: 10, right: 10 }}
-          />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="pv" fill="#8884d8" background={{ fill: "#eee" }} />
-        </BarChart>
-      {/* </ResponsiveContainer> */}
+      <BarChart
+        width={500}
+        height={300}
+        data={chartData2}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barSize={30}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="Goal" fill="#8884d8" />
+        {/* <Bar dataKey="Savings" fill="#8884d8" /> /> */}
+      </BarChart>
     </div>
   );
 };

@@ -24,7 +24,7 @@ function App() {
   const classes = useStyles();
   const [people, setPeople] = useState(null);
   const [userFriends, setUserFriends] = useState([]);
-  const [budget, setBudget] = useState([])
+  const [budget, setBudget] = useState([]);
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
@@ -45,11 +45,11 @@ function App() {
         res.json().then(setUserFriends);
       }
     });
-    fetch('/budgets').then(res => {
-      if(res.ok) {
-        res.json().then(setBudget)
+    fetch("/budgets").then((res) => {
+      if (res.ok) {
+        res.json().then(setBudget);
       }
-    })
+    });
   }, []);
 
   // const { id } = user
@@ -167,7 +167,10 @@ function App() {
           }
         />
         {/* <Route path='friend/:id' element={<Person />} /> */}
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route
+          path="dashboard"
+          element={<Dashboard user={user} budget={budget} />}
+        />
         <Route path="goals" element={<Goals user={user} />} />
       </Routes>
     </>
