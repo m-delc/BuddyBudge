@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :person_budgets
   
   # namespace :api do
   
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
   resources :people, only: [:index, :update, :show]
   resources :friends, only: [:create, :index, :destroy, :show]
   resources :budgets, only: [:create, :index]
+  resources :person_budgets, only: [:index]
     
   post '/login', to: "sessions#login"
   get '/authorize_user', to: "users#show"

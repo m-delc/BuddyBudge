@@ -25,6 +25,7 @@ function App() {
   const [people, setPeople] = useState(null);
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
+  const [personBudget, setPersonBudget] = useState([]);
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
@@ -50,7 +51,14 @@ function App() {
         res.json().then(setBudget);
       }
     });
+    fetch("/person_budgets").then((res) => {
+      if (res.ok) {
+        res.json().then(setPersonBudget);
+      }
+    });
   }, []);
+
+  // console.log(personBudget)
 
   return (
     <>
@@ -165,7 +173,13 @@ function App() {
         {/* <Route path='friend/:id' element={<Person />} /> */}
         <Route
           path="dashboard"
-          element={<Dashboard user={user} budget={budget} />}
+          element={
+            <Dashboard
+              user={user}
+              budget={budget}
+              personBudget={personBudget}
+            />
+          }
         />
         <Route path="goals" element={<Goals user={user} />} />
       </Routes>
