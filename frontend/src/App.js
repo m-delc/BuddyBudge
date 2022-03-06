@@ -23,6 +23,7 @@ function App() {
   const classes = useStyles();
   const [people, setPeople] = useState(null);
   const [userFriends, setUserFriends] = useState([]);
+  const [budget, setBudget] = useState([])
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
@@ -43,11 +44,16 @@ function App() {
         res.json().then(setUserFriends);
       }
     });
+    fetch('/budgets').then(res => {
+      if(res.ok) {
+        res.json().then(setBudget)
+      }
+    })
   }, []);
 
   // const { id } = user
 
-  // console.log(user.id);
+  // console.log(budget);
 
   return (
     <>
@@ -113,8 +119,7 @@ function App() {
           path="budget"
           element={
             <Paper className={classes.pageContent}>
-              {" "}
-              <Budget user={user} />{" "}
+              <Budget user={user} budget={budget} />
             </Paper>
           }
         />

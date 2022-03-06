@@ -15,7 +15,7 @@ import {
 const savings1 = null;
 // const test = 500
 
-const Budget = ({ user }) => {
+const Budget = ({ user, budget }) => {
   const [weekOneGoals, setweekOneGoals] = useState("");
   const [weekTwoGoals, setweekTwoGoals] = useState("");
   const [weekThreeGoals, setweekThreeGoals] = useState("");
@@ -25,7 +25,8 @@ const Budget = ({ user }) => {
   const [goals, setGoals] = useState([]);
   const [toggleSubmitUpdate, setToggleSubmitUpdate] = useState(true);
   const [toggleGraph, setToggleGraph] = useState(true)
-  // console.log(weekTwoGoals);
+
+  console.log(user);
 
   const chartData = [
     {
@@ -122,7 +123,7 @@ const Budget = ({ user }) => {
       });
   };
 
-  console.log(goals);
+  // console.log(goals);
 
   const handleToggle = () => {
     setToggleSubmitUpdate(!toggleSubmitUpdate);
