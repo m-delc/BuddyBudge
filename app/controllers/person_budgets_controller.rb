@@ -1,0 +1,2 @@
+class PersonBudgetsController < ApplicationController
+end
