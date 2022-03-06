@@ -24,7 +24,7 @@ function App() {
   const classes = useStyles();
   const [people, setPeople] = useState(null);
   const [userFriends, setUserFriends] = useState([]);
-  const [budget, setBudget] = useState([]);
+  const [budget, setBudget] = useState(null);
 
   useEffect(() => {
     fetch("/authorize_user").then((res) => {
@@ -51,10 +51,6 @@ function App() {
       }
     });
   }, []);
-
-  // const { id } = user
-
-  // console.log(budget);
 
   return (
     <>
