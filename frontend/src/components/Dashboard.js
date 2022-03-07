@@ -12,33 +12,36 @@ import {
 } from "recharts";
 
 const Dashboard = ({ user, budget, personBudget }) => {
+
+  // console.log(user.budget)
+  // console.log(user.budget.weekFiveGoals)
   // data for Goals Chart
   // data for Goals Chart
   // data for Goals Chart
   const goalsChartData = [
     {
       name: "Week 1",
-      Goal: budget[0] ? budget[0].weekOneGoals : null,
+      Goal: budget[0] ? user.budget.weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Goal: budget[0] ? budget[0].weekTwoGoals : null,
+      Goal: budget[0] ? user.budget.weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Goal: budget[0] ? budget[0].weekThreeGoals : null,
+      Goal: budget[0] ? user.budget.weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Goal: budget[0] ? budget[0].weekFourGoals : null,
+      Goal: budget[0] ? user.budget.weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Goal: budget[0] ? budget[0].weekFiveGoals : null,
+      Goal: budget[0] ? user.budget.weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Goal: budget[0] ? budget[0].weekSixGoals : null,
+      Goal: budget[0] ? user.budget.weekSixGoals : null,
     },
   ];
 

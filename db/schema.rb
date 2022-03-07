@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_023639) do
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.text "bio"
+    t.text "img"
     t.integer "savings1"
     t.integer "savings2"
     t.integer "savings3"
@@ -48,19 +49,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_023639) do
     t.integer "goal4"
     t.integer "goal5"
     t.integer "goal6"
-    t.text "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "person_budgets", force: :cascade do |t|
+    t.integer "person_id"
     t.integer "weekOneGoals"
     t.integer "weekTwoGoals"
     t.integer "weekThreeGoals"
     t.integer "weekFourGoals"
     t.integer "weekFiveGoals"
     t.integer "weekSixGoals"
-    t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
