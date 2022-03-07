@@ -25,7 +25,7 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
 
   const personGoals = people.filter((person) => {
     return person.id == params.id;
-  })[0]
+  })[0];
 
   // console.log(friendToggle)
   // console.log(personGoals.person_budget)
@@ -40,11 +40,11 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
   // this works but only for friends
   // this works but only for friends
   // this works but only for friends
-  const thisPersonsGoals = personFriendID ? personFriendID.person_budget :null
+  const thisPersonsGoals = personFriendID ? personFriendID.person_budget : null;
 
-  const ccc = personGoals ? personGoals.person_budget : null
+  const ccc = personGoals ? personGoals.person_budget : null;
 
-  console.log(ccc)
+  // console.log(personGoals);
 
   // console.log(thisPersonsGoals);
 
@@ -52,41 +52,41 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
     {
       name: "Week 1",
       // Savings: thisPersonsGoals.weekOneGoals,
-      Goal: thisPersonsGoals.weekOneGoals,
+      Goal: ccc.weekOneGoals,
     },
     {
       name: "Week 2",
       // Savings: thisPersonsGoals.weekTwoGoals,
-      Goal: thisPersonsGoals.weekTwoGoals,
+      Goal: ccc.weekTwoGoals,
     },
     {
       name: "Week 3",
       // Savings: thisPersonsGoals.weekThreeGoals,
-      Goal: thisPersonsGoals.weekThreeGoals,
+      Goal: ccc.weekThreeGoals,
     },
     {
       name: "Week 4",
       // Savings: thisPersonsGoals.weekFourGoals,
-      Goal: thisPersonsGoals.weekFourGoals,
+      Goal: ccc.weekFourGoals,
     },
     {
       name: "Week 5",
       // Savings: thisPersonsGoals.weekFiveGoals,
-      Goal: thisPersonsGoals.weekFiveGoals,
+      Goal: ccc.weekFiveGoals,
     },
     {
       name: "Week 6",
       // Savings: thisPersonsGoals.weekSixGoals,
-      Goal: thisPersonsGoals.weekSixGoals,
+      Goal: ccc.weekSixGoals,
     },
   ];
   const totalSavings =
-    thisPersonsGoals.weekOneGoals +
-    thisPersonsGoals.weekTwoGoals +
-    thisPersonsGoals.weekThreeGoals +
-    thisPersonsGoals.weekFourGoals +
-    thisPersonsGoals.weekFiveGoals +
-    thisPersonsGoals.weekSixGoals;
+  ccc.weekOneGoals +
+  ccc.weekTwoGoals +
+  ccc.weekThreeGoals +
+  ccc.weekFourGoals +
+  ccc.weekFiveGoals +
+  ccc.weekSixGoals;
 
   useEffect(() => {
     fetch(`/people/${params.id}`)
