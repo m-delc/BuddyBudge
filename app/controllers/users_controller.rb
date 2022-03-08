@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
         if user.valid?
+            session[:current_user] = user.id
             return render json: user, status: 201
         else
             return render json: { error: user.errors.full_messages }, status: 404
