@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/budget.css";
 import {
   BarChart,
@@ -22,6 +23,7 @@ const Budget = ({ user, budget }) => {
   const [goals, setGoals] = useState([]);
   const [toggleSubmitUpdate, setToggleSubmitUpdate] = useState(true);
   const [toggleGraph, setToggleGraph] = useState(true);
+  const navigate = useNavigate();
 
   const chartData = [
     {
@@ -109,12 +111,13 @@ const Budget = ({ user, budget }) => {
       .then((x) => {
         setGoals(x);
         setToggleGraph(!toggleGraph);
-        setweekOneGoals("");
-        setweekTwoGoals("");
-        setweekThreeGoals("");
-        setweekFourGoals("");
-        setweekFiveGoals("");
-        setweekSixGoals("");
+        // setweekOneGoals("");
+        // setweekTwoGoals("");
+        // setweekThreeGoals("");
+        // setweekFourGoals("");
+        // setweekFiveGoals("");
+        // setweekSixGoals("");
+        navigate("/dashboard");
       });
   };
 

@@ -9,13 +9,13 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import RequireAuth from "./pages/RequireAuth";
 import useStyles from "./pages/useStyles";
-import Budget from "./components/Budget";
+import Budget from "./components/Goals";
 import ProfileDelete from "./pages/ProfileDelete";
 import People from "./components/People";
 import Friends from "./components/Friends";
 import Person from "./components/Person";
 import Dashboard from "./components/Dashboard";
-import Goals from "./pages/Goals";
+import Goals from "./components/Goals";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -58,6 +58,9 @@ function App() {
     });
   }, []);
 
+  // useEffect(() => {
+
+  // }, [])
 
   return (
     <>
@@ -120,10 +123,10 @@ function App() {
         />
 
         <Route
-          path="budget"
+          path="goals"
           element={
             <Paper className={classes.pageContent}>
-              <Budget user={user} budget={budget} />
+              <Goals user={user} budget={budget} />
             </Paper>
           }
         />
@@ -179,7 +182,7 @@ function App() {
             />
           }
         />
-        <Route path="goals" element={<Goals user={user} />} />
+        {/* <Route path="goals" element={<Goals user={user} />} /> */}
       </Routes>
     </>
   );

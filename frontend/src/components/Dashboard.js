@@ -87,7 +87,7 @@ const Dashboard = ({ user, budget, personBudget }) => {
   return (
     <div
       style={{
-        background: "black",
+        background: "grey",
         display: "grid",
         justifyContent: "center",
       }}
