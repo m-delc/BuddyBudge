@@ -1,6 +1,6 @@
 require "faker"
 
-
+u1 = User.create!(username: "lol", first_name: "Larry", password: "lol" )
 
 p1 = Person.create!(first_name: "Sam", bio: Faker::Lorem.sentence(word_count: 10), savings1: Faker::Number.within(range: 101..1499), img: "https://denverbusinessheadshots.com/wp-content/uploads/2020/02/Denver-Business-Headshots-Denver-Headshots-Denver-Portrait-Photography-Denver-Portraits-Denver-Headshot-Colorado-Business-Headshots-148-256x256.jpg")
 p2 = Person.create!(first_name: "Kiera", bio: Faker::Lorem.sentence(word_count: 10), savings1: Faker::Number.within(range: 101..1499), img: "https://aacu.imgix.net/content/person/Headshot_Nicole-Fry.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=256&q=80&w=256")
@@ -24,4 +24,4 @@ PersonBudget.create!(person_id: p8.id, weekOneGoals: Faker::Number.within(range:
 PersonBudget.create!(person_id: p9.id, weekOneGoals: Faker::Number.within(range: 101..301), weekTwoGoals: Faker::Number.within(range: 101..301), weekThreeGoals: Faker::Number.within(range: 101..301), weekFourGoals: Faker::Number.within(range: 101..301), weekFiveGoals: Faker::Number.within(range: 101..301), weekSixGoals: Faker::Number.within(range: 101..301))
 PersonBudget.create!(person_id: p10.id, weekOneGoals: Faker::Number.within(range: 101..301), weekTwoGoals: Faker::Number.within(range: 101..301), weekThreeGoals: Faker::Number.within(range: 101..301), weekFourGoals: Faker::Number.within(range: 101..301), weekFiveGoals: Faker::Number.within(range: 101..301), weekSixGoals: Faker::Number.within(range: 101..301))
 
-# Budget.create!(user_id: 5, weekOneGoals: Faker::Number.within(range: 101..301), weekTwoGoals: Faker::Number.within(range: 101..301), weekThreeGoals: Faker::Number.within(range: 101..301), weekFourGoals: Faker::Number.within(range: 101..301), weekFiveGoals: Faker::Number.within(range: 101..301), weekSixGoals: Faker::Number.within(range: 101..301))
+Budget.create!(user_id: u1.id, weekOneGoals: Faker::Number.within(range: 101..301), weekTwoGoals: Faker::Number.within(range: 101..301), weekThreeGoals: Faker::Number.within(range: 101..301), weekFourGoals: Faker::Number.within(range: 101..301), weekFiveGoals: Faker::Number.within(range: 101..301), weekSixGoals: Faker::Number.within(range: 101..301))
