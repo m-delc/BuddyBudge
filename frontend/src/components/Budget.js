@@ -10,7 +10,7 @@ import {
   Legend,
 } from "recharts";
 
-const savings1 = null;
+// const savings1 = null;
 
 const Budget = ({ user, budget }) => {
   const [weekOneGoals, setweekOneGoals] = useState("");
@@ -26,32 +26,32 @@ const Budget = ({ user, budget }) => {
   const chartData = [
     {
       name: "Week 1",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekOneGoals ? weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekTwoGoals ? weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekThreeGoals ? weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekFourGoals ? weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekFiveGoals ? weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekSixGoals ? weekSixGoals : null,
     },
   ];
@@ -59,32 +59,32 @@ const Budget = ({ user, budget }) => {
   const chartData2 = [
     {
       name: "Week 1",
-      Savings: goals.savings1 ? goals.savings1 : null,
+      // Savings: goals.savings1 ? goals.savings1 : null,
       Goal: goals.weekOneGoals ? goals.weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: goals.weekTwoGoals ? goals.weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: goals.weekThreeGoals ? goals.weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: goals.weekFourGoals ? goals.weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: goals.weekFiveGoals ? goals.weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: goals.weekSixGoals ? goals.weekSixGoals : null,
     },
   ];

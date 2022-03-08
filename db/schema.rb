@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_06_023639) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_08_000229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,18 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_023639) do
     t.string "first_name"
     t.text "bio"
     t.text "img"
-    t.integer "savings1"
-    t.integer "savings2"
-    t.integer "savings3"
-    t.integer "savings4"
-    t.integer "savings5"
-    t.integer "savings6"
-    t.integer "goal1"
-    t.integer "goal2"
-    t.integer "goal3"
-    t.integer "goal4"
-    t.integer "goal5"
-    t.integer "goal6"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

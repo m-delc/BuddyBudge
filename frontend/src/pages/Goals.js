@@ -11,7 +11,7 @@ import {
   Legend,
 } from "recharts";
 
-const savings1 = null;
+// const savings1 = null;
 
 const Goals = ({ user }) => {
   const [weekOneGoals, setweekOneGoals] = useState("");
@@ -26,32 +26,32 @@ const Goals = ({ user }) => {
   const chartData = [
     {
       name: "Week 1",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekOneGoals ? weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekTwoGoals ? weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekThreeGoals ? weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekFourGoals ? weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekFiveGoals ? weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Savings: savings1 ? savings1 : null,
+      // Savings: savings1 ? savings1 : null,
       Goal: weekSixGoals ? weekSixGoals : null,
     },
   ];

@@ -12,9 +12,6 @@ import {
 } from "recharts";
 
 const Dashboard = ({ user, budget, personBudget }) => {
-
-  // console.log(user.budget)
-  // console.log(user.budget.weekFiveGoals)
   // data for Goals Chart
   // data for Goals Chart
   // data for Goals Chart
