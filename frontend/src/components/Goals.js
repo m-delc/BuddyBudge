@@ -111,12 +111,7 @@ const Budget = ({ user, budget }) => {
       .then((x) => {
         setGoals(x);
         setToggleGraph(!toggleGraph);
-        // setweekOneGoals("");
-        // setweekTwoGoals("");
-        // setweekThreeGoals("");
-        // setweekFourGoals("");
-        // setweekFiveGoals("");
-        // setweekSixGoals("");
+
         navigate("/dashboard");
       });
   };

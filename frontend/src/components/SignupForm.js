@@ -104,7 +104,6 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
       </div>
 
       <br></br>
-      <br></br>
 
       <div>
         <Input
@@ -171,7 +170,6 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
         />
       </div>
 
-      <br></br>
 
       <br></br>
       <br></br>
