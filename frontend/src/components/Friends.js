@@ -57,7 +57,7 @@ const Friends = ({ userFriends, people, user }) => {
 // const filtertest = people.filter(person =>{
 //   return person.id == 
 // })
-console.log(userFriends)
+// console.log(userFriends)
 
   return (
     <div>

@@ -15,8 +15,8 @@ import "../css/loginform.css";
 const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupUsername, setSignupUsername] = useState("");
-  const [signupPassword, setSignupPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [signupPassword, setSignupPassword] = useState("");
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
   const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   function signupOnSubmit(e) {
     e.preventDefault();
     setSignupErrors([]);
-    const user = {
+    const newUser = {
       username: signupUsername,
       first_name: signupFirstName,
       password: initialPassword.password,
@@ -74,13 +74,12 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
     fetch("/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(newUser),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => {
-          setUser(user);
-          setIsAuthenticated(true);
-          navigate("/goals");
+        res.json().then((x) => {
+          setUser(x);
+          navigate("/home");
         });
       } else {
         res.json().then((json) => setSignupErrors(Object.entries(json.error)));

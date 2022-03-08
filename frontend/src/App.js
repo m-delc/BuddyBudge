@@ -58,9 +58,6 @@ function App() {
     });
   }, []);
 
-  // const maptest = people.map(person => {
-
-  // })
 
   return (
     <>

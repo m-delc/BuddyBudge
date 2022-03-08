@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "../css/profiledelete.css";
 
 const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
-  const [someState, setSomeState] = useState(true);
+  const [toggle, setToggle] = useState(true);
   const navigate = useNavigate();
 
-  const x = (e) => {
+  const deleteTimeout = (e) => {
     e.preventDefault();
-    setSomeState(false);
+    setToggle(false);
     setTimeout(handleDeleteAccount, 3000);
   };
 
@@ -18,7 +18,7 @@ const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
       headers: { "Content-Type": "application/json" },
     }).then(
       console.log("Account Deleted"),
-      setUser(""),
+      setUser(null),
       setIsAuthenticated(false),
       navigate("/home")
     );
@@ -26,11 +26,11 @@ const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
 
   return (
     <>
-      {someState ? (
+      {toggle ? (
         <div className="div1">
           {user ? user.username : null}, are you sure you want to delete your
           account?
-          <form onSubmit={x}>
+          <form onSubmit={deleteTimeout}>
             <br></br>
             <input required type="checkbox" />
             Yes, I'm sure

@@ -56,6 +56,12 @@ const Goals = ({ user }) => {
     },
   ];
 
+  const handleTimeout = () => {
+    setTimeout(navigate("/dashboard"), 2000);
+  };
+
+  console.log(user.id)
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const newObj = {
@@ -75,7 +81,8 @@ const Goals = ({ user }) => {
       .then((res) => res.json())
       .then((x) => {
         setGoals(x);
-        navigate("/dashboard");
+        // navigate("/dashboard");
+        // handleTimeout();
       });
   };
 
