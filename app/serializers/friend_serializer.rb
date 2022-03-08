@@ -4,6 +4,10 @@ class FriendSerializer < ActiveModel::Serializer
 
     # belongs_to :user
     has_one :person
+    
+    # this is neeeded for the chart on dashboard
+    # this is neeeded for the chart on dashboard
+    # this is neeeded for the chart on dashboard
     has_one :person_budget, through: :person
 
 end
