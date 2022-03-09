@@ -18,27 +18,27 @@ const Dashboard = ({ user, budget, personBudget }) => {
   const goalsChartData = [
     {
       name: "Week 1",
-      Goal: user.budget ? user.budget.weekOneGoals : null,
+      Goal: user ? user.budget.weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Goal: user.budget ? user.budget.weekTwoGoals : null,
+      Goal: user ? user.budget.weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Goal: user.budget ? user.budget.weekThreeGoals : null,
+      Goal: user ? user.budget.weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Goal: user.budget ? user.budget.weekFourGoals : null,
+      Goal: user ? user.budget.weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Goal: user.budget ? user.budget.weekFiveGoals : null,
+      Goal: user ? user.budget.weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Goal: user.budget ? user.budget.weekSixGoals : null,
+      Goal: user ? user.budget.weekSixGoals : null,
     },
   ];
 
