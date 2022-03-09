@@ -7,9 +7,7 @@ import { Paper } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import RequireAuth from "./pages/RequireAuth";
 import useStyles from "./pages/useStyles";
-import Budget from "./components/Goals";
 import ProfileDelete from "./pages/ProfileDelete";
 import People from "./components/People";
 import Friends from "./components/Friends";
@@ -17,11 +15,21 @@ import Person from "./components/Person";
 import Dashboard from "./components/Dashboard";
 import Goals from "./components/Goals";
 
+const getData = async () => {
+  const people = await fetch("/people").then((res) => res.json());
+  const friends = await fetch("/friends").then((res) => res.json());
+  const budgets = await fetch("/budgets").then((res) => res.json());
+  const personBudgets = await fetch("/person_budgets").then((res) =>
+    res.json()
+  );
+  return { people, friends, budgets, personBudgets };
+};
+
 function App() {
+  const classes = useStyles();
   const [user, setUser] = useState(null);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const classes = useStyles();
   const [people, setPeople] = useState([]);
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
@@ -36,31 +44,51 @@ function App() {
         });
       }
     });
-    fetch("/people").then((res) => {
-      if (res.ok) {
-        res.json().then(setPeople);
-      }
-    });
-    fetch("/friends").then((res) => {
-      if (res.ok) {
-        res.json().then(setUserFriends);
-      }
-    });
-    fetch("/budgets").then((res) => {
-      if (res.ok) {
-        res.json().then(setBudget);
-      }
-    });
-    fetch("/person_budgets").then((res) => {
-      if (res.ok) {
-        res.json().then(setPersonBudget);
-      }
-    });
+    // fetch("/people").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((x) => {
+    //       setPeople(x);
+    //     });
+    //   }
+    // });
+    // fetch("/friends").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((x) => {
+    //       setUserFriends(x);
+    //     });
+    //   }
+    // });
+    // fetch("/budgets").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((x) => {
+    //       setBudget(x);
+    //     });
+    //   }
+    // });
+    // fetch("/person_budgets").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((x) => {
+    //       setPersonBudget(x);
+    //     });
+    //   }
+    // });
   }, []);
 
-  // useEffect(() => {
+  useEffect(() => {
+    (async () => {
+      const allData = await getData();
+      setPeople(allData.people);
+      setUserFriends(allData.friends);
+      setBudget(allData.budgets);
+      setPersonBudget(allData.personBudgets);
+    })();
+  }, []);
 
-  // }, [])
+  const loaded = people && userFriends && budget && personBudget;
+
+  if (!loaded) {
+    return "...loading";
+  }
 
   return (
     <>
@@ -96,7 +124,9 @@ function App() {
             />
           }
         />
+
         <Route path="/" element={<Home />} />
+
         <Route
           path="home"
           element={
@@ -108,7 +138,6 @@ function App() {
         <Route
           path="profile"
           element={
-            // <RequireAuth isAuthenticated={isAuthenticated}>
             <Paper className={classes.pageContent}>
               <Profile
                 user={user}
@@ -117,11 +146,9 @@ function App() {
                 setIsAuthenticated={setIsAuthenticated}
               />
             </Paper>
-            //{" "}
-            // </RequireAuth>s
+            // //{" "}
           }
         />
-
         <Route
           path="goals"
           element={
@@ -182,7 +209,6 @@ function App() {
             />
           }
         />
-        {/* <Route path="goals" element={<Goals user={user} />} /> */}
       </Routes>
     </>
   );
