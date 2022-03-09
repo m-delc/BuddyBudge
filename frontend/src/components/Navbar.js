@@ -30,6 +30,15 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
     setAnchorEl(null);
   };
 
+  // const [budget, setBudget] = React.useState(null);
+  // React.useEffect(() => {
+  //   fetch("/budgets").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then(setBudget);
+  //     }
+  //   });
+  // })
+
   const logout = () => {
     fetch("/logout", {
       method: "DELETE",
@@ -44,7 +53,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
     <header className="header">
       <span className="span1">
         <NavLink to="dashboard">{user ? "Dashboard" : null}</NavLink>
-        <NavLink to="goals">{user ? `${user.username}'s Goals` : null}</NavLink>
+        <NavLink to="goals">{user ? `${user.first_name}'s Goals` : null}</NavLink>
         <NavLink to="people">{user ? "People" : null}</NavLink>
         <br></br>
       </span>

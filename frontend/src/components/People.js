@@ -3,10 +3,17 @@ import { useNavigate } from "react-router-dom";
 import Person from "./Person";
 
 const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
-  const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState("");
-  const [friends, setFriends] = useState([]);
+  // const [message, setMessage] = useState("");
+  // const [errors, setErrors] = useState("");
   // const [people, setPeople] = useState(null);
+  // const [people, setPeople] = useState([])
+  // React.useEffect(() => {
+  //   fetch("/people").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then(setPeople);
+  //     }
+  //   });
+  // })
   const navigate = useNavigate();
   const handleNavToPerson = (id) => {
     navigate(`/people/${id}`);
@@ -27,7 +34,7 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
             <div style={{ background: "white", borderRadius: "8px" }} key={index}>
                 <p></p>
                 <img src={y.img} alt={y.first_name} />
-                <h3>Name: {y.first_name}</h3>
+                <h3>{y.first_name}</h3>
                 <h4>
                   Total cash saved: $
                   {y.person_budget.weekOneGoals +

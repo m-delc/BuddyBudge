@@ -12,6 +12,22 @@ import {
 } from "recharts";
 
 const Dashboard = ({ user, budget, personBudget }) => {
+  // const [user, setUser] = React.useState(null);
+
+  // React.useEffect(() => {
+  //   fetch("/authorize_user").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((user) => {
+  //         // setIsAuthenticated(true);
+  //         setUser(user);
+  //       });
+  //     }
+  //   });
+  // }, []);
+
+  // console.log(user)
+
+
   // data for Goals Chart
   // data for Goals Chart
   // data for Goals Chart
@@ -85,69 +101,76 @@ const Dashboard = ({ user, budget, personBudget }) => {
   ];
 
   return (
-    <div
-      style={{
-        background: "white",
-        display: "grid",
-        justifyContent: "center",
-      }}
-    >
-      <h4 style={{ textAlign: "center" }}>Your Goals</h4>
-      <BarChart
-        width={500}
-        height={300}
-        data={goalsChartData}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        barSize={30}
-      >
-        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="Goal" fill="#8884d8" />
-      </BarChart>
-      <LineChart
-        width={500}
-        height={300}
-        data={friendsChartData}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
+    <>
+    
+      <div
+        style={{
+          background: "white",
+          display: "grid",
+          justifyContent: "center",
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="Person2"
-          stroke="#8884d8"
-          strokeDasharray="5 5"
-        />
-        <Line
-          type="monotone"
-          dataKey="Person1"
-          stroke="#82ca9d"
-          strokeDasharray="3 4 5 2"
-        />{" "}
-        <Line
-          type="monotone"
-          dataKey="Person3"
-          stroke="#e21c7f"
-          strokeDasharray="3 4 5 2"
-        />
-      </LineChart>
-    </div>
+        <h4 style={{ textAlign: "center" }}>Your Goals</h4>
+        <BarChart
+          width={500}
+          height={300}
+          data={goalsChartData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          barSize={30}
+        >
+          <XAxis
+            dataKey="name"
+            scale="point"
+            padding={{ left: 10, right: 10 }}
+          />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Bar dataKey="Goal" fill="#8884d8" />
+        </BarChart>
+        <LineChart
+          width={500}
+          height={300}
+          data={friendsChartData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="Person2"
+            stroke="#8884d8"
+            strokeDasharray="5 5"
+          />
+          <Line
+            type="monotone"
+            dataKey="Person1"
+            stroke="#82ca9d"
+            strokeDasharray="3 4 5 2"
+          />{" "}
+          <Line
+            type="monotone"
+            dataKey="Person3"
+            stroke="#e21c7f"
+            strokeDasharray="3 4 5 2"
+          />
+        </LineChart>
+      </div>
+    </>
   );
 };
 

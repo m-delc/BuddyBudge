@@ -23,70 +23,72 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
     return params.id == friend.person_id;
   })[0];
 
+  // const [people, setPeople] = useState([]);
   const personGoals = people.filter((person) => {
     return person.id == params.id;
   })[0];
 
-  // console.log(friendToggle)
-  // console.log(personGoals.person_budget)
-  // console.log(personGoals)
-  // console.log(personFriendID.person_budget.weekFiveGoals)
+  // IF YOU TRY TO USE THIS USEEFFECT, PERSONJS WILL NOT LOAD. IF YOU LEAVE PERSONJS AS IT IS, IT WILL LOAD BUT WILL NOT RELOAD
+  // IF YOU TRY TO USE THIS USEEFFECT, PERSONJS WILL NOT LOAD. IF YOU LEAVE PERSONJS AS IT IS, IT WILL LOAD BUT WILL NOT RELOAD
+  // IF YOU TRY TO USE THIS USEEFFECT, PERSONJS WILL NOT LOAD. IF YOU LEAVE PERSONJS AS IT IS, IT WILL LOAD BUT WILL NOT RELOAD
+  // IF YOU TRY TO USE THIS USEEFFECT, PERSONJS WILL NOT LOAD. IF YOU LEAVE PERSONJS AS IT IS, IT WILL LOAD BUT WILL NOT RELOAD
+  // IF YOU TRY TO USE THIS USEEFFECT, PERSONJS WILL NOT LOAD. IF YOU LEAVE PERSONJS AS IT IS, IT WILL LOAD BUT WILL NOT RELOAD
+  // IF YOU TRY TO USE THIS USEEFFECT, PERSONJS WILL NOT LOAD. IF YOU LEAVE PERSONJS AS IT IS, IT WILL LOAD BUT WILL NOT RELOAD
+  // useEffect(() => {
+  //   fetch("/people").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then(setPeople);
+  //     }
+  //   });
+  // }, []);
 
-  // const testx = people.map((person) => {
-
-  // })
-
   // this works but only for friends
   // this works but only for friends
   // this works but only for friends
   // this works but only for friends
-  const thisPersonsGoals = personFriendID ? personFriendID.person_budget : null;
+  // const thisPersonsGoals = personFriendID ? personFriendID.person_budget : null;
 
   const ccc = personGoals ? personGoals.person_budget : null;
-
-  // console.log(personGoals);
-
-  // console.log(thisPersonsGoals);
 
   const chartData = [
     {
       name: "Week 1",
       // Savings: thisPersonsGoals.weekOneGoals,
-      Goal: ccc.weekOneGoals,
+      Goal: ccc ? ccc.weekOneGoals : null,
     },
     {
       name: "Week 2",
       // Savings: thisPersonsGoals.weekTwoGoals,
-      Goal: ccc.weekTwoGoals,
+      Goal: ccc ? ccc.weekTwoGoals : null,
     },
     {
       name: "Week 3",
       // Savings: thisPersonsGoals.weekThreeGoals,
-      Goal: ccc.weekThreeGoals,
+      Goal: ccc ? ccc.weekThreeGoals : null,
     },
     {
       name: "Week 4",
       // Savings: thisPersonsGoals.weekFourGoals,
-      Goal: ccc.weekFourGoals,
+      Goal: ccc ? ccc.weekFourGoals : null,
     },
     {
       name: "Week 5",
       // Savings: thisPersonsGoals.weekFiveGoals,
-      Goal: ccc.weekFiveGoals,
+      Goal: ccc ? ccc.weekFiveGoals : null,
     },
     {
       name: "Week 6",
       // Savings: thisPersonsGoals.weekSixGoals,
-      Goal: ccc.weekSixGoals,
+      Goal: ccc ? ccc.weekSixGoals : null,
     },
   ];
   const totalSavings =
-  ccc.weekOneGoals +
-  ccc.weekTwoGoals +
-  ccc.weekThreeGoals +
-  ccc.weekFourGoals +
-  ccc.weekFiveGoals +
-  ccc.weekSixGoals;
+    ccc.weekOneGoals +
+    ccc.weekTwoGoals +
+    ccc.weekThreeGoals +
+    ccc.weekFourGoals +
+    ccc.weekFiveGoals +
+    ccc.weekSixGoals;
 
   useEffect(() => {
     fetch(`/people/${params.id}`)
@@ -135,7 +137,7 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
       <h3>Name: {first_name}</h3>
       <p style={{ maxWidth: "25em" }}>
         Over the past six weeks {first_name} has managed to save a total of $
-        {totalSavings} !!! {bio}
+        {totalSavings} !!!
       </p>
       {/* { !friends ? <CheckBoxOutlineBlankRoundedIcon style={{ cursor: "pointer" }} onClick={(e) => handleAddFriend(id)} /> Send a friend request to {first_name} : <CheckBoxRoundedIcon /> Friends } */}
 
