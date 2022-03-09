@@ -79,7 +79,7 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
       if (res.ok) {
         res.json().then((x) => {
           setUser(x);
-          navigate("/home");
+          navigate("/goals");
         });
       } else {
         res.json().then((json) => setSignupErrors(Object.entries(json.error)));

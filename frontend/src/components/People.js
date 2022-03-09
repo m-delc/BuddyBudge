@@ -24,7 +24,7 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
       <div className="grid">
         {people
           ? people.map((y, index) => (
-            <div style={{ background: "white" }} key={index}>
+            <div style={{ background: "white", borderRadius: "8px" }} key={index}>
                 <p></p>
                 <img src={y.img} alt={y.first_name} />
                 <h3>Name: {y.first_name}</h3>

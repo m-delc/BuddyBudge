@@ -7,9 +7,7 @@ import { Paper } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import RequireAuth from "./pages/RequireAuth";
 import useStyles from "./pages/useStyles";
-import Budget from "./components/Goals";
 import ProfileDelete from "./pages/ProfileDelete";
 import People from "./components/People";
 import Friends from "./components/Friends";
@@ -58,10 +56,6 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-
-  // }, [])
-
   return (
     <>
       <Paper className={classes.pageContent} elevation={24}>
@@ -101,14 +95,13 @@ function App() {
           path="home"
           element={
             <Paper className={classes.pageContent}>
-              <Home />{" "}
+              <Home />
             </Paper>
           }
         />
         <Route
           path="profile"
           element={
-            // <RequireAuth isAuthenticated={isAuthenticated}>
             <Paper className={classes.pageContent}>
               <Profile
                 user={user}
@@ -117,8 +110,6 @@ function App() {
                 setIsAuthenticated={setIsAuthenticated}
               />
             </Paper>
-            //{" "}
-            // </RequireAuth>s
           }
         />
 
@@ -175,14 +166,15 @@ function App() {
         <Route
           path="dashboard"
           element={
+            <Paper className={classes.pageContent}>
             <Dashboard
               user={user}
               budget={budget}
               personBudget={personBudget}
             />
+          </Paper>
           }
-        />
-        {/* <Route path="goals" element={<Goals user={user} />} /> */}
+          />
       </Routes>
     </>
   );

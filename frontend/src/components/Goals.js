@@ -112,23 +112,34 @@ const Budget = ({ user, budget }) => {
         setGoals(x);
         setToggleGraph(!toggleGraph);
 
-        navigate("/dashboard");
+        // navigate("/dashboard");
       });
   };
 
+  // submit/update form toggle
+  // submit/update form toggle
+  // submit/update form toggle
   const handleToggle = () => {
     setToggleSubmitUpdate(!toggleSubmitUpdate);
   };
 
+  // update route
+  // update route
+  // update route
   const handleFormUpdate = (e) => {
     e.preventdefault();
   };
 
   return (
-    // <div style={{ display: "grid", justifyContent: "center" }}>
     <div className="grid">
       <div>
+        {/* toggles submit/update forms */}
+        {/* toggles submit/update forms */}
+        {/* toggles submit/update forms */}
         {toggleSubmitUpdate ? (
+          // initial submit form
+          // initial submit form
+          // initial submit form
           <form onSubmit={handleFormSubmit}>
             <input
               type="number"
@@ -181,6 +192,9 @@ const Budget = ({ user, budget }) => {
             <button type="submit">Submit</button> or
           </form>
         ) : (
+          // update form
+          // update form
+          // update form
           <form onSubmit={handleFormUpdate}>
             <input
               type="number"
@@ -230,10 +244,17 @@ const Budget = ({ user, budget }) => {
             />
             <br></br>
             <br></br>
-            <button type="submit">Submit</button> or
+            <button type="submit">Submit</button> or 
           </form>
-        )}
+      )}
+      {/* update button to toggle the form for initial submit or for update */}
+      {/* update button to toggle the form for initial submit or for update */}
+      {/* update button to toggle the form for initial submit or for update */}
+      <button onClick={handleToggle}>Update</button>
       </div>
+      {/* this toggles the onChange event live as it's happening on the chart, with (upon submission) the submitted values persisting on the chart as  */}
+      {/* this toggles the onChange event live as it's happening on the chart, with (upon submission) the submitted values persisting on the chart as  */}
+      {/* this toggles the onChange event live as it's happening on the chart, with (upon submission) the submitted values persisting on the chart as  */}
       {toggleGraph ? (
         <BarChart
           width={500}
@@ -283,7 +304,6 @@ const Budget = ({ user, budget }) => {
           <Bar dataKey="Goal" fill="#82ca9d" />
         </BarChart>
       )}
-      <button onClick={handleToggle}>Update</button>
     </div>
   );
 };
