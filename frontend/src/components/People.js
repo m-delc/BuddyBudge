@@ -31,10 +31,26 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
       <div className="grid">
         {people
           ? people.map((y, index) => (
-            <div style={{ background: "white", borderRadius: "8px" }} key={index}>
+              <div
+                style={{
+                  background: "white",
+                  borderRadius: "8px",
+                }}
+                key={index}
+              >
                 <p></p>
-                <img src={y.img} alt={y.first_name} />
-                <h3>{y.first_name}</h3>
+                <img
+                  src={y.img}
+                  alt={y.first_name}
+                  onClick={(e) => handleNavToPerson(y.id)}
+                  style={{ cursor: "pointer" }}
+                />
+                <h3
+                  onClick={(e) => handleNavToPerson(y.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {y.first_name}
+                </h3>
                 <h4>
                   Total cash saved: $
                   {y.person_budget.weekOneGoals +
@@ -47,15 +63,15 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
                 <p style={{ maxWidth: "25em" }}>
                   About {y.first_name}: {y.bio}
                 </p>
-                <button onClick={(e) => handleNavToPerson(y.id)}>
+                {/* <button onClick={(e) => handleNavToPerson(y.id)}>
                   View this person
-                </button>
+                </button> */}
                 {/* {errors ? errors : null}
                 {message ? message : null} */}
                 <p></p>
               </div>
             ))
-            : null}
+          : null}
       </div>
     </div>
   );

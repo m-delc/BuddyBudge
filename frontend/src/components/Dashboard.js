@@ -27,7 +27,6 @@ const Dashboard = ({ user, budget, personBudget }) => {
 
   // console.log(user)
 
-
   // data for Goals Chart
   // data for Goals Chart
   // data for Goals Chart
@@ -64,45 +63,44 @@ const Dashboard = ({ user, budget, personBudget }) => {
   const friendsChartData = [
     {
       name: "Week 1",
-      Person1: personBudget[0] ? personBudget[0].weekOneGoals : null,
-      Person2: personBudget[1] ? personBudget[1].weekOneGoals : null,
-      Person3: personBudget[2] ? personBudget[2].weekOneGoals : null,
+      Sam: personBudget[0] ? personBudget[0].weekOneGoals : null,
+      Kiera: personBudget[1] ? personBudget[1].weekOneGoals : null,
+      Charlie: personBudget[2] ? personBudget[2].weekOneGoals : null,
     },
     {
       name: "Week 2",
-      Person1: personBudget[0] ? personBudget[0].weekTwoGoals : null,
-      Person2: personBudget[1] ? personBudget[1].weekTwoGoals : null,
-      Person3: personBudget[2] ? personBudget[2].weekTwoGoals : null,
+      Sam: personBudget[0] ? personBudget[0].weekTwoGoals : null,
+      Kiera: personBudget[1] ? personBudget[1].weekTwoGoals : null,
+      Charlie: personBudget[2] ? personBudget[2].weekTwoGoals : null,
     },
     {
       name: "Week 3",
-      Person1: personBudget[0] ? personBudget[0].weekThreeGoals : null,
-      Person2: personBudget[1] ? personBudget[1].weekThreeGoals : null,
-      Person3: personBudget[2] ? personBudget[2].weekThreeGoals : null,
+      Sam: personBudget[0] ? personBudget[0].weekThreeGoals : null,
+      Kiera: personBudget[1] ? personBudget[1].weekThreeGoals : null,
+      Charlie: personBudget[2] ? personBudget[2].weekThreeGoals : null,
     },
     {
       name: "Week 4",
-      Person1: personBudget[0] ? personBudget[0].weekFourGoals : null,
-      Person2: personBudget[1] ? personBudget[1].weekFourGoals : null,
-      Person3: personBudget[2] ? personBudget[2].weekFourGoals : null,
+      Sam: personBudget[0] ? personBudget[0].weekFourGoals : null,
+      Kiera: personBudget[1] ? personBudget[1].weekFourGoals : null,
+      Charlie: personBudget[2] ? personBudget[2].weekFourGoals : null,
     },
     {
       name: "Week 5",
-      Person1: personBudget[0] ? personBudget[0].weekFiveGoals : null,
-      Person2: personBudget[1] ? personBudget[1].weekFiveGoals : null,
-      Person3: personBudget[2] ? personBudget[2].weekFiveGoals : null,
+      Sam: personBudget[0] ? personBudget[0].weekFiveGoals : null,
+      Kiera: personBudget[1] ? personBudget[1].weekFiveGoals : null,
+      Charlie: personBudget[2] ? personBudget[2].weekFiveGoals : null,
     },
     {
       name: "Week 6",
-      Person1: personBudget[0] ? personBudget[0].weekSixGoals : null,
-      Person2: personBudget[1] ? personBudget[1].weekSixGoals : null,
-      Person3: personBudget[2] ? personBudget[2].weekSixGoals : null,
+      Sam: personBudget[0] ? personBudget[0].weekSixGoals : null,
+      Kiera: personBudget[1] ? personBudget[1].weekSixGoals : null,
+      Charlie: personBudget[2] ? personBudget[2].weekSixGoals : null,
     },
   ];
 
   return (
     <>
-    
       <div
         style={{
           background: "white",
@@ -110,7 +108,9 @@ const Dashboard = ({ user, budget, personBudget }) => {
           justifyContent: "center",
         }}
       >
-        <h4 style={{ textAlign: "center" }}>GOALS</h4>
+        <h4 style={{ textAlign: "center" }}>
+          {user ? `${user.first_name}'s Goals` : "Goals"}
+        </h4>
         <BarChart
           width={500}
           height={300}
@@ -145,6 +145,7 @@ const Dashboard = ({ user, budget, personBudget }) => {
             bottom: 5,
           }}
         >
+          {/* <h4>Sam, Kiera and Charlie's Goals</h4> */}
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
@@ -152,19 +153,19 @@ const Dashboard = ({ user, budget, personBudget }) => {
           <Legend />
           <Line
             type="monotone"
-            dataKey="Person2"
+            dataKey="Kiera"
             stroke="#8884d8"
             strokeDasharray="5 5"
           />
           <Line
             type="monotone"
-            dataKey="Person1"
+            dataKey="Sam"
             stroke="#82ca9d"
             strokeDasharray="3 4 5 2"
           />{" "}
           <Line
             type="monotone"
-            dataKey="Person3"
+            dataKey="Charlie"
             stroke="#e21c7f"
             strokeDasharray="3 4 5 2"
           />

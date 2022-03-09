@@ -111,8 +111,13 @@ const Budget = ({ user, budget }) => {
       .then((x) => {
         setGoals(x);
         setToggleGraph(!toggleGraph);
-
-        // navigate("/dashboard");
+        setweekOneGoals('')
+        setweekTwoGoals('')
+        setweekThreeGoals('')
+        setweekFourGoals('')
+        setweekFiveGoals('')
+        setweekSixGoals('')
+        navigate("/dashboard");
       });
   };
 
@@ -189,7 +194,7 @@ const Budget = ({ user, budget }) => {
             />
             <br></br>
             <br></br>
-            <button type="submit">Submit</button>
+            <button type="submit">Submit</button> 
           </form>
         ) : (
           // update form

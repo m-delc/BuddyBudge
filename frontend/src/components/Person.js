@@ -149,6 +149,7 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
             style={{ cursor: "pointer" }}
             onClick={(e) => handleDeleteFriend(id)}
           />
+
           <div>Friends</div>
         </>
       )}

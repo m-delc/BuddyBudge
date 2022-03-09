@@ -48,7 +48,7 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
         res.json().then((newUser) => {
           setUser(newUser);
           setIsAuthenticated(true);
-          navigate("/home");
+          navigate("/dashboard");
         });
       } else {
         res.json().then((json) => setLoginError(json.error));

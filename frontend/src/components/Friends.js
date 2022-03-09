@@ -1,7 +1,6 @@
 import React from "react";
 import FriendPage from "../pages/FriendPage";
 
-
 const Friends = ({ userFriends, people, user }) => {
   // console.log(userFriends.person_id);
   // console.log(people);
@@ -47,19 +46,20 @@ const Friends = ({ userFriends, people, user }) => {
   // i have no idae how to compare people.id with userFriends.id
   // i have no idae how to compare people.id with userFriends.id
 
-// const looptest = () => {
+  // const looptest = () => {
 
-//   for(let i = 0; i < userFriends.length; i++) {
-//     return userFriends[i].person_id
-//   }
-// }
+  //   for(let i = 0; i < userFriends.length; i++) {
+  //     return userFriends[i].person_id
+  //   }
+  // }
 
-// const filtertest = people.filter(person =>{
-//   return person.id == 
-// })
-// console.log(userFriends)
+  // const filtertest = people.filter(person =>{
+  //   return person.id ==
+  // })
+  // console.log(userFriends)
 
   return (
+    // <div style={{ display: "block", justifyContent: "center" }}>
     <div>
       <FriendPage userFriends={userFriends} />
     </div>

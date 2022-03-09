@@ -82,7 +82,7 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           navigate("/goals");
         });
       } else {
-        res.json().then((json) => setSignupErrors(Object.entries(json.error)));
+        res.json().then((json) => setSignupErrors(json.error));
       }
     });
   }
@@ -169,7 +169,6 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           }
         />
       </div>
-
 
       <br></br>
       <br></br>
