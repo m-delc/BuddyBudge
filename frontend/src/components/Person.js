@@ -42,12 +42,6 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
   //   });
   // }, []);
 
-  // this works but only for friends
-  // this works but only for friends
-  // this works but only for friends
-  // this works but only for friends
-  // const thisPersonsGoals = personFriendID ? personFriendID.person_budget : null;
-
   const ccc = personGoals ? personGoals.person_budget : null;
 
   const chartData = [
