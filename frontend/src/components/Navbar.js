@@ -55,6 +55,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
         <NavLink to="dashboard">{user ? "Dashboard" : null}</NavLink>
         <NavLink to="goals">{user ? `${user.first_name}'s Goals` : null}</NavLink>
         <NavLink to="people">{user ? "Find People" : null}</NavLink>
+        <NavLink to="about">About</NavLink>
         <br></br>
       </span>
       <span className="span2">

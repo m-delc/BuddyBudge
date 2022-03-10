@@ -14,6 +14,7 @@ import Friends from "./components/Friends";
 import Person from "./components/Person";
 import Dashboard from "./components/Dashboard";
 import Goals from "./components/Goals";
+import About from "./components/About";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -135,19 +136,23 @@ function App() {
         <Route
           path="people"
           element={
-            <People
-              people={people}
-              user={user}
-              setUser={setUser}
-              setIsAuthenticated={setIsAuthenticated}
-              userFriends={userFriends}
-            />
+            <Paper className={classes.pageContent}>
+              <People
+                people={people}
+                user={user}
+                setUser={setUser}
+                setIsAuthenticated={setIsAuthenticated}
+                userFriends={userFriends}
+              />
+            </Paper>
           }
         />
         <Route
           path="/friends"
           element={
-            <Friends user={user} userFriends={userFriends} people={people} />
+            <Paper className={classes.pageContent}>
+              <Friends user={user} userFriends={userFriends} people={people} />
+            </Paper>
           }
         />
         <Route
@@ -167,14 +172,22 @@ function App() {
           path="dashboard"
           element={
             <Paper className={classes.pageContent}>
-            <Dashboard
-              user={user}
-              budget={budget}
-              personBudget={personBudget}
-            />
-          </Paper>
+              <Dashboard
+                user={user}
+                budget={budget}
+                personBudget={personBudget}
+              />
+            </Paper>
           }
-          />
+        />
+        <Route
+          path="about"
+          element={
+            <Paper className={classes.pageContent}>
+              <About />{" "}
+            </Paper>
+          }
+        />
       </Routes>
     </>
   );

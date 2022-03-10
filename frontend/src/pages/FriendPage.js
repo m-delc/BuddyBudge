@@ -13,11 +13,21 @@ const FriendPage = ({ userFriends }) => {
         justifyContent: "space-around",
       }}
     >
+      <div
+        style={{
+          fontFamily: "Roboto",
+          fontSize: "20px",
+          display: "Flex",
+          justifyContent: "center",
+        }}
+      >
+        Your Friends
+      </div>
       {userFriends
         ? userFriends.map((friend, index) => (
             <div
               style={{
-                background: "white",
+                background: "inherit",
                 justifyContent: "center",
                 textAlign: "center",
                 margin: "10px",

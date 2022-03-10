@@ -27,7 +27,11 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
         textAlign: "center",
       }}
     >
-      Make friends and save together
+      <img src="https://www.coredocuments.com/wp-content/uploads/2019/04/happy-people-money-falling.jpg"></img>
+      <br></br>
+      <div style={{ fontFamily: "Roboto", fontSize: "20px" }}>
+        Make Some Friends!
+      </div>
       <div className="grid">
         {people
           ? people.map((y, index) => (
