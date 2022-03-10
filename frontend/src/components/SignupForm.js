@@ -82,92 +82,105 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           navigate("/goals");
         });
       } else {
-        res.json().then((json) => setSignupErrors(json.error));
+        res.json().then((json) => {
+          // console.log(json)
+          setSignupErrors(Object.entries(json.error));
+        });
       }
     });
   }
+
+  console.log(signupErrors);
 
   return (
     <form className="div-form" onSubmit={signupOnSubmit}>
       <br></br>
 
-      <div>
-        <Input
-          className="test1"
-          type="text"
-          id="username"
-          placeholder="Choose a username"
-          variant="standard"
-          value={signupUsername}
-          onChange={(e) => setSignupUsername(e.target.value)}
-        />
+      <div >
+        <div style={{display: "flex", justifyContent: "center"}} >
+          <Input
+            className="test1"
+            type="text"
+            id="username"
+            placeholder="Choose a username"
+            variant="standard"
+            value={signupUsername}
+            onChange={(e) => setSignupUsername(e.target.value)}
+          />
+        </div>
+
+        <br></br>
+
+        <div style={{display: "flex", justifyContent: "center"}} >
+          <Input
+            className="test1"
+            type="text"
+            id="firstname"
+            placeholder="First name"
+            variant="standard"
+            value={signupFirstName}
+            onChange={(e) => setSignupFirstName(e.target.value)}
+          />
+        </div>
+
+        <br></br>
+
+        <div style={{display: "flex", justifyContent: "center"}} >
+          <Input
+            id="first-password"
+            type={initialPassword.showPassword ? "text" : "password"}
+            value={initialPassword.password}
+            onChange={handleChange("password")}
+            placeholder="Password"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {initialPassword.showPassword ? (
+                    <VisibilityOff />
+                  ) : (
+                    <Visibility />
+                  )}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </div>
+        <br></br>
+
+        <div style={{display: "flex", justifyContent: "center"}} >
+          <Input
+            id="confirm-password"
+            type={confirmPassword.showPassword ? "text" : "password"}
+            value={confirmPassword.password}
+            onChange={handleChange2("password")}
+            placeholder="Confirm password"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword2}
+                  onMouseDown={handleMouseDownPassword2}
+                >
+                  {confirmPassword.showPassword ? (
+                    <VisibilityOff />
+                  ) : (
+                    <Visibility />
+                  )}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </div>
       </div>
 
-      <br></br>
-
       <div>
-        <Input
-          className="test1"
-          type="text"
-          id="firstname"
-          placeholder="First name"
-          variant="standard"
-          value={signupFirstName}
-          onChange={(e) => setSignupFirstName(e.target.value)}
-        />
-      </div>
-
-      <br></br>
-
-      <div>
-        <Input
-          id="first-password"
-          type={initialPassword.showPassword ? "text" : "password"}
-          value={initialPassword.password}
-          onChange={handleChange("password")}
-          placeholder="Password"
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {initialPassword.showPassword ? (
-                  <VisibilityOff />
-                ) : (
-                  <Visibility />
-                )}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </div>
-      <br></br>
-
-      <div>
-        <Input
-          id="confirm-password"
-          type={confirmPassword.showPassword ? "text" : "password"}
-          value={confirmPassword.password}
-          onChange={handleChange2("password")}
-          placeholder="Confirm password"
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword2}
-                onMouseDown={handleMouseDownPassword2}
-              >
-                {confirmPassword.showPassword ? (
-                  <VisibilityOff />
-                ) : (
-                  <Visibility />
-                )}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
+        {signupErrors
+          ? signupErrors.map((error, i) => <p key={i}>{error[1]}</p>)
+          : null}
       </div>
 
       <br></br>
@@ -192,7 +205,6 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           </Button>
         </Stack>
       </div>
-      {signupErrors ? signupErrors : null}
     </form>
   );
 };

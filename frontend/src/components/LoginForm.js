@@ -98,6 +98,7 @@ function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
             </InputAdornment>
           }
         />
+        {loginError ? loginError : null}
         {/* <br></br>
         <br></br>
         <br></br> */}
