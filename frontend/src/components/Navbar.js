@@ -58,6 +58,7 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
         <br></br>
       </span>
       <span className="span2">
+        <span className="span2" style={{fontFamily: 'Satisfy', fontSize: '1.5em'}}>BuddyBudge</span>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}

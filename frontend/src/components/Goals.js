@@ -117,7 +117,7 @@ const Budget = ({ user, budget }) => {
         setweekFourGoals('')
         setweekFiveGoals('')
         setweekSixGoals('')
-        navigate("/dashboard");
+        // navigate("/dashboard");
       });
   };
 
