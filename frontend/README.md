@@ -33,3 +33,6 @@ Added to package.json:
 
         generally set up index.js for redux
 
+
+
+update for heroku
