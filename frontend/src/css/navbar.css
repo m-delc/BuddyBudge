@@ -20,12 +20,11 @@
   padding: 0.7em;
 }
 
-.header a.active {
+/* .header a.active {
   background-color: #8080803b;
   color: rgba(0, 0, 0, 0.829);
-  /* font-style: italic; */
   border-radius: 5px;
-}
+} */
 
 .header a:visited {
   color: inherit;

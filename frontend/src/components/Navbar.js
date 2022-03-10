@@ -53,13 +53,20 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
     <header className="header">
       <span className="span1">
         <NavLink to="dashboard">{user ? "Dashboard" : null}</NavLink>
-        <NavLink to="goals">{user ? `${user.first_name}'s Goals` : null}</NavLink>
+        <NavLink to="goals">
+          {user ? `${user.first_name}'s Goals` : null}
+        </NavLink>
         <NavLink to="people">{user ? "Find People" : null}</NavLink>
         <NavLink to="about">About</NavLink>
         <br></br>
       </span>
       <span className="span2">
-        <span className="span2" style={{fontFamily: 'Satisfy', fontSize: '1.5em'}}>BuddyBudge</span>
+        <span
+          className="span2"
+          style={{ fontFamily: "Satisfy", fontSize: "1.5em" }}
+        >
+          BuddyBudge
+        </span>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -112,25 +119,31 @@ const Navbar = ({ setIsAuthenticated, user, setUser }) => {
             <div className="span3">
               <NavLink to="/profile" className="span3">
                 <MenuItem>
-                  <Avatar />{" "}
-                  {user ? `${user.first_name}'s Profile` : null}
+                  <Avatar /> {user ? `${user.first_name}'s Profile` : null}
                 </MenuItem>
               </NavLink>
 
               <NavLink to="/friends" className="span3">
                 <MenuItem>
-                  <Avatar />{" "}
-                  {user ? `${user.first_name}'s Friends` : null}
+                  <Avatar /> {user ? `${user.first_name}'s Friends` : null}
                 </MenuItem>
               </NavLink>
               <Divider />
             </div>
           ) : (
-            <div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "horizontal",
+              }}
+            >
               <NavLink to="/login" className="span3">
                 <MenuItem>Login</MenuItem>
               </NavLink>
-              <Divider />
+              <NavLink to="signup" className="span3">
+                <MenuItem>Signup</MenuItem>
+              </NavLink>
             </div>
           )}
 

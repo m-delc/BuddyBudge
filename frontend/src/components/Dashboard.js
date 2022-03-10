@@ -103,7 +103,7 @@ const Dashboard = ({ user, budget, personBudget }) => {
     <>
       <div
         style={{
-          background: "white",
+          background: "inherit",
           display: "grid",
           justifyContent: "center",
         }}

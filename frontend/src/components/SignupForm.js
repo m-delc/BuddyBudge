@@ -90,7 +90,6 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
     });
   }
 
-  console.log(signupErrors);
 
   return (
     <form className="div-form" onSubmit={signupOnSubmit}>
