@@ -27,7 +27,7 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
         textAlign: "center",
       }}
     >
-      <img src="https://www.coredocuments.com/wp-content/uploads/2019/04/happy-people-money-falling.jpg"></img>
+      <img src="/public/img/people.jpg" alt="people-money"></img>
       <br></br>
       <div style={{ fontFamily: "Roboto", fontSize: "20px" }}>
         Make Some Friends!
