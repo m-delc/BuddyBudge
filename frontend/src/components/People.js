@@ -27,7 +27,7 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
         textAlign: "center",
       }}
     >
-      <img src="/public/img/people.jpg" alt="people-money"></img>
+      {/* <img src="https://www.google.com/url?sa=i&url=http%3A%2F%2Ffullcirclefunding.org%2Fshould-you-use-other-peoples-money-to-finance-your-small-business%2F&psig=AOvVaw2wEnQbfmwQ56Wj4Ha0mR4h&ust=1647031710108000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCJCcu7K1vPYCFQAAAAAdAAAAABAJ" alt="people-money"></img> */}
       <br></br>
       <div style={{ fontFamily: "Roboto", fontSize: "20px" }}>
         Make Some Friends!

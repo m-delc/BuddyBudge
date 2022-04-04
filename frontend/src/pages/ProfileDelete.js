@@ -17,7 +17,6 @@ const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     }).then(
-      // console.log("Account Deleted"),
       setUser(null),
       setIsAuthenticated(false),
       navigate("/login")
