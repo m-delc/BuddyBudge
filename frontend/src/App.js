@@ -134,7 +134,7 @@ function App() {
           }
         />
         <Route
-          path="people"
+          path="findpeople"
           element={
             <Paper className={classes.pageContent}>
               <People
@@ -156,7 +156,7 @@ function App() {
           }
         />
         <Route
-          path="/people/:id"
+          path="findpeople/:id"
           element={
             <Paper className={classes.pageContent}>
               <Person

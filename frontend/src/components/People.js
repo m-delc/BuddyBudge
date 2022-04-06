@@ -16,7 +16,7 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
   // })
   const navigate = useNavigate();
   const handleNavToPerson = (id) => {
-    navigate(`/people/${id}`);
+    navigate(`/findpeople/${id}`);
   };
 
   return (
