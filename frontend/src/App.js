@@ -27,20 +27,7 @@ function App() {
   const [personBudget, setPersonBudget] = useState([]);
 
   useEffect(() => {
-    // async function fetchUser() {
-    //   const response = await fetch("/authorize_user");
-    //   const userResponse = await response.json();
-    //   return userResponse;
-    // }
 
-    // fetch("/authorize_user").then((res) => {
-    //   if (res.ok) {
-    //     res.json().then((user) => {
-    //       setIsAuthenticated(true);
-    //       setUser(user);
-    //     });
-    //   }
-    // });
 
     const fetchUser = async () => {
       const data = await fetch("/authorize_user")
