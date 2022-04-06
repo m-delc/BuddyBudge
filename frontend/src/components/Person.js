@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 import {
@@ -64,12 +64,12 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
     },
   ];
   const totalSavings =
-    ccc.weekOneGoals +
-    ccc.weekTwoGoals +
-    ccc.weekThreeGoals +
-    ccc.weekFourGoals +
-    ccc.weekFiveGoals +
-    ccc.weekSixGoals;
+    (ccc ? ccc.weekOneGoals : null) +
+    (ccc ? ccc.weekTwoGoals : null) +
+    (ccc ? ccc.weekThreeGoals : null) +
+    (ccc ? ccc.weekFourGoals : null) +
+    (ccc ? ccc.weekFiveGoals : null) +
+    (ccc ? ccc.weekSixGoals : null);
 
   useEffect(() => {
     fetch(`/people/${params.id}`)
