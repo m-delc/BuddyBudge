@@ -25,6 +25,7 @@ function App() {
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
   const [personBudget, setPersonBudget] = useState([]);
+  
 
   useEffect(() => {
 
