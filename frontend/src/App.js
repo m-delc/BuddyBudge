@@ -25,19 +25,27 @@ function App() {
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
   const [personBudget, setPersonBudget] = useState([]);
-  
 
   useEffect(() => {
 
 
-    const fetchUser = async () => {
-      const data = await fetch("/authorize_user")
-      const json = await data.json()
-      setUser(json)
-      setIsAuthenticated(true)
-    }
-    fetchUser()
-    .catch(console.error)
+    // const fetchUser = async () => {
+    //   const data = await fetch("/authorize_user")
+    //   const json = await data.json()
+    //   setUser(json)
+    //   setIsAuthenticated(true)
+    // }
+    // fetchUser()
+    // .catch(console.error)
+
+    fetch("/authorize_user").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setIsAuthenticated(true);
+          setUser(user);
+        });
+      }
+    });
 
     fetch("/people").then((res) => {
       if (res.ok) {
