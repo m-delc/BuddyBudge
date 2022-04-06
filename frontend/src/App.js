@@ -48,11 +48,11 @@ function App() {
         res.json().then(setUserFriends);
       }
     });
-    // fetch("/budgets").then((res) => {
-    //   if (res.ok) {
-    //     res.json().then(setBudget);
-    //   }
-    // });
+    fetch("/budgets").then((res) => {
+      if (res.ok) {
+        res.json().then(setBudget);
+      }
+    });
     fetch("/person_budgets").then((res) => {
       if (res.ok) {
         res.json().then(setPersonBudget);
