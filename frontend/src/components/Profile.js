@@ -99,7 +99,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
         <br></br>
 
         <h3 className="header1">
-          Is "{user ? user.username : null}" a dumb username?
+          Change Your Username
         </h3>
 
         <form className="form1" onSubmit={handleUsernameChange}>
@@ -129,7 +129,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           {errors}
         </form>
 
-        <h3 className="header2">Tired of your password?</h3>
+        <h3 className="header2">Change Your Password</h3>
 
         <form className="form2 grid-row-span2" onSubmit={handlePasswordChange}>
           <input
@@ -159,7 +159,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
           {passwordMessage ? passwordMessage : null}
         </form>
 
-        <h3 className="header3">Change your first name</h3>
+        <h3 className="header3">Change Your First Name</h3>
         <form className="form3" onSubmit={handleNameChange}>
           <input
             className="input3"

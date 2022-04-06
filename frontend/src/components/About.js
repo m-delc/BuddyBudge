@@ -4,7 +4,7 @@ const About = () => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <img src="https://d.newsweek.com/en/full/1874686/man-woman-holding-cash.webp?w=790&f=cd34f55722d6ed958a28b4620fb961fa"></img>
+        <img src="/about.jpg"></img>
       </div>
           <br></br>
       <div style={{ display: "flex", justifyContent: "center" }}>
