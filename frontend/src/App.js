@@ -27,14 +27,30 @@ function App() {
   const [personBudget, setPersonBudget] = useState([]);
 
   useEffect(() => {
-    fetch("/authorize_user").then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          setIsAuthenticated(true);
-          setUser(user);
-        });
-      }
-    });
+    // async function fetchUser() {
+    //   const response = await fetch("/authorize_user");
+    //   const userResponse = await response.json();
+    //   return userResponse;
+    // }
+
+    // fetch("/authorize_user").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((user) => {
+    //       setIsAuthenticated(true);
+    //       setUser(user);
+    //     });
+    //   }
+    // });
+
+    const fetchUser = async () => {
+      const data = await fetch("/authorize_user")
+      const json = await data.json()
+      setUser(json)
+      setIsAuthenticated(true)
+    }
+    fetchUser()
+    .catch(console.error)
+
     fetch("/people").then((res) => {
       if (res.ok) {
         res.json().then(setPeople);
@@ -45,11 +61,11 @@ function App() {
         res.json().then(setUserFriends);
       }
     });
-    fetch("/budgets").then((res) => {
-      if (res.ok) {
-        res.json().then(setBudget);
-      }
-    });
+    // fetch("/budgets").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then(setBudget);
+    //   }
+    // });
     fetch("/person_budgets").then((res) => {
       if (res.ok) {
         res.json().then(setPersonBudget);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -11,21 +11,18 @@ import {
   Line,
 } from "recharts";
 
-const Dashboard = ({ user, budget, personBudget }) => {
-  // const [user, setUser] = React.useState(null);
+const Dashboard = ({ personBudget }) => {
+  const [user, setUser] = useState(null);
 
-  // React.useEffect(() => {
-  //   fetch("/authorize_user").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((user) => {
-  //         // setIsAuthenticated(true);
-  //         setUser(user);
-  //       });
-  //     }
-  //   });
-  // }, []);
-
-  // console.log(user)
+  useEffect(() => {
+    const fetchUser = async () => {
+      const data = await fetch("/authorize_user");
+      const json = await data.json();
+      setUser(json);
+      // setIsAuthenticated(true)
+    };
+    fetchUser().catch(console.error);
+  });
 
   // data for Goals Chart
   // data for Goals Chart
