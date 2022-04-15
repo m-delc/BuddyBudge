@@ -190,7 +190,7 @@ function App() {
           path="about"
           element={
             <Paper className={classes.pageContent}>
-              <About />{" "}
+              <About />
             </Paper>
           }
         />
