@@ -18,7 +18,6 @@ import About from "./components/About";
 
 function App() {
   const [user, setUser] = useState(null);
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const classes = useStyles();
   const [people, setPeople] = useState([]);
@@ -26,25 +25,22 @@ function App() {
   const [budget, setBudget] = useState([]);
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const data = await fetch("/authorize_user");
+      const json = await data.json();
+      setIsAuthenticated(true);
+      setUser(json.user);
+    };
+    fetchUser().catch(console.error);
 
-
-    // const fetchUser = async () => {
-    //   const data = await fetch("/authorize_user")
-    //   const json = await data.json()
-    //   setUser(json)
-    //   setIsAuthenticated(true)
-    // }
-    // fetchUser()
-    // .catch(console.error)
-
-    fetch("/authorize_user").then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          setIsAuthenticated(true);
-          setUser(user);
-        });
-      }
-    });
+    // fetch("/authorize_user").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((user) => {
+    //       setIsAuthenticated(true);
+    //       setUser(user);
+    //     });
+    //   }
+    // });
 
     fetch("/people").then((res) => {
       if (res.ok) {
@@ -61,7 +57,6 @@ function App() {
         res.json().then(setBudget);
       }
     });
-
   }, []);
 
   return (
@@ -179,10 +174,7 @@ function App() {
           path="dashboard"
           element={
             <Paper className={classes.pageContent}>
-              <Dashboard
-                user={user}
-                budget={budget}
-              />
+              <Dashboard user={user} budget={budget} />
             </Paper>
           }
         />
