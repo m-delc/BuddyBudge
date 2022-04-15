@@ -11,18 +11,27 @@ import {
   Line,
 } from "recharts";
 
-const Dashboard = ({ personBudget }) => {
+const Dashboard = () => {
   const [user, setUser] = useState(null);
+  const [personBudget, setPersonBudget] = useState([]);
+
+
 
   useEffect(() => {
     const fetchUser = async () => {
       const data = await fetch("/authorize_user");
       const json = await data.json();
       setUser(json);
-      // setIsAuthenticated(true)
     };
     fetchUser().catch(console.error);
-  });
+
+    const fetchPersonBudget = async () => {
+      const data = await fetch("/person_budgets")
+      const json = await data.json()
+      setPersonBudget(json)
+    }
+    fetchPersonBudget().catch(console.error);
+  }, []);
 
   // data for Goals Chart
   // data for Goals Chart

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import Person from "./Person";
 
-const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
+const People = () => {
+  const [people, setPeople] = useState([]);
   // const [message, setMessage] = useState("");
   // const [errors, setErrors] = useState("");
   // const [people, setPeople] = useState(null);
@@ -18,6 +19,14 @@ const People = ({ user, setUser, setIsAuthenticated, userFriends, people }) => {
   const handleNavToPerson = (id) => {
     navigate(`/findpeople/${id}`);
   };
+
+  useEffect(() => {
+    fetch("/people").then((res) => {
+      if (res.ok) {
+        res.json().then(setPeople);
+      }
+    });
+  }, []);
 
   return (
     <div

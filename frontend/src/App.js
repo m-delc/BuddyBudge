@@ -24,7 +24,6 @@ function App() {
   const [people, setPeople] = useState([]);
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
-  const [personBudget, setPersonBudget] = useState([]);
 
   useEffect(() => {
 
@@ -62,11 +61,7 @@ function App() {
         res.json().then(setBudget);
       }
     });
-    fetch("/person_budgets").then((res) => {
-      if (res.ok) {
-        res.json().then(setPersonBudget);
-      }
-    });
+
   }, []);
 
   return (
@@ -187,7 +182,6 @@ function App() {
               <Dashboard
                 user={user}
                 budget={budget}
-                personBudget={personBudget}
               />
             </Paper>
           }
