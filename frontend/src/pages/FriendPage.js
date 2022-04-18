@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const FriendPage = ({ userFriends }) => {
   const navigate = useNavigate();
   const handleNav = (id) => {
-    navigate(`/people/${id}`);
+    navigate(`/findpeople/${id}`);
   };
   return (
     <div
