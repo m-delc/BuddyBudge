@@ -33,6 +33,13 @@ function App() {
     };
     fetchUser().catch(console.error);
 
+    // const fetchPeople = async () => {
+    //   const data = await fetch("/people");
+    //   const json = await data.json();
+    //   setPeople(json);
+    // };
+    // fetchPeople().catch(console.error);
+
     fetch("/people").then((res) => {
       if (res.ok) {
         res.json().then(setPeople);

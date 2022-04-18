@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import Person from "./Person";
 
 const People = () => {
   const [people, setPeople] = useState([]);
-
   const navigate = useNavigate();
   const handleNavToPerson = (id) => {
     navigate(`/findpeople/${id}`);
@@ -66,11 +64,6 @@ const People = () => {
                 <p style={{ maxWidth: "25em" }}>
                   About {y.first_name}: {y.bio}
                 </p>
-                {/* <button onClick={(e) => handleNavToPerson(y.id)}>
-                  View this person
-                </button> */}
-                {/* {errors ? errors : null}
-                {message ? message : null} */}
                 <p></p>
               </div>
             ))

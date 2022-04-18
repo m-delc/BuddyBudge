@@ -12,8 +12,9 @@ import {
   Legend,
 } from "recharts";
 
-const Person = ({ user, userFriends, setUserFriends, people }) => {
+const Person = ({ user, userFriends, setUserFriends }) => {
   const [person, setPerson] = useState([]);
+  const [people, setPeople] = useState([]);
   const { id, first_name, bio, img } = person;
   const params = useParams();
   const friendToggle = userFriends.filter((friend) => {
@@ -23,52 +24,60 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
     return params.id == friend.person_id;
   })[0];
 
-  // const [people, setPeople] = useState([]);
   const personGoals = people.filter((person) => {
     return person.id == params.id;
   })[0];
 
-  const ccc = personGoals ? personGoals.person_budget : null;
+  const goal = personGoals ? personGoals.person_budget : null;
+
+  useEffect(() => {
+    const fetchPeople = async () => {
+      const data = await fetch("/people");
+      const json = await data.json();
+      setPeople(json);
+    };
+    fetchPeople().catch(console.error);
+  }, []);
 
   const chartData = [
     {
       name: "Week 1",
       // Savings: thisPersonsGoals.weekOneGoals,
-      Goal: ccc ? ccc.weekOneGoals : null,
+      Goal: goal ? goal.weekOneGoals : null,
     },
     {
       name: "Week 2",
       // Savings: thisPersonsGoals.weekTwoGoals,
-      Goal: ccc ? ccc.weekTwoGoals : null,
+      Goal: goal ? goal.weekTwoGoals : null,
     },
     {
       name: "Week 3",
       // Savings: thisPersonsGoals.weekThreeGoals,
-      Goal: ccc ? ccc.weekThreeGoals : null,
+      Goal: goal ? goal.weekThreeGoals : null,
     },
     {
       name: "Week 4",
       // Savings: thisPersonsGoals.weekFourGoals,
-      Goal: ccc ? ccc.weekFourGoals : null,
+      Goal: goal ? goal.weekFourGoals : null,
     },
     {
       name: "Week 5",
       // Savings: thisPersonsGoals.weekFiveGoals,
-      Goal: ccc ? ccc.weekFiveGoals : null,
+      Goal: goal ? goal.weekFiveGoals : null,
     },
     {
       name: "Week 6",
       // Savings: thisPersonsGoals.weekSixGoals,
-      Goal: ccc ? ccc.weekSixGoals : null,
+      Goal: goal ? goal.weekSixGoals : null,
     },
   ];
   const totalSavings =
-    (ccc ? ccc.weekOneGoals : null) +
-    (ccc ? ccc.weekTwoGoals : null) +
-    (ccc ? ccc.weekThreeGoals : null) +
-    (ccc ? ccc.weekFourGoals : null) +
-    (ccc ? ccc.weekFiveGoals : null) +
-    (ccc ? ccc.weekSixGoals : null);
+    (goal ? goal.weekOneGoals : null) +
+    (goal ? goal.weekTwoGoals : null) +
+    (goal ? goal.weekThreeGoals : null) +
+    (goal ? goal.weekFourGoals : null) +
+    (goal ? goal.weekFiveGoals : null) +
+    (goal ? goal.weekSixGoals : null);
 
   useEffect(() => {
     fetch(`/people/${params.id}`)
