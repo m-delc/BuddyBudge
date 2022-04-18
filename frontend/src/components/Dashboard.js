@@ -11,19 +11,19 @@ import {
   Line,
 } from "recharts";
 
-const Dashboard = ({ user }) => {
-  // const [user, setUser] = useState(null);
+const Dashboard = ({  }) => {
+  const [user, setUser] = useState(null);
   const [personBudget, setPersonBudget] = useState([]);
 
 
 
   useEffect(() => {
-    // const fetchUser = async () => {
-    //   const data = await fetch("/authorize_user");
-    //   const json = await data.json();
-    //   setUser(json);
-    // };
-    // fetchUser().catch(console.error);
+    const fetchUser = async () => {
+      const data = await fetch("/authorize_user");
+      const json = await data.json();
+      setUser(json);
+    };
+    fetchUser().catch(console.error);
 
     const fetchPersonBudget = async () => {
       const data = await fetch("/person_budgets")

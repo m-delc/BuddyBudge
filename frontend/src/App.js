@@ -24,6 +24,8 @@ function App() {
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
 
+  // console.log(userFriends)
+
   useEffect(() => {
     const fetchUser = async () => {
       const data = await fetch("/authorize_user");
