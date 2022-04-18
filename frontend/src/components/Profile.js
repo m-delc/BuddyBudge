@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../css/profile.css";
 import { NavLink } from "react-router-dom";
 
@@ -7,8 +6,8 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
-  const [errors, setErrors] = useState([]);
   const [newFirstName, setNewFirstName] = useState("");
+  const [errors, setErrors] = useState([]);
   const [firstNameMessage, setFirstNameMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [usernameMessage, setUsernameMessage] = useState("");
