@@ -256,10 +256,6 @@ const Budget = ({ user, budget }) => {
         )}
         <br></br>
         {submitMessage ? submitMessage : null}
-        {/* update button to toggle the form for initial submit or for update */}
-        {/* update button to toggle the form for initial submit or for update */}
-        {/* update button to toggle the form for initial submit or for update */}
-        {/* <button onClick={handleToggle}>Update</button> */}
       </div>
       {/* this toggles the onChange event live as it's happening on the chart, with (upon submission) the submitted values persisting on the chart as  */}
       {/* this toggles the onChange event live as it's happening on the chart, with (upon submission) the submitted values persisting on the chart as  */}

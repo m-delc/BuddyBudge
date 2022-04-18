@@ -33,15 +33,6 @@ function App() {
     };
     fetchUser().catch(console.error);
 
-    // fetch("/authorize_user").then((res) => {
-    //   if (res.ok) {
-    //     res.json().then((user) => {
-    //       setIsAuthenticated(true);
-    //       setUser(user);
-    //     });
-    //   }
-    // });
-
     fetch("/people").then((res) => {
       if (res.ok) {
         res.json().then(setPeople);

@@ -15,8 +15,6 @@ import "../css/loginform.css";
 const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupUsername, setSignupUsername] = useState("");
-  // const [signupPassword, setSignupPassword] = useState("");
-  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
   const navigate = useNavigate();
 
@@ -83,7 +81,6 @@ const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
         });
       } else {
         res.json().then((json) => {
-          // console.log(json)
           setSignupErrors(Object.entries(json.error));
         });
       }

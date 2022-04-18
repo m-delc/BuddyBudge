@@ -4,17 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const People = () => {
   const [people, setPeople] = useState([]);
-  // const [message, setMessage] = useState("");
-  // const [errors, setErrors] = useState("");
-  // const [people, setPeople] = useState(null);
-  // const [people, setPeople] = useState([])
-  // React.useEffect(() => {
-  //   fetch("/people").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then(setPeople);
-  //     }
-  //   });
-  // })
+
   const navigate = useNavigate();
   const handleNavToPerson = (id) => {
     navigate(`/findpeople/${id}`);

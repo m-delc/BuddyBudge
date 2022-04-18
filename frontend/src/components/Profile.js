@@ -5,8 +5,6 @@ import { NavLink } from "react-router-dom";
 
 const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
   const [newUsername, setNewUsername] = useState("");
-  // const [confirmNewUsername, setConfirmNewUsername] = useState("");
-  // const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -19,7 +17,6 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
     e.preventDefault();
     const newInfo = {
       username: newUsername,
-      // confirmNewUsername: confirmNewUsername,
     };
 
     fetch(`/users/${user.id}`, {
@@ -98,9 +95,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
       <div className="grid">
         <br></br>
 
-        <h3 className="header1">
-          Change Your Username
-        </h3>
+        <h3 className="header1">Change Your Username</h3>
 
         <form className="form1" onSubmit={handleUsernameChange}>
           <input
@@ -109,18 +104,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
             className="input1"
             placeholder="change username"
           />
-          {/* <input
-            value={confirmNewUsername}
-            onChange={(e) => setConfirmNewUsername(e.target.value)}
-            className="input1"
-            placeholder="confirm change"
-          /> */}
-          {/* <input
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            className="input1"
-            placeholder="current password"
-          /> */}
+
           <br></br>
           <button className="button1" type="submit">
             Submit
@@ -146,12 +130,7 @@ const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
             className="input2"
             placeholder="confirm new password"
           />
-          {/* <input
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            className="input2"
-            placeholder="current password"
-          /> */}
+
           <br></br>
           <button className="button1" type="submit">
             Submit

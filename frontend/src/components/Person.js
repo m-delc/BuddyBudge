@@ -28,7 +28,6 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
     return person.id == params.id;
   })[0];
 
-
   const ccc = personGoals ? personGoals.person_budget : null;
 
   const chartData = [
@@ -120,7 +119,6 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
         Over the past six weeks {first_name} has managed to save a total of $
         {totalSavings} !!!
       </p>
-      {/* { !friends ? <CheckBoxOutlineBlankRoundedIcon style={{ cursor: "pointer" }} onClick={(e) => handleAddFriend(id)} /> Send a friend request to {first_name} : <CheckBoxRoundedIcon /> Friends } */}
 
       {friendToggle.length == 0 ? (
         <>
@@ -141,8 +139,6 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
         </>
       )}
 
-      {/* <button onClick={(e) => handleAddFriend(id)}>Send Friend Request</button> */}
-      {/* <button onClick={(e) => handleAddFriend(id)}>Add Friend</button> */}
       <BarChart
         width={500}
         height={300}
@@ -160,7 +156,6 @@ const Person = ({ user, userFriends, setUserFriends, people }) => {
         <Tooltip />
         <Legend />
         <Bar dataKey="Goal" fill="#82ca9d" />
-        {/* <Bar dataKey="Savings" fill="#8884d8" /> */}
       </BarChart>
     </div>
   );
