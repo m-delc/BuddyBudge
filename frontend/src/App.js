@@ -15,9 +15,11 @@ import Person from "./components/Person";
 import Dashboard from "./components/Dashboard";
 import Goals from "./components/Goals";
 import About from "./components/About";
+import { useAtom } from "jotai";
+import { userAtom } from "./States.js";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useAtom(userAtom);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const classes = useStyles();
   const [people, setPeople] = useState([]);
