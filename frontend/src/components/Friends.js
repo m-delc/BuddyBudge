@@ -1,7 +1,7 @@
 import React from "react";
 import FriendPage from "../pages/FriendPage";
 
-const Friends = ({ userFriends, people, user }) => {
+const Friends = ({ userFriends }) => {
   return (
     <div>
       <FriendPage userFriends={userFriends} />

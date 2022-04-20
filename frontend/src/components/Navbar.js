@@ -9,8 +9,12 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
+import { useAtom } from "jotai";
+import { userAtom, isAuthenticatedAtom } from "../States.js";
 
-const Navbar = ({ setIsAuthenticated, user, setUser }) => {
+const Navbar = () => {
+  const [user, setUser] = useAtom(userAtom);
+  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom)
   // renders first initial of user
   // renders first initial of user
   const split = user ? user.first_name.split("") : null;

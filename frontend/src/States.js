@@ -1,3 +1,4 @@
 import { atom } from "jotai";
 const userAtom = atom("");
-export { userAtom };
+const isAuthenticatedAtom = atom(false)
+export { userAtom, isAuthenticatedAtom };

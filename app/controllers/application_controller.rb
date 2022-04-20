@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
 
     include ActionController::Cookies
+    
     before_action :authorize_user
 
     def current_user

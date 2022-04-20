@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "../css/profile.css";
 import { NavLink } from "react-router-dom";
+import { useAtom } from "jotai";
+import { userAtom, isAuthenticatedAtom } from "../States.js";
 
-const Profile = ({ user, setUser, setIsAuthenticated }) => {
+const Profile = () => {
+  const [user, setUser] = useAtom(userAtom);
+  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom)
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -75,7 +79,7 @@ const Profile = ({ user, setUser, setIsAuthenticated }) => {
       if (res.ok) {
         res.json().then((x) => {
           setUser(x);
-          setIsAuthenticated(true);
+          // setIsAuthenticated(true);
           setNewFirstName("");
           setFirstNameMessage(
             `Your first name has been changed to ${x.first_name}`

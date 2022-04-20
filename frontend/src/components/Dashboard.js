@@ -10,12 +10,12 @@ import {
   LineChart,
   Line,
 } from "recharts";
+import { useAtom } from "jotai";
+import { userAtom } from "../States.js";
 
-const Dashboard = ({  }) => {
-  const [user, setUser] = useState(null);
+const Dashboard = () => {
+  const [user, setUser] = useAtom(userAtom);
   const [personBudget, setPersonBudget] = useState([]);
-
-
 
   useEffect(() => {
     const fetchUser = async () => {

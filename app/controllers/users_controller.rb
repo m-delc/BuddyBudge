@@ -30,6 +30,7 @@ class UsersController < ApplicationController
         user = current_user
         user.update(user_params)
         if user
+            session[:current_user] = user.id
             return render json: user, status: 201
         else
             return render json: { errors: user.errors.full_messages }, status: 422

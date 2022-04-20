@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "../css/budget.css";
 import {
   BarChart,
@@ -10,10 +10,13 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { useAtom } from "jotai";
+import { userAtom } from "../States.js";
 
-// const savings1 = null;
 
-const Budget = ({ user, budget }) => {
+const Budget = ({budget }) => {
+  const [user, setUser] = useAtom(userAtom)
+
   const [weekOneGoals, setweekOneGoals] = useState("");
   const [weekTwoGoals, setweekTwoGoals] = useState("");
   const [weekThreeGoals, setweekThreeGoals] = useState("");
@@ -23,7 +26,7 @@ const Budget = ({ user, budget }) => {
   const [goals, setGoals] = useState([]);
   const [toggleSubmitUpdate, setToggleSubmitUpdate] = useState(true);
   const [toggleGraph, setToggleGraph] = useState(true);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [submitMessage, setSubmitMessage] = useState("");
 
   const chartData = [

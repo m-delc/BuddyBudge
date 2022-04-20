@@ -65,7 +65,7 @@ function App() {
     <>
       <Paper className={classes.pageContent} elevation={24}>
         <Navbar
-          user={user}
+          // user={user}
           setUser={setUser}
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated}
