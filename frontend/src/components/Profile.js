@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/profile.css";
 import { NavLink } from "react-router-dom";
 
-const Profile = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
+const Profile = ({ user, setUser, setIsAuthenticated }) => {
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
