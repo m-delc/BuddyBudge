@@ -28,11 +28,11 @@ const Profile = () => {
       body: JSON.stringify(newInfo),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((x) => {
-          setUser(x);
-          setIsAuthenticated(true);
+        res.json().then((userNewUsername) => {
+          console.log(userNewUsername)
+          setUser(userNewUsername);
           setNewUsername("");
-          setUsernameMessage(`Your username had been changed to ${x.username}`);
+          setUsernameMessage(`Your username had been changed to ${userNewUsername.username}`);
         });
       } else {
         res.json().then(setErrors(Object.entries.err.errors));
@@ -53,9 +53,8 @@ const Profile = () => {
       body: JSON.stringify(newInfo),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((x) => {
-          setUser(x);
-          setIsAuthenticated(true);
+        res.json().then((userNewPassword) => {
+          setUser(userNewPassword);
           setNewPassword("");
           setConfirmNewPassword("");
           setPasswordMessage("Your password has been changed");
@@ -77,12 +76,12 @@ const Profile = () => {
       body: JSON.stringify(newInfo),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((x) => {
-          setUser(x);
-          // setIsAuthenticated(true);
+        res.json().then((userNewFirstName) => {
+          console.log(userNewFirstName)
+          setUser(userNewFirstName);
           setNewFirstName("");
           setFirstNameMessage(
-            `Your first name has been changed to ${x.first_name}`
+            `Your first name has been changed to ${userNewFirstName.first_name}`
           );
         });
       } else {

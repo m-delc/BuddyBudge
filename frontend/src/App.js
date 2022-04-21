@@ -17,6 +17,7 @@ import Goals from "./components/Goals";
 import About from "./components/About";
 import { useAtom } from "jotai";
 import { userAtom } from "./States.js";
+import axios from "axios";
 
 function App() {
   const [user, setUser] = useAtom(userAtom);
@@ -25,6 +26,7 @@ function App() {
   const [people, setPeople] = useState([]);
   const [userFriends, setUserFriends] = useState([]);
   const [budget, setBudget] = useState([]);
+  // const axios = require('axios')
 
   // console.log(userFriends)
 
@@ -33,9 +35,25 @@ function App() {
       const data = await fetch("/authorize_user");
       const json = await data.json();
       setIsAuthenticated(true);
-      setUser(json.user);
+      setUser(json);
     };
     fetchUser().catch(console.error);
+
+    const fetchPeople = async () => {
+      const response = await axios.get("/people");
+      setPeople(response);
+    };
+    fetchPeople().catch(console.error);
+
+    // async function getPeople() {
+    //   try {
+    //     const response = await axios.get("/people");
+    //     setPeople(response);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // }
+    // getPeople();
 
     // const fetchPeople = async () => {
     //   const data = await fetch("/people");
@@ -44,11 +62,11 @@ function App() {
     // };
     // fetchPeople().catch(console.error);
 
-    fetch("/people").then((res) => {
-      if (res.ok) {
-        res.json().then(setPeople);
-      }
-    });
+    // fetch("/people").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then(setPeople);
+    //   }
+    // });
     fetch("/friends").then((res) => {
       if (res.ok) {
         res.json().then(setUserFriends);
