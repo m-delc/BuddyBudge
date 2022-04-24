@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/profiledelete.css";
+import { useAtom } from "jotai";
+import { userAtom, isAuthenticatedAtom } from "../States.js";
 
-const ProfileDelete = ({ user, setUser, setIsAuthenticated }) => {
+const ProfileDelete = () => {
+  const [user, setUser] = useAtom(userAtom);
+  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   const [toggle, setToggle] = useState(true);
   const navigate = useNavigate();
 

@@ -6,7 +6,7 @@ import { userAtom, isAuthenticatedAtom } from "../States.js";
 
 const Profile = () => {
   const [user, setUser] = useAtom(userAtom);
-  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom)
+  // const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom)
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");

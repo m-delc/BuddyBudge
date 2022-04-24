@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -10,8 +10,12 @@ import LoginIcon from "@mui/icons-material/Login";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Stack from "@mui/material/Stack";
 import "../css/loginform.css";
+import { useAtom } from "jotai";
+import { userAtom, isAuthenticatedAtom } from "../States.js";
 
-function LoginForm({ user, setUser, isAuthenticated, setIsAuthenticated }) {
+function LoginForm() {
+  const [user, setUser] = useAtom(userAtom);
+  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   const [loginUsername, setLoginUsername] = useState("");
   const [loginError, setLoginError] = useState([]);
   const navigate = useNavigate();

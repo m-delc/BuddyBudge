@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -11,8 +11,12 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
 import "../css/loginform.css";
+import { useAtom } from "jotai";
+import { userAtom, isAuthenticatedAtom } from "../States.js";
 
-const Signup = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
+const Signup = () => {
+  const [user, setUser] = useAtom(userAtom);
+  // const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupUsername, setSignupUsername] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);

@@ -1,10 +1,10 @@
 import React from "react";
 import FriendPage from "../pages/FriendPage";
 
-const Friends = ({ userFriends }) => {
+const Friends = () => {
   return (
     <div>
-      <FriendPage userFriends={userFriends} />
+      <FriendPage />
     </div>
   );
 };

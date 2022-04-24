@@ -16,49 +16,53 @@ import Dashboard from "./components/Dashboard";
 import Goals from "./components/Goals";
 import About from "./components/About";
 import { useAtom } from "jotai";
-import { userAtom } from "./States.js";
+import { userAtom, userFriendsAtom } from "./States.js";
 import axios from "axios";
 
 function App() {
   const [user, setUser] = useAtom(userAtom);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
+
   const classes = useStyles();
-  const [people, setPeople] = useState([]);
-  const [userFriends, setUserFriends] = useState([]);
-  const [budget, setBudget] = useState([]);
+  // const [budget, setBudget] = useState([]);
   // const axios = require('axios')
 
-  // console.log(userFriends)
-
   useEffect(() => {
+    // const fetchUser = async () => {
+    //   try {
+    //     const response = await axios.get("/authorize_user");
+    //     setUser(response);
+    //   } catch (err) {
+    //     if (err.response) {
+    //       console.log(err.response.data);
+    //     } else {
+    //       console.log("Error");
+    //     }
+    //   }
+    // };
+    // fetchUser();
+
+    // const fetchUser = async () => {
+    //   const response = await axios.get('/authorize_user')
+    //   setUser(response)
+    // }
+    // fetchUser().catch(console.error);
+
+    // dont'know why, regular async works for "/authorize_user" but axios won't
+    // dont'know why, regular async works for "/authorize_user" but axios won't
+    // dont'know why, regular async works for "/authorize_user" but axios won't
+
     const fetchUser = async () => {
       const data = await fetch("/authorize_user");
       const json = await data.json();
-      setIsAuthenticated(true);
+      // setIsAuthenticated(true);
       setUser(json);
     };
     fetchUser().catch(console.error);
 
-    const fetchPeople = async () => {
-      const response = await axios.get("/people");
-      setPeople(response);
-    };
-    fetchPeople().catch(console.error);
-
-    // async function getPeople() {
-    //   try {
-    //     const response = await axios.get("/people");
-    //     setPeople(response);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // }
-    // getPeople();
-
     // const fetchPeople = async () => {
-    //   const data = await fetch("/people");
-    //   const json = await data.json();
-    //   setPeople(json);
+    //   const response = await axios.get("/people");
+    //   setPeople(response);
     // };
     // fetchPeople().catch(console.error);
 
@@ -67,50 +71,53 @@ function App() {
     //     res.json().then(setPeople);
     //   }
     // });
+
+    // const fetchFriends = async () => {
+    //   const response = await axios.get("/friends");
+    //   setUserFriends(response);
+    //   console.log(response);
+    // };
+    // fetchFriends().catch(console.error);
+
+    // '/friends' axios won't work
+    // '/friends' axios won't work
+    // '/friends' axios won't work
     fetch("/friends").then((res) => {
       if (res.ok) {
         res.json().then(setUserFriends);
       }
     });
-    fetch("/budgets").then((res) => {
-      if (res.ok) {
-        res.json().then(setBudget);
-      }
-    });
+
+    // const fetchBudgets = async () => {
+    //   const response = await axios.get("/budgets");
+    //   setBudget(response);
+    // };
+    // fetchBudgets().catch(console.error);
+
+    // fetch("/budgets").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then(setBudget);
+    //   }
+    // });
   }, []);
 
   return (
     <>
       <Paper className={classes.pageContent} elevation={24}>
-        <Navbar
-          // user={user}
-          setUser={setUser}
-          isAuthenticated={isAuthenticated}
-          setIsAuthenticated={setIsAuthenticated}
-        />
+        <Navbar/>
       </Paper>
 
       <Routes>
         <Route
           path="login"
           element={
-            <Login
-              user={user}
-              setUser={setUser}
-              isAuthenticated={isAuthenticated}
-              setIsAuthenticated={setIsAuthenticated}
-            />
+            <Login />
           }
         />
         <Route
           path="signup"
           element={
-            <Signup
-              user={user}
-              setUser={setUser}
-              isAuthenticated={isAuthenticated}
-              setIsAuthenticated={setIsAuthenticated}
-            />
+            <Signup />
           }
         />
         <Route path="/" element={<Login />} />
@@ -126,12 +133,7 @@ function App() {
           path="profile"
           element={
             <Paper className={classes.pageContent}>
-              <Profile
-                user={user}
-                setUser={setUser}
-                isAuthenticated={isAuthenticated}
-                setIsAuthenticated={setIsAuthenticated}
-              />
+              <Profile />
             </Paper>
           }
         />
@@ -140,7 +142,7 @@ function App() {
           path="goals"
           element={
             <Paper className={classes.pageContent}>
-              <Goals user={user} budget={budget} />
+              <Goals />
             </Paper>
           }
         />
@@ -148,24 +150,14 @@ function App() {
         <Route
           path="profile/delete"
           element={
-            <ProfileDelete
-              user={user}
-              setUser={setUser}
-              setIsAuthenticated={setIsAuthenticated}
-            />
+            <ProfileDelete />
           }
         />
         <Route
           path="findpeople"
           element={
             <Paper className={classes.pageContent}>
-              <People
-                people={people}
-                user={user}
-                setUser={setUser}
-                setIsAuthenticated={setIsAuthenticated}
-                userFriends={userFriends}
-              />
+              <People />
             </Paper>
           }
         />
@@ -173,7 +165,7 @@ function App() {
           path="/friends"
           element={
             <Paper className={classes.pageContent}>
-              <Friends user={user} userFriends={userFriends} people={people} />
+              <Friends />
             </Paper>
           }
         />
@@ -181,12 +173,7 @@ function App() {
           path="findpeople/:id"
           element={
             <Paper className={classes.pageContent}>
-              <Person
-                user={user}
-                people={people}
-                userFriends={userFriends}
-                setUserFriends={setUserFriends}
-              />
+              <Person />
             </Paper>
           }
         />
@@ -194,7 +181,7 @@ function App() {
           path="dashboard"
           element={
             <Paper className={classes.pageContent}>
-              <Dashboard user={user} budget={budget} />
+              <Dashboard />
             </Paper>
           }
         />

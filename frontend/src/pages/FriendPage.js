@@ -1,7 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAtom } from "jotai";
+import { userFriendsAtom } from "../States";
 
-const FriendPage = ({ userFriends }) => {
+const FriendPage = () => {
+  const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
   const navigate = useNavigate();
   const handleNav = (id) => {
     navigate(`/findpeople/${id}`);

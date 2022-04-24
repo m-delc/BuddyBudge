@@ -10,17 +10,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = ({ user, setUser, isAuthenticated, setIsAuthenticated }) => {
+const Login = () => {
   const classes = useStyles();
   
   return (
     <Paper className={classes.pageContent} elevation={24}>
-      <LoginForm
-        user={user}
-        setUser={setUser}
-        isAuthenticated={isAuthenticated}
-        setIsAuthenticated={setIsAuthenticated}
-      />
+      <LoginForm/>
     </Paper>
   );
 };

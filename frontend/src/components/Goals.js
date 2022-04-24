@@ -14,7 +14,7 @@ import { useAtom } from "jotai";
 import { userAtom } from "../States.js";
 
 
-const Budget = ({budget }) => {
+const Budget = () => {
   const [user, setUser] = useAtom(userAtom)
 
   const [weekOneGoals, setweekOneGoals] = useState("");

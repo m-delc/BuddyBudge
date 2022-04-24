@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAtom } from "jotai";
+import {
+  peopleAtom,
+  userAtom,
+  isAuthenticatedAtom,
+  userFriendsAtom,
+} from "../States.js";
 
 const People = () => {
-  const [people, setPeople] = useState([]);
+  const [people, setPeople] = useAtom(peopleAtom);
+  // const [user, setUser] = useAtom(userAtom);
+  // const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
+  // const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
+
   const navigate = useNavigate();
   const handleNavToPerson = (id) => {
     navigate(`/findpeople/${id}`);
