@@ -116,7 +116,7 @@ const Navbar = () => {
                 </MenuItem>
               </NavLink>
 
-              <NavLink to="/friends" className="span3">
+              <NavLink to="/userfriends" className="span3">
                 <MenuItem>
                   <Avatar /> {user ? `${user.first_name}'s Friends` : null}
                 </MenuItem>
