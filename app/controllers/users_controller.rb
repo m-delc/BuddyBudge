@@ -34,6 +34,12 @@ class UsersController < ApplicationController
         end
     end
 
+    # def changefirstname
+    #     user = current_user
+    #     user.update_attribute(:first_name)
+    #     render json: user
+    # end
+
     def destroy
         user = current_user
         user.destroy
@@ -43,6 +49,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :first_name, :password, :password_confirmation)
+        params.require(:user).permit(:username, :first_name, :password, :password_confirmation)
     end
 end

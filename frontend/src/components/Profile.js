@@ -16,6 +16,10 @@ const Profile = () => {
   const [passwordMessage, setPasswordMessage] = useState("");
   const [usernameMessage, setUsernameMessage] = useState("");
 
+  const [firstnamepassword, setfirstnamepassword] = useState("");
+  const [firstnamepasswordconfirmation, setfirstnamepasswordconfirmation] =
+    useState("");
+
   const handleUsernameChange = (e) => {
     e.preventDefault();
     const newInfo = {
@@ -67,7 +71,6 @@ const Profile = () => {
     });
   };
 
-
   // this is a re-write test to see if the problem is front end. This did not work, so I believe the problem is backend
   // this is a re-write test to see if the problem is front end. This did not work, so I believe the problem is backend
   // this is a re-write test to see if the problem is front end. This did not work, so I believe the problem is backend
@@ -88,6 +91,8 @@ const Profile = () => {
     e.preventDefault();
     const newInfo = {
       first_name: newFirstName,
+      password: firstnamepassword,
+      password_confirmation: firstnamepasswordconfirmation,
     };
     fetch(`/users/${user.id}`, {
       method: "PATCH",
@@ -96,7 +101,7 @@ const Profile = () => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((userNewFirstName) => {
-          console.log(userNewFirstName)
+          console.log(userNewFirstName);
           setUser(userNewFirstName);
           setNewFirstName("");
           setFirstNameMessage(
@@ -167,6 +172,21 @@ const Profile = () => {
             onChange={(e) => setNewFirstName(e.target.value)}
             placeholder="change first name"
           />
+
+          <input
+            className="input3"
+            value={firstnamepassword}
+            onChange={(e) => setfirstnamepassword(e.target.value)}
+            placeholder="password?"
+          />
+
+          <input
+            className="input3"
+            value={firstnamepasswordconfirmation}
+            onChange={(e) => setfirstnamepasswordconfirmation(e.target.value)}
+            placeholder="password again?"
+          />
+
           <br></br>
           <button className="button1" type="submit">
             Submit

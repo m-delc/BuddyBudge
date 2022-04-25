@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/authorize_user', to: "users#show"
     post '/login', to: "sessions#login"
     delete '/logout', to: "sessions#logout"
+    # update '/changefirstname', to: "users#changefirstname"
 
   # end
   # test
