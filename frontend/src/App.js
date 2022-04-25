@@ -16,42 +16,25 @@ import Dashboard from "./components/Dashboard";
 import Goals from "./components/Goals";
 import About from "./components/About";
 import { useAtom } from "jotai";
-import { userAtom, userFriendsAtom } from "./States.js";
+import { userAtom } from "./States.js";
 
 function App() {
   const [user, setUser] = useAtom(userAtom);
-  const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
 
   const classes = useStyles();
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const data = await fetch("/authorize_user");
-      const json = await data.json();
-      console.log(json)
-      setUser(json);
-    };
-    fetchUser().catch(console.error);
-
-    // const fetchFriends = async () => {
-    //   const data = await fetch("/friends");
-    //   const json = await data.json();
-    //   setUserFriends(json);
-    // };
-    // fetchFriends().catch(console.error);
-
-    fetch("/friends").then((res) => {
+    fetch("/authorize_user").then((res) => {
       if (res.ok) {
-        res.json().then(setUserFriends);
+        res.json().then(setUser);
       }
     });
   }, []);
-  
 
   return (
     <>
       <Paper className={classes.pageContent} elevation={24}>
-        <Navbar />
+        <Navbar user={user} setUser={setUser} />
       </Paper>
 
       <Routes>

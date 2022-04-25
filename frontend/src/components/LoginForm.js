@@ -52,7 +52,7 @@ function LoginForm() {
         res.json().then((newUser) => {
           setUser(newUser);
           setIsAuthenticated(true);
-          navigate("/dashboard");
+          navigate("/goals");
         });
       } else {
         res.json().then((json) => setLoginError(json.error));

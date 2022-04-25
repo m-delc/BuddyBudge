@@ -10,11 +10,10 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import { useAtom } from "jotai";
-import { userAtom, isAuthenticatedAtom } from "../States.js";
+import { userAtom } from "../States.js";
 
 const Navbar = () => {
   const [user, setUser] = useAtom(userAtom);
-  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   // renders first initial of user
   // renders first initial of user
   const split = user ? user.first_name.split("") : null;
@@ -34,21 +33,11 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const data = await fetch("/authorize_user");
-      const json = await data.json();
-      setUser(json);
-    };
-    fetchUser().catch(console.error);
-  }, []);
-
   const logout = () => {
     fetch("/logout", {
       method: "DELETE",
     }).then(() => {
       setUser(null);
-      setIsAuthenticated(false);
       navigate("/login");
     });
   };
