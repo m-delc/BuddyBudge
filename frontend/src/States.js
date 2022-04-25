@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
-const userAtom = atom("");
+const userAtom = atom(null);
 const isAuthenticatedAtom = atom(false);
 const peopleAtom = atom([]);
 const userFriendsAtom = atom([]);

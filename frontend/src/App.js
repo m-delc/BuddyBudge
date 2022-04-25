@@ -29,7 +29,7 @@ function App() {
       const data = await fetch("/authorize_user");
       const json = await data.json();
       console.log(json)
-      setUser(json.username);
+      setUser(json);
     };
     fetchUser().catch(console.error);
 
