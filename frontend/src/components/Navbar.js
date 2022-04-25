@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../css/navbar.css";
 import Avatar from "@mui/material/Avatar";
@@ -14,7 +14,7 @@ import { userAtom, isAuthenticatedAtom } from "../States.js";
 
 const Navbar = () => {
   const [user, setUser] = useAtom(userAtom);
-  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom)
+  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   // renders first initial of user
   // renders first initial of user
   const split = user ? user.first_name.split("") : null;
@@ -33,6 +33,15 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const data = await fetch("/authorize_user");
+      const json = await data.json();
+      setUser(json);
+    };
+    fetchUser().catch(console.error);
+  }, []);
 
   const logout = () => {
     fetch("/logout", {

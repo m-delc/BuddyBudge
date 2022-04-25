@@ -29,10 +29,12 @@ const Profile = () => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((userNewUsername) => {
-          console.log(userNewUsername)
+          console.log(userNewUsername);
           setUser(userNewUsername);
           setNewUsername("");
-          setUsernameMessage(`Your username had been changed to ${userNewUsername.username}`);
+          setUsernameMessage(
+            `Your username had been changed to ${userNewUsername.username}`
+          );
         });
       } else {
         res.json().then(setErrors(Object.entries.err.errors));
@@ -64,6 +66,23 @@ const Profile = () => {
       }
     });
   };
+
+
+  // this is a re-write test to see if the problem is front end. This did not work, so I believe the problem is backend
+  // this is a re-write test to see if the problem is front end. This did not work, so I believe the problem is backend
+  // this is a re-write test to see if the problem is front end. This did not work, so I believe the problem is backend
+  // const handleNameChange = (e) => {
+  //   e.preventDefault();
+  //   fetch(`/users/${user.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ first_name: newFirstName }),
+  //   })
+  //     .then((r) => r.json())
+  //     .then((updateName) => setUser(updateName));
+  // };
 
   const handleNameChange = (e) => {
     e.preventDefault();
