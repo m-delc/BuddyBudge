@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
-import { userFriendsAtom } from "../States";
+import { userFriendsAtom, userAtom } from "../States";
 
 const FriendPage = () => {
   const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
+  const [user] = useAtom(userAtom);
   const navigate = useNavigate();
   const handleNav = (id) => {
     navigate(`/findpeople/${id}`);
@@ -33,7 +34,7 @@ const FriendPage = () => {
           justifyContent: "center",
         }}
       >
-        Your Friends
+        {user.first_name}'s Friends
       </div>
       {userFriends
         ? userFriends.map((friend, index) => (
