@@ -5,7 +5,7 @@ import { userFriendsAtom, userAtom } from "../States";
 import { v4 as uuidv4 } from "uuid";
 
 const FriendPage = () => {
-  const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
+  const [userFriends] = useAtom(userFriendsAtom);
   const [user] = useAtom(userAtom);
   const navigate = useNavigate();
   const handleNav = (id) => {
