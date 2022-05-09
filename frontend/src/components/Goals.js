@@ -14,8 +14,8 @@ import { useAtom } from "jotai";
 import { userAtom, userFriendsAtom } from "../States.js";
 
 const Budget = () => {
-  const [user] = useAtom(userAtom);
-  const [,setUserFriends] = useAtom(userFriendsAtom)
+  const [user, setUser] = useAtom(userAtom);
+  const [, setUserFriends] = useAtom(userFriendsAtom);
 
   const [weekOneGoals, setweekOneGoals] = useState("");
   const [weekTwoGoals, setweekTwoGoals] = useState("");
@@ -32,12 +32,12 @@ const Budget = () => {
   // i think this stops the problem i had before, where for a split second the previous user's friends were visible when I clicked on user's "friends'"
   useEffect(() => {
     const fetchFriends = async () => {
-      const data = await fetch("/friends")
-      const json = await data.json()
+      const data = await fetch("/friends");
+      const json = await data.json();
       setUserFriends(json);
-    }
-    fetchFriends().catch(console.error)
-  }, [])
+    };
+    fetchFriends().catch(console.error);
+  }, []);
 
   const chartData = [
     {

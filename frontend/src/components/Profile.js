@@ -6,7 +6,7 @@ import { userAtom } from "../States.js";
 
 const Profile = () => {
   const [user, setUser] = useAtom(userAtom);
-  const [newUsername, setNewUsername] = useState("");
+  const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [newFirstName, setNewFirstName] = useState("");
@@ -18,7 +18,7 @@ const Profile = () => {
   const handleUsernameChange = (e) => {
     e.preventDefault();
     const newInfo = {
-      username: newUsername,
+      email: newEmail,
     };
 
     fetch(`/users/${user.id}`, {
@@ -27,12 +27,11 @@ const Profile = () => {
       body: JSON.stringify(newInfo),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((userNewUsername) => {
-          console.log(userNewUsername);
-          setUser(userNewUsername);
-          setNewUsername("");
+        res.json().then((userNewEmail) => {
+          setUser(userNewEmail);
+          setNewEmail("");
           setUsernameMessage(
-            `Your username is now "${userNewUsername.username}"`
+            `Your email is now "${userNewEmail.email}"`
           );
         });
       } else {
@@ -98,14 +97,14 @@ const Profile = () => {
       <div className="grid">
         <br></br>
 
-        <h3 className="header1">Change Your Username</h3>
+        <h3 className="header1">Change Your Email</h3>
 
         <form className="form1" onSubmit={handleUsernameChange}>
           <input
-            value={newUsername}
-            onChange={(e) => setNewUsername(e.target.value)}
+            value={newEmail}
+            onChange={(e) => setNewEmail(e.target.value)}
             className="input1"
-            placeholder="change username"
+            placeholder="change email"
           />
 
           <br></br>

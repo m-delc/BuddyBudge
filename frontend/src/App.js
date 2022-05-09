@@ -23,22 +23,25 @@ function App() {
 
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   fetch("/authorize_user").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then(setUser);
-  //     }
-  //   });
-  // }, []);
-
   useEffect(() => {
-    const fetchAuthUser = async () => {
-      const data = await fetch("/authorize_user");
-      const json = await data.json();
-      setUser(json);
-    };
-    fetchAuthUser().catch(console.error);
+    fetch("/authorize_user").then((res) => {
+      if (res.ok) {
+        res.json().then(setUser);
+      }
+    });
   }, []);
+
+  // sometimes this works and sometimes it doens't, not sure why..
+  // sometimes this works and sometimes it doens't, not sure why..
+  // useEffect(() => {
+  //   const fetchAuthUser = async () => {
+  //     const data = await fetch("/authorize_user");
+  //     const json = await data.json();
+  //     console.log(json);
+  //     setUser(json);
+  //   };
+  //   fetchAuthUser().catch(console.error);
+  // }, []);
 
   return (
     <>
