@@ -31,12 +31,13 @@ const Budget = () => {
   // i think this stops the problem i had before, where for a split second the previous user's friends were visible when I clicked on user's "friends'"
   // i think this stops the problem i had before, where for a split second the previous user's friends were visible when I clicked on user's "friends'"
   useEffect(() => {
-    fetch("/friends").then((res) => {
-      if (res.ok) {
-        res.json().then(setUserFriends);
-      }
-    });
-  }, []);
+    const fetchFriends = async () => {
+      const data = await fetch("/friends")
+      const json = await data.json()
+      setUserFriends(json);
+    }
+    fetchFriends().catch(console.error)
+  }, [])
 
   const chartData = [
     {
