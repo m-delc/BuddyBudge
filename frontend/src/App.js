@@ -23,12 +23,21 @@ function App() {
 
   const classes = useStyles();
 
+  // useEffect(() => {
+  //   fetch("/authorize_user").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then(setUser);
+  //     }
+  //   });
+  // }, []);
+
   useEffect(() => {
-    fetch("/authorize_user").then((res) => {
-      if (res.ok) {
-        res.json().then(setUser);
-      }
-    });
+    const fetchAuthUser = async () => {
+      const data = await fetch("/authorize_user");
+      const json = await data.json();
+      setUser(json);
+    };
+    fetchAuthUser().catch(console.error);
   }, []);
 
   return (

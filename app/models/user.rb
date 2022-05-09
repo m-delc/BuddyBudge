@@ -6,7 +6,7 @@ class User < ApplicationRecord
     has_many :people, through: :friends
     validates :email, email: {mode: :strict, require_fqdn: true}
     validates :password, presence: true, allow_blank: true
-    validates :password_confirmation, presence: true
+    validates :password_confirmation, presence: true, allow_blank: true
     validates :first_name, presence: true
     
 end
