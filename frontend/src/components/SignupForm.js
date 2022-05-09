@@ -23,6 +23,7 @@ const Signup = () => {
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupUsername, setSignupUsername] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
+  const [signupEmail, setSignupEmail] = useState("");
   const navigate = useNavigate();
 
   // first password
@@ -71,7 +72,7 @@ const Signup = () => {
     e.preventDefault();
     setSignupErrors([]);
     const newUser = {
-      username: signupUsername,
+      email: signupEmail,
       first_name: signupFirstName,
       password: initialPassword.password,
       password_confirmation: confirmPassword.password,
@@ -104,11 +105,11 @@ const Signup = () => {
           <Input
             className="test1"
             type="text"
-            id="username"
-            placeholder="Choose a username"
+            id="email"
+            placeholder="Email"
             variant="standard"
-            value={signupUsername}
-            onChange={(e) => setSignupUsername(e.target.value)}
+            value={signupEmail}
+            onChange={(e) => setSignupEmail(e.target.value)}
           />
         </div>
 
