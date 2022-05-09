@@ -12,7 +12,10 @@ import Input from "@mui/material/Input";
 import "../css/loginform.css";
 import { useAtom } from "jotai";
 import { userAtom } from "../States.js";
-import { v4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
+
+
+
 
 
 const Signup = () => {
@@ -21,7 +24,6 @@ const Signup = () => {
   const [signupUsername, setSignupUsername] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
   const navigate = useNavigate();
-  console.log(v4)
 
   // first password
   // first password
@@ -180,7 +182,7 @@ const Signup = () => {
 
       <div>
         {signupErrors
-          ? signupErrors.map((error) => <p key={v4}>{error[1]}</p>)
+          ? signupErrors.map((error) => <p key={uuidv4()}>{error[1]}</p>)
           : null}
       </div>
 

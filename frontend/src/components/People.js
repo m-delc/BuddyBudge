@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { peopleAtom } from "../States.js";
-import { v4 } from "uuid";
-
+import { v4 as uuidv4 } from "uuid";
 
 const People = () => {
   const [people, setPeople] = useAtom(peopleAtom);
@@ -42,7 +41,7 @@ const People = () => {
                   background: "white",
                   borderRadius: "8px",
                 }}
-                key={v4}
+                key={uuidv4()}
               >
                 <p></p>
                 <img

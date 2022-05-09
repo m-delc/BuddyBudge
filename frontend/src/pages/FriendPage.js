@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userFriendsAtom, userAtom } from "../States";
-import { v4 } from "uuid";
-
+import { v4 as uuidv4 } from "uuid";
 
 const FriendPage = () => {
   const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
@@ -47,7 +46,7 @@ const FriendPage = () => {
                 textAlign: "center",
                 margin: "10px",
               }}
-              key={v4}
+              key={uuidv4()}
             >
               <h3>{friend.person.first_name}</h3>
               <p></p>
