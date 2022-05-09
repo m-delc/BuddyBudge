@@ -14,8 +14,8 @@ import { useAtom } from "jotai";
 import { userAtom, isAuthenticatedAtom } from "../States.js";
 
 function LoginForm() {
-  const [user, setUser] = useAtom(userAtom);
-  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
+  const [,setUser] = useAtom(userAtom);
+  const [,setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   const [loginUsername, setLoginUsername] = useState("");
   const [loginError, setLoginError] = useState([]);
   const navigate = useNavigate();
