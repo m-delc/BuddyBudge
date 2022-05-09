@@ -16,7 +16,8 @@ import { userAtom, isAuthenticatedAtom } from "../States.js";
 function LoginForm() {
   const [,setUser] = useAtom(userAtom);
   const [,setIsAuthenticated] = useAtom(isAuthenticatedAtom);
-  const [loginUsername, setLoginUsername] = useState("");
+  // const [loginUsername, setLoginUsername] = useState("");
+  const [loginEmail, setLoginEmail] = useState('')
   const [loginError, setLoginError] = useState([]);
   const navigate = useNavigate();
 
@@ -40,7 +41,7 @@ function LoginForm() {
   const loginOnSubmit = (e) => {
     e.preventDefault();
     const newUser = {
-      username: loginUsername,
+      email: loginEmail,
       password: values.password,
     };
     fetch("/login", {
@@ -74,11 +75,11 @@ function LoginForm() {
 
         <Input
           className="test1"
-          value={loginUsername}
-          onChange={(e) => setLoginUsername(e.target.value)}
+          value={loginEmail}
+          onChange={(e) => setLoginEmail(e.target.value)}
           type="text"
-          label="Username"
-          placeholder="Username"
+          label="Email"
+          placeholder="Email"
         />
 
         {/* <br></br>
