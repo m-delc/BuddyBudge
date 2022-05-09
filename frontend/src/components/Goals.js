@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import "../css/budget.css";
 import {
@@ -11,11 +11,11 @@ import {
   Legend,
 } from "recharts";
 import { useAtom } from "jotai";
-import { userAtom } from "../States.js";
-
+import { userAtom, userFriendsAtom } from "../States.js";
 
 const Budget = () => {
-  const [user, setUser] = useAtom(userAtom)
+  const [user] = useAtom(userAtom);
+  const [,setUserFriends] = useAtom(userFriendsAtom)
 
   const [weekOneGoals, setweekOneGoals] = useState("");
   const [weekTwoGoals, setweekTwoGoals] = useState("");
@@ -26,8 +26,17 @@ const Budget = () => {
   const [goals, setGoals] = useState([]);
   const [toggleSubmitUpdate, setToggleSubmitUpdate] = useState(true);
   const [toggleGraph, setToggleGraph] = useState(true);
-  // const navigate = useNavigate();
   const [submitMessage, setSubmitMessage] = useState("");
+
+  // i think this stops the problem i had before, where for a split second the previous user's friends were visible when I clicked on user's "friends'"
+  // i think this stops the problem i had before, where for a split second the previous user's friends were visible when I clicked on user's "friends'"
+  useEffect(() => {
+    fetch("/friends").then((res) => {
+      if (res.ok) {
+        res.json().then(setUserFriends);
+      }
+    });
+  }, []);
 
   const chartData = [
     {

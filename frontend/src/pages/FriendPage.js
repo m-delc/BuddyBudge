@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userFriendsAtom, userAtom } from "../States";
@@ -11,14 +11,6 @@ const FriendPage = () => {
   const handleNav = (id) => {
     navigate(`/findpeople/${id}`);
   };
-
-  useEffect(() => {
-    fetch("/friends").then((res) => {
-      if (res.ok) {
-        res.json().then(setUserFriends);
-      }
-    });
-  }, []);
 
   return (
     <div

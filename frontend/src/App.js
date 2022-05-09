@@ -31,7 +31,7 @@ function App() {
     });
   }, []);
 
-    return (
+  return (
     <>
       <Paper className={classes.pageContent} elevation={24}>
         <Navbar user={user} setUser={setUser} />
