@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -12,15 +11,17 @@ import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
 import "../css/loginform.css";
 import { useAtom } from "jotai";
-import { userAtom, isAuthenticatedAtom } from "../States.js";
+import { userAtom } from "../States.js";
+import { v4 } from "uuid";
+
 
 const Signup = () => {
-  const [user, setUser] = useAtom(userAtom);
-  // const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
+  const [, setUser] = useAtom(userAtom);
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupUsername, setSignupUsername] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
   const navigate = useNavigate();
+  console.log(v4)
 
   // first password
   // first password
@@ -179,7 +180,7 @@ const Signup = () => {
 
       <div>
         {signupErrors
-          ? signupErrors.map((error, i) => <p key={i}>{error[1]}</p>)
+          ? signupErrors.map((error) => <p key={v4}>{error[1]}</p>)
           : null}
       </div>
 

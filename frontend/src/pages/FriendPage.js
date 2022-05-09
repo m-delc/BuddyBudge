@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userFriendsAtom, userAtom } from "../States";
+import { v4 } from "uuid";
+
 
 const FriendPage = () => {
   const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
@@ -34,10 +36,10 @@ const FriendPage = () => {
           justifyContent: "center",
         }}
       >
-        {user.first_name}'s Friends
+        {user ? `${user.first_name}'s Friends` : null}
       </div>
       {userFriends
-        ? userFriends.map((friend, index) => (
+        ? userFriends.map((friend) => (
             <div
               style={{
                 background: "inherit",
@@ -45,7 +47,7 @@ const FriendPage = () => {
                 textAlign: "center",
                 margin: "10px",
               }}
-              key={index}
+              key={v4}
             >
               <h3>{friend.person.first_name}</h3>
               <p></p>

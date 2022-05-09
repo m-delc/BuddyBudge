@@ -15,12 +15,12 @@ import { useAtom } from "jotai";
 import { userAtom, userFriendsAtom } from "../States.js";
 
 const Person = () => {
-  const [user, setUser] = useAtom(userAtom);
+  const [user] = useAtom(userAtom);
   const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
-  
+
   const [person, setPerson] = useState([]);
   const [people, setPeople] = useState([]);
-  const { id, first_name, bio, img } = person;
+  const { id, first_name, img } = person;
   const params = useParams();
   const friendToggle = userFriends.filter((friend) => {
     return friend.person_id == params.id;

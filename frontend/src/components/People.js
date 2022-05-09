@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
-import {
-  peopleAtom,
-  userAtom,
-  isAuthenticatedAtom,
-  userFriendsAtom,
-} from "../States.js";
+import { peopleAtom } from "../States.js";
+import { v4 } from "uuid";
+
 
 const People = () => {
   const [people, setPeople] = useAtom(peopleAtom);
-  // const [user, setUser] = useAtom(userAtom);
-  // const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
-  // const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
 
   const navigate = useNavigate();
   const handleNavToPerson = (id) => {
@@ -42,13 +36,13 @@ const People = () => {
       </div>
       <div className="grid">
         {people
-          ? people.map((y, index) => (
+          ? people.map((y) => (
               <div
                 style={{
                   background: "white",
                   borderRadius: "8px",
                 }}
-                key={index}
+                key={v4}
               >
                 <p></p>
                 <img

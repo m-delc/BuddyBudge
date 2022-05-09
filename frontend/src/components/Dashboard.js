@@ -14,7 +14,7 @@ import { useAtom } from "jotai";
 import { userAtom } from "../States.js";
 
 const Dashboard = () => {
-  const [user, setUser] = useAtom(userAtom);
+  const [user] = useAtom(userAtom);
   const [personBudget, setPersonBudget] = useState([]);
 
   useEffect(() => {
