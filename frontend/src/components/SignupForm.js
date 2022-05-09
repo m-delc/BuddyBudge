@@ -14,20 +14,13 @@ import { useAtom } from "jotai";
 import { userAtom } from "../States.js";
 import { v4 as uuidv4 } from "uuid";
 
-
-
-
-
 const Signup = () => {
   const [, setUser] = useAtom(userAtom);
   const [signupFirstName, setSignupFirstName] = useState("");
-  const [signupUsername, setSignupUsername] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
   const [signupEmail, setSignupEmail] = useState("");
   const navigate = useNavigate();
 
-  // first password
-  // first password
   // first password
   // first password
   const [initialPassword, setInitialPassword] = useState({
@@ -47,8 +40,6 @@ const Signup = () => {
     event.preventDefault();
   };
 
-  // confirm password
-  // confirm password
   // confirm password
   // confirm password
   const [confirmPassword, setConfirmPassword] = useState({
@@ -95,13 +86,12 @@ const Signup = () => {
     });
   }
 
-
   return (
     <form className="div-form" onSubmit={signupOnSubmit}>
       <br></br>
 
-      <div >
-        <div style={{display: "flex", justifyContent: "center"}} >
+      <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <Input
             className="test1"
             type="text"
@@ -115,7 +105,7 @@ const Signup = () => {
 
         <br></br>
 
-        <div style={{display: "flex", justifyContent: "center"}} >
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <Input
             className="test1"
             type="text"
@@ -129,7 +119,7 @@ const Signup = () => {
 
         <br></br>
 
-        <div style={{display: "flex", justifyContent: "center"}} >
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <Input
             id="first-password"
             type={initialPassword.showPassword ? "text" : "password"}
@@ -155,7 +145,7 @@ const Signup = () => {
         </div>
         <br></br>
 
-        <div style={{display: "flex", justifyContent: "center"}} >
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <Input
             id="confirm-password"
             type={confirmPassword.showPassword ? "text" : "password"}
