@@ -8,6 +8,6 @@ class WelcomeMailer < ApplicationMailer
   def welcome
     @greeting = "Hi"
 
-    mail to: "to@example.org"
+    mail to: User.first.email, subject: "Welcome to BuddyBudge!"
   end
 end
