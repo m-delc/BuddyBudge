@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     def create
         user = User.create(user_params)
         if user.valid?
-            WelcomeMailer.welcome.deliver_later
+            WelcomeMailer.welcome(user).deliver_later
             session[:current_user] = user.id
             return render json: user, status: 201
         else
