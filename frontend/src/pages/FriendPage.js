@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userFriendsAtom, userAtom } from "../States";
 import { v4 as uuidv4 } from "uuid";
 
 const FriendPage = () => {
-  const [userFriends] = useAtom(userFriendsAtom);
+  const [userFriends, setUserFriends] = useAtom(userFriendsAtom);
   const [user] = useAtom(userAtom);
   const navigate = useNavigate();
   const handleNav = (id) => {
     navigate(`/findpeople/${id}`);
   };
+
+  useEffect(() => {
+    const fetchFriends = async () => {
+      const data = await fetch("/friends");
+      const json = await data.json();
+      setUserFriends(json);
+    };
+    fetchFriends().catch(console.error);
+  }, []);
 
   return (
     <div
