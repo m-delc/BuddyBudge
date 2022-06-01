@@ -1,1 +1,1 @@
-release: rake db:reset
+release: rake db:seed:replant
