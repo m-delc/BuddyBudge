@@ -35,4 +35,4 @@ Added to package.json:
 
 
 
-update for heroku
+updates for heroku
