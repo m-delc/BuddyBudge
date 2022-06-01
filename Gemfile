@@ -41,4 +41,4 @@ gem 'figaro'
 
 # gem "sidekiq", "~> 6.4"
 
-gem 'mail', '~> 2.7', '>= 2.7.1'
+# gem 'mail', '~> 2.7', '>= 2.7.1'
