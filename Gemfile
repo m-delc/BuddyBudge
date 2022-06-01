@@ -39,3 +39,4 @@ gem 'email_validator'
 
 gem 'figaro'
 
+gem 'mail', '~> 2.6', '>= 2.6.4'

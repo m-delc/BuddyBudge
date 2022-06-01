@@ -152,7 +152,7 @@ const Budget = () => {
 
   return (
     <div className="grid">
-      <div>
+      <div>Set your goals!<br></br><br></br>  
         {/* toggles submit/update forms */}
         {/* toggles submit/update forms */}
         {/* toggles submit/update forms */}

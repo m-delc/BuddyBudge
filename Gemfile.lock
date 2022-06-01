@@ -188,6 +188,7 @@ DEPENDENCIES
   email_validator
   faker!
   figaro
+  mail (~> 2.6, >= 2.6.4)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors

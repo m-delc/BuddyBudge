@@ -65,9 +65,11 @@ Rails.application.configure do
     user_name:            ENV['gmail_username'],
     password:             ENV['gmail_password'],
     authentication:       'plain',
-    enable_starttls_auto: true}
+    enable_starttls_auto: true,
+    open_timeout:         5,
+    read_timeout:         5 }
 
-  config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'bluelampsystems@gmail.com'}
