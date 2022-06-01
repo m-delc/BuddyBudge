@@ -1,7 +1,5 @@
 require "faker"
 
-# u1 = User.create!(username: "lol", first_name: "Larry", password: "lol" )
-
 p1 = Person.create!(first_name: "Sam", bio: Faker::Lorem.sentence(word_count: 10), img: "https://denverbusinessheadshots.com/wp-content/uploads/2020/02/Denver-Business-Headshots-Denver-Headshots-Denver-Portrait-Photography-Denver-Portraits-Denver-Headshot-Colorado-Business-Headshots-148-256x256.jpg")
 p2 = Person.create!(first_name: "Kiera", bio: Faker::Lorem.sentence(word_count: 10), img: "https://aacu.imgix.net/content/person/Headshot_Nicole-Fry.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=256&q=80&w=256")
 p3 = Person.create!(first_name: "Charlie", bio: Faker::Lorem.sentence(word_count: 10), img: "https://denverbusinessheadshots.com/wp-content/uploads/2020/02/Denver-Business-Headshots-Denver-Headshots-Denver-Portrait-Photography-Denver-Portraits-Denver-Headshot-Colorado-Business-Headshots-102-256x256.jpg")
