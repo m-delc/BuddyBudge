@@ -1,1 +1,1 @@
-release: rake db:seed:replant
+release: rake db:migrate && rake db:seed
