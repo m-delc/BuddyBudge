@@ -70,11 +70,11 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default_options = {from: Rails.application.credentials.dig(:google_smtp, :email)}
-  config.action_mailer.default_url_options = {host: "https://stark-bayou-39814.herokuapp.com/", protocol: "https"}
+  config.action_mailer.default_url_options = {host: "stark-bayou-39814.herokuapp.com/", protocol: "https"}
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               https://stark-bayou-39814.herokuapp.com/,
+    domain:               'stark-bayou-39814.herokuapp.com/',
     user_name:            Rails.application.credentials.dig(:google_smtp, :email),
     password:             Rails.application.credentials.dig(:google_smtp, :password),
     authentication:       'plain',
