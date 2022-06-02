@@ -36,5 +36,3 @@ gem 'byebug', '~> 11.1', '>= 11.1.3'
 gem 'active_model_serializers', '~> 0.10.2'
 
 gem 'email_validator'
-
-gem 'figaro'
